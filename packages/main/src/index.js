@@ -1,24 +1,8 @@
-import './bootstrap/main'
-
+import './bootstrap/main.js'
+import './ipc/recieve/selectFiles'
 const { app, dialog, ipcMain } = require('electron');
 const fs = require('fs');
 const path = require("path");
-
-
-
-// Listen for the "select-file" message from the renderer process
-ipcMain.on('selectFiles', async (event) => {
-	const options = { title: 'Select a file', properties: ['openDirectory'] };
-	dialog.showOpenDialog(options).then((result) => {
-		if (!result.canceled) {
-		  const folderPath = result.filePaths[0];
-		  const filePath = folderPath + '/system/vocabulary/vocab.db';
-		  event.sender.send('file-contents', filePath);
-		}
-	  }).catch((err) => {
-		console.log(err);
-	  });
-});
 
 
 
