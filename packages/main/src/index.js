@@ -7,7 +7,7 @@ const path = require("path");
 
 
 // Listen for the "select-file" message from the renderer process
-ipcMain.on('select-file', async (event) => {
+ipcMain.on('selectFiles', async (event) => {
 	const options = { title: 'Select a file', properties: ['openDirectory'] };
 	dialog.showOpenDialog(options).then((result) => {
 		if (!result.canceled) {

@@ -6,21 +6,20 @@
 import { ipcRenderer } from 'electron'
 
 export function openFile() {
-  ipcRenderer.send('select-file');
+  ipcRenderer.send('selectFiles');
 }
 
-// Define a function to save the user data to disk
+// save the user data to disk
 export function saveUserData(userData) {
   ipcRenderer.send("saveUserData", userData);
 }
 
-// Define a function to load the user data from disk
+// load the user data from disk
 export function loadUserData() {
   return new Promise((resolve, reject) => {
     ipcRenderer.once("userDataLoaded", (event, userData) => {
       resolve(userData);
     });
-
     ipcRenderer.send("loadUserData");
   });
 }

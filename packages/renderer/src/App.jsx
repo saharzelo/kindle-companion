@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { ipcRenderer, openFile, loadUserData, saveUserData } from '#preload';
+import LoginPage from './view/pages/LoginPage/LoginPage'
+
 
 function App() {
   loadUserData().then((userData) => {
@@ -8,6 +10,7 @@ function App() {
 
   const onClick = () => {
     // Load the user's data when the page loads
+    openFile()
   }
 
   const onClick2 = () => {
@@ -16,15 +19,8 @@ function App() {
   }
 
   return (
-    <div className="">
-      <button
-        onClick={() => { onClick() }}>
-        CLICK ME
-      </button>
-      <button
-        onClick={() => { onClick2() }}>
-        CLICK ME2
-      </button>
+    <div className="App">
+      <LoginPage />
     </div>
   );
 }

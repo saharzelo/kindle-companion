@@ -2,7 +2,7 @@ import {chrome} from '../../.electron-vendors.cache.json';
 import {join} from 'path';
 import react from '@vitejs/plugin-react';
 import {renderer} from 'unplugin-auto-expose';
-
+import svgr from 'vite-plugin-svgr' 
 const PACKAGE_ROOT = __dirname;
 
 /**
@@ -36,6 +36,7 @@ const config = {
   },
   plugins: [
     react(),
+    svgr(),
     renderer.vite({
       preloadEntry: join(PACKAGE_ROOT, '../preload/src/index.js'),
     }),

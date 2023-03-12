@@ -1,0 +1,152 @@
+.modal-bg {
+    width: 100vw;
+    height: 100vh;
+    background-color: #fbfbfd;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 0.9rem;
+}
+
+
+.modalContent .header svg {
+    padding: 20px;
+    width: 15vw;
+    height: 15vh;
+}
+
+
+
+.modalContent .header svg  {
+    animation: grow-shrink 2s ease-in-out infinite;
+  }
+  
+  @keyframes grow-shrink {
+    0% {
+      transform: scale(1);
+    }
+    25% {
+        transform: scale(1.2);
+      }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 33vw;
+    min-height: 55vh;
+    border-radius: 25px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 11px 34px 0 rgb(0 0 0 / 20%);
+    padding: 10px;
+}
+
+.modalContent .header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header h1 {
+    padding-top: 5px;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    color: #333
+}
+
+.header h6 {
+    font-weight: normal;
+    margin: 0 0 25px 0;
+    padding: 0;
+    font-size: 12px;
+}
+
+.modalContent .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer-header {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.9rem;
+    gap: 7px;
+    
+}
+
+.footer .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: #06c;
+}
+
+.footer .body a {
+    font-size: 0.85rem;
+    color: #06c;
+    text-decoration: none;
+}
+
+.footer #create-account {
+    margin-top: 1.2vh;
+}
+
+.razor {
+    width: 15vw;
+    box-shadow: 0 0.1px 0 rgb(116, 112, 112);
+    border-bottom: 0.1px solid rgb(150, 147, 147);
+}
+
+
+
+#open-span {
+    display: inline-block; /* Display as inline-block */
+    animation: open 0.3s ease-in-out;
+    font-size: 1.1rem;
+    border-bottom: 1px solid;
+    cursor: pointer;
+
+  }
+
+  @keyframes open {
+    0% { transform: translateX(-10px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+
+  
+  /* Define the hover animation for the span */
+  #open-span:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+  }
