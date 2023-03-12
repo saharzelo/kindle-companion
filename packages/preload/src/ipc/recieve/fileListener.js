@@ -1,9 +1,6 @@
 import { ipcRenderer } from 'electron';
 
 
-
-
-
 const sqlite3 = require('sqlite3').verbose();
 ipcRenderer.on('file-contents', (event, data) => {
   console.log(`Selected file: ${data}`);

@@ -6,20 +6,21 @@ import { ReactComponent as FileIcon } from '../../../public/icons/fileIcon.svg'
 import Dropdown from '../../components/Dropdown/Dropdown';
 function LoginPage() {
 
-    //   loadUserData().then((userData) => {
-    //     console.log("User data loaded:", userData);
-    //   });
-
-    const onClick = () => {
-        // Load the user's data when the page loads
+    const handleFilesClick = () => {
         openFile()
     }
 
     const [isOpen, setIsOpen] = useState(false);
+
+
     // temp replace 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
+
+    //   loadUserData().then((userData) => {
+    //     console.log("User data loaded:", userData);
+    //   });
 
     return (
         <div className="modal-bg">
@@ -34,7 +35,7 @@ function LoginPage() {
                         <Dropdown isOpen={isOpen} toggleDropdown={toggleDropdown} />
                     </div>
                     <div className="under-text">
-                        <span> or </span> <span onClick={() => onClick()} id="open-span">open</span> <span>Kindle</span>
+                        <span> or </span> <span onClick={() => handleFilesClick()} id="open-span">open</span> <span>Kindle</span>
 
                     </div>
 
