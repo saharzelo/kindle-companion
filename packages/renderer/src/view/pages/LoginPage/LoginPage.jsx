@@ -1,13 +1,20 @@
 import { useState } from 'react';
 import './LoginPage.css'
-import { openFile, loadUserData, saveUserData } from '#preload';
+import { openFileExplorer, loadUserData, saveUserData } from '#preload';
 import { ReactComponent as LoginIcon } from '../../../public/icons/loginIcon.svg'
 import { ReactComponent as FileIcon } from '../../../public/icons/fileIcon.svg'
 import Dropdown from '../../components/Dropdown/Dropdown';
-function LoginPage() {
 
+
+function LoginPage({ setProfile }) {
+    
     const handleFilesClick = () => {
-        openFile()
+        openFileExplorer().then((result) => {
+            console.log('File explorer opened successfully');
+            setProfile(result)
+          }).catch((error) => {
+            console.error(error);
+          });
     }
 
     const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +52,7 @@ function LoginPage() {
                         <h2 className="razor" />
                     </div>
                     <div className="body">
-                        <a href=''> Choose an Account</a>
+                        <a href=''> Device Status: OK</a>
                         <a id='create-account' href=''> Source Code </a>
                     </div>
                 </div>
