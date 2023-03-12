@@ -1,5 +1,8 @@
 // Listen for the "select-file" message from the renderer process
-import { sendFiles } from '../send/sendFiles';
+import { sendFiles } from '../sender/sendFiles';
+import * as QUERY from '../../controller/queryHelper'
+
+
 const { dialog, ipcMain } = require('electron');
 const fs = require('fs');
 const path = require("path");
@@ -14,7 +17,7 @@ ipcMain.handle('selectFiles', async (event) => {
         const filePath = folderPath + '/system/vocabulary/vocab.db';
 
         const db = new sqlite3.Database(filePath);
-        let check = db.all('SELECT title FROM BOOK_INFO', [], (err, rows) => {
+        db.all(QUERY.WORDS_BY_TIME, [], (err, rows) => {
           if (err) {
             console.error(err.message);
             reject(err);

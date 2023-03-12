@@ -1,4 +1,4 @@
-const QUERY_READ_ALL = `select
+export const READ_ALL = `select
                             w.word,
                             l.usage as usage
                             ,w.timestamp as timestamp
@@ -12,8 +12,7 @@ const QUERY_READ_ALL = `select
                             GROUP BY
                             w.word
                             ORDER BY timestamp ASC, book ASC`;
-
-const QUERY_WORDS_BY_BOOK = `select
+export const WORDS_BY_BOOK = `select
                             w.word,
                             l.usage as usage
                             ,w.timestamp as timestamp
@@ -28,13 +27,11 @@ const QUERY_WORDS_BY_BOOK = `select
                             GROUP BY
                             w.word
                             ORDER BY timestamp ASC, book ASC`;
-
-const QUERY_BOOK_NAMES = `select
+export const BOOK_NAMES = `select
                             b.title,
                             b.authors
                             from BOOK_INFO b`;
-
-const QUERY_BOOK_DETAIL = `select
+export const BOOK_DETAIL = `select
                             b.title,
                             b.authors,
                             MIN(w.timestamp) as minTime,
@@ -53,8 +50,7 @@ const QUERY_BOOK_DETAIL = `select
                             GROUP BY
                             b.title
                             ORDER BY minTime ASC`;
-
-const QUERY_WORDS_BY_TIME = `select
+export const WORDS_BY_TIME = `select
                             w.word,
                             l.usage as usage,
                             b.title as book,
@@ -71,5 +67,3 @@ const QUERY_WORDS_BY_TIME = `select
                             GROUP BY
                             w.word
                             ORDER BY formattedTime ASC, book ASC`;
-
-

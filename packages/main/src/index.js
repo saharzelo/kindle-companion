@@ -1,5 +1,5 @@
 import './bootstrap/main.js'
-import './ipc/recieve/selectFiles'
+import './ipc/reciever/selectFiles'
 const { app, dialog, ipcMain } = require('electron');
 const fs = require('fs');
 const path = require("path");
