@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ipcRenderer, openFileExplorer, loadUserData, saveUserData } from '#preload';
+import { ipcRenderer, loadUserData, saveUserData } from '#preload';
 import LoginPage from './view/pages/LoginPage/LoginPage'
 import HomePage from './view/pages/HomePage/HomePage';
 

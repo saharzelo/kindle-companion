@@ -1,8 +1,9 @@
-const sqlite3 = require('sqlite3').verbose();
+const { DataSource } = require('typeorm');
 
-
-
-
-export function dbHandler(dbPath) {
-    const dbConnection = new sqlite3.Database(dbPath)
+export async function dbHandler(databasePath) {
+    const AppDataSource = new DataSource({
+        type: "sqlite",
+        database: databasePath,
+    })
+    return AppDataSource
 }

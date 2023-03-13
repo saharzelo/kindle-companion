@@ -1,5 +1,6 @@
+import "reflect-metadata" // typeORM
 import './bootstrap/main.js'
-import './ipc/openFileExplorer'
+import './controller/ipc/initKindleConnection'
 const { app, dialog, ipcMain } = require('electron');
 const fs = require('fs');
 const path = require("path");

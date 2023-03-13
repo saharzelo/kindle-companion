@@ -5,5 +5,5 @@
 
 export { saveUserData } from './ipc/saveUserData';
 export { loadUserData } from './ipc/loadUserData';
-export { openFileExplorer } from './ipc/openFileExplorer';
+export { initKindleConnection } from './ipc/initKindleConnection';
 export { ipcRenderer } from 'electron';

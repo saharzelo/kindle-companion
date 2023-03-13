@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './LoginPage.css'
-import { openFileExplorer, loadUserData, saveUserData } from '#preload';
+import { initKindleConnection, loadUserData, saveUserData } from '#preload';
 import { ReactComponent as LoginIcon } from '../../../public/icons/loginIcon.svg'
 import { ReactComponent as FileIcon } from '../../../public/icons/fileIcon.svg'
 import Dropdown from '../../components/Dropdown/Dropdown';
@@ -9,7 +9,7 @@ import Dropdown from '../../components/Dropdown/Dropdown';
 function LoginPage({ setProfile }) {
     
     const handleFilesClick = () => {
-        openFileExplorer().then((result) => {
+        initKindleConnection().then((result) => {
             console.log('File explorer opened successfully');
             setProfile(result)
           }).catch((error) => {
