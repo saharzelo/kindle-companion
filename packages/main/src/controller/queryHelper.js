@@ -8,25 +8,16 @@ export const READ_ALL = `select
                             LEFT JOIN LOOKUPS l
                             on l.word_key=w.id
                             LEFT JOIN BOOK_INFO b
-                            on b.guid=l.book_key
+                            on b.id=l.id
                             GROUP BY
                             w.word
                             ORDER BY timestamp ASC, book ASC`;
-export const WORDS_BY_BOOK = `select
-                            w.word,
-                            l.usage as usage
-                            ,w.timestamp as timestamp
-                            ,b.title as book
-                            FROM
-                            WORDS w
-                            LEFT JOIN LOOKUPS l
-                            on l.word_key=w.id
-                            LEFT JOIN BOOK_INFO b
-                            on b.guid=l.book_key
-                            where book = ?
-                            GROUP BY
-                            w.word
-                            ORDER BY timestamp ASC, book ASC`;
+export const WORDS_BY_BOOK = `SELECT lookups.timestamp , book_info.title, words.stem, words.word, lookups.usage
+                            FROM lookups
+                            LEFT OUTER JOIN book_info ON lookups.book_key=book_info.id
+                            LEFT OUTER JOIN words ON lookups.word_key=words.id
+                            ORDER BY lookups.timestamp desc
+                            `;
 export const BOOK_NAMES = `select
                             b.title,
                             b.authors

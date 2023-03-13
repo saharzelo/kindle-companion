@@ -1,6 +1,5 @@
 // Listen for the "select-file" message from the renderer process
-import { sendFiles } from '../sender/sendFiles';
-import * as QUERY from '../../controller/queryHelper'
+import * as QUERY from '../controller/queryHelper'
 
 
 const { dialog, ipcMain } = require('electron');
@@ -8,14 +7,14 @@ const fs = require('fs');
 const path = require("path");
 const sqlite3 = require('sqlite3').verbose();
 
-ipcMain.handle('selectFiles', async (event) => {
+ipcMain.handle('openFileExplorer', async (event) => {
   return new Promise((resolve, reject) => {
     const options = { title: 'Select a file', properties: ['openDirectory'] };
     dialog.showOpenDialog(options).then((result) => {
       if (!result.canceled) {
         const folderPath = result.filePaths[0];
+        //  extract as db manager
         const filePath = folderPath + '/system/vocabulary/vocab.db';
-
         const db = new sqlite3.Database(filePath);
         db.all(QUERY.WORDS_BY_TIME, [], (err, rows) => {
           if (err) {
@@ -26,6 +25,7 @@ ipcMain.handle('selectFiles', async (event) => {
           }
           db.close();
         });
+        //
       } else {
         reject(new Error('User canceled file selection.'));
       }

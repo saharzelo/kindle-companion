@@ -17,17 +17,11 @@ function LoginPage({ setProfile }) {
           });
     }
 
-    const [isOpen, setIsOpen] = useState(false);
-
-
     // temp replace 
+    const [isOpen, setIsOpen] = useState(false);
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
-
-    //   loadUserData().then((userData) => {
-    //     console.log("User data loaded:", userData);
-    //   });
 
     return (
         <div className="modal-bg">

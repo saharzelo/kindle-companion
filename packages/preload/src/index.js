@@ -3,7 +3,7 @@
  */
 
 
-export { saveUserData } from './ipc/sender/saveUserData';
-export { loadUserData } from './ipc/sender/loadUserData';
-export { openFileExplorer } from './ipc/sender/openFileExplorer';
+export { saveUserData } from './ipc/saveUserData';
+export { loadUserData } from './ipc/loadUserData';
+export { openFileExplorer } from './ipc/openFileExplorer';
 export { ipcRenderer } from 'electron';

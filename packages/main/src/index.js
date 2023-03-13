@@ -1,9 +1,8 @@
 import './bootstrap/main.js'
-import './ipc/reciever/selectFiles'
+import './ipc/openFileExplorer'
 const { app, dialog, ipcMain } = require('electron');
 const fs = require('fs');
 const path = require("path");
-
 
 
 // Get the path to the app data directory

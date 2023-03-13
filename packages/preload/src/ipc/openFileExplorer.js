@@ -2,7 +2,7 @@ import { ipcRenderer } from 'electron';
 
 export function openFileExplorer() {
   return new Promise((resolve, reject) => {
-    ipcRenderer.invoke('selectFiles').then((result) => {
+    ipcRenderer.invoke('openFileExplorer').then((result) => {
       if (resolve(result) === 'success') {
         resolve(result);
       } else {
