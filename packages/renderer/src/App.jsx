@@ -1,29 +1,43 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ipcRenderer, loadUserData, saveUserData } from '#preload';
 import LoginPage from './view/pages/LoginPage/LoginPage'
 import HomePage from './view/pages/HomePage/HomePage';
 
 function App() {
-
-  // loadUserData().then((userData) => {
-  //   console.log("User data loaded:", userData);
-  // });
-
-  // const onClick = () => {
-  //   // Load the user's data when the page loads
-  //   openFileExplorer()
-  // }
-
-  // const onClick2 = () => {
-  //   const userData = { name: "Alice", age: 30 };
-  //   saveUserData(userData);
-  // }
   const [profile, setProfile] = useState(null);
 
   function handleProfile(profile) {
     setProfile(profile);
   }
-
+  
+  useEffect(() => {
+    const checkKindleStatus = async () => {
+      try {
+        // call function that chcks if files exists
+        if (response.ok) {
+          setIsLoggedIn(true);
+        } else {
+          throw new Error('Not logged in');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    checkKindleStatus();
+  }, []);
+  
+  const handleLogin = async () => {
+    try {
+      // call backend to see if files exists
+      if (response.ok) {
+        // set state as the profile
+      } else {
+        throw new Error('Invalid credentials');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
   return (
     <div className="App">
       {profile ? (

@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import './LoginPage.css'
-import { initKindleConnection, loadUserData, saveUserData } from '#preload';
+import { exportKindleContent } from '#preload';
 import { ReactComponent as LoginIcon } from '../../../public/icons/loginIcon.svg'
 import { ReactComponent as FileIcon } from '../../../public/icons/fileIcon.svg'
 import Dropdown from '../../components/Dropdown/Dropdown';
 
 
 function LoginPage({ setProfile }) {
-    
+
     const handleFilesClick = () => {
-        initKindleConnection().then((result) => {
-            console.log('File explorer opened successfully');
-            setProfile(result)
-          }).catch((error) => {
-            console.error(error);
-          });
+        exportKindleContent()
+            .then((result) => {
+                setProfile(result)
+            }).catch((error) => {
+                console.error(error);
+            });
     }
 
     // temp replace 

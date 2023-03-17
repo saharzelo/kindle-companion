@@ -5,5 +5,5 @@
 
 export { saveUserData } from './ipc/saveUserData';
 export { loadUserData } from './ipc/loadUserData';
-export { initKindleConnection } from './ipc/initKindleConnection';
+export { exportKindleContent } from './ipc/exportKindleContent';
 export { ipcRenderer } from 'electron';

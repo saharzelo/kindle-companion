@@ -1,6 +1,6 @@
 import "reflect-metadata" // typeORM
 import './bootstrap/main.js'
-import './controller/ipc/initKindleConnection'
+import './controller/ipc/exportKindleContent'
 const { app, dialog, ipcMain } = require('electron');
 const fs = require('fs');
 const path = require("path");
