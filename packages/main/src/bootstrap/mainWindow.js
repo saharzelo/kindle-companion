@@ -34,6 +34,9 @@ async function createWindow() {
 		}
 	});
 
+	
+	browserWindow.setMenu(null)
+	
 	/**
 	 * URL for main window.
 	 * Vite dev server for development.
