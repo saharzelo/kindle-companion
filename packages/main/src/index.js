@@ -1,11 +1,12 @@
+import './bootstrap/main.js';
+import './controller/ipc/exportKindleContent';
 import "reflect-metadata" // typeORM
-import './bootstrap/main.js'
-import './controller/ipc/exportKindleContent'
+
 const { app, dialog, ipcMain } = require('electron');
 const fs = require('fs');
 const path = require("path");
 
-
+/*
 // Get the path to the app data directory
 const userDataPath = app.getPath("userData");
 
@@ -40,3 +41,4 @@ ipcMain.on("saveUserData", (event, userData) => {
 ipcMain.on("loadUserData", (event) => {
   loadUserData(event);
 });
+*/

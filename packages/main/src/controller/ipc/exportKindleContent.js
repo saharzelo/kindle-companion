@@ -12,7 +12,7 @@ ipcMain.handle('exportKindleContent', async () => {
           resolve('success')
         })
         .catch(() => {
-            reject(new Error('no files!'));
+            reject(new Error('File not found'));
           });
       } else {
         reject(new Error('User canceled file selection.'));
