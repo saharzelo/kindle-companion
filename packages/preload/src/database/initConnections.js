@@ -10,15 +10,12 @@ export const initVocabDb = () => {
             timestamps: false
         }
     };
+    
     const conn = new Sequelize('sqlite::/tmp/vocab.db', config);
     BookInfo(conn)
-    // init models
     conn.sync().then(() => {
         // sync models
-        console.log("db synced")
     })
-
-    // 
     return conn;
 };
 

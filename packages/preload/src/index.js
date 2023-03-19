@@ -3,16 +3,14 @@
  */
 
 import { initVocabDb } from './database/initConnections';
-import {BookInfoRepository} from './database/vocabDb/repository/bookInfoRepository'
+import { BookInfoRepository } from './database/repository/bookInfoRepository'
 
-
-
-const vocabDbConn = initVocabDb()
-let repo = BookInfoRepository(vocabDbConn)
-
-console.log(repo.findAll().then((r)=> {console.log(r)}))
-// vocabDbConn.models.BOOK_INFO.findAndCountAll().then((res) => {console.log(res)}).catch((err) => {console.log(err)})
-
+export async function getBooks() {
+    let c = BookInfoRepository(initVocabDb())
+    return c
+}
+export { initVocabDb } from './database/initConnections';
+export { BookInfoRepository } from './database/repository/bookInfoRepository'
 export { saveUserData } from './ipc/saveUserData';
 export { loadUserData } from './ipc/loadUserData';
 export { exportKindleContent } from './ipc/exportKindleContent';
