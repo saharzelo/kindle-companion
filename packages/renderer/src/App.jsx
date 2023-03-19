@@ -9,42 +9,44 @@ function App() {
   function handleProfile(profile) {
     setProfile(profile);
   }
-  
-  useEffect(() => {
-    const checkKindleStatus = async () => {
-      try {
-        // call function that chcks if files exists
-        if (response.ok) {
-          setIsLoggedIn(true);
-        } else {
-          throw new Error('Not logged in');
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    checkKindleStatus();
-  }, []);
-  
-  const handleLogin = async () => {
-    try {
-      // call backend to see if files exists
-      if (response.ok) {
-        // set state as the profile
-      } else {
-        throw new Error('Invalid credentials');
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }
+
+  // useEffect(() => {
+  //   const checkKindleStatus = async () => {
+  //     try {
+  //       // call function that chcks if files exists
+  //       if (response.ok) {
+  //         setIsLoggedIn(true);
+  //       } else {
+  //         throw new Error('Not logged in');
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   checkKindleStatus();
+  // }, []);
+
+  // const handleLogin = async () => {
+  //   try {
+  //     // call backend to see if files exists
+  //     if (response.ok) {
+  //       // set state as the profile
+  //     } else {
+  //       throw new Error('Invalid credentials');
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
   return (
     <div className="App">
-      {profile ? (
+      {/* {profile ? (
         <HomePage profile={profile} />
       ) : (
         <LoginPage setProfile={handleProfile} />
-      )}
+      )} */}
+      <HomePage profile={profile} />
+
     </div>
   );
 }
