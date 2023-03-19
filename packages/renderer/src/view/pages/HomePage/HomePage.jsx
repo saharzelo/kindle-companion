@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { testing } from '#preload'
+
 import './HomePage.css'
 
 
@@ -10,7 +10,7 @@ function HomePage({ profile }) {
     //     </div>
     // ));
     const [data, setData] = useState([]);
-
+    const testing = async () => {}
     useEffect(() => {
         async function fetchData() {
             try {
