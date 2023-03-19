@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { BookInfoRepository, initVocabDb, getBooks } from '#preload';
 import './HomePage.css';
-
+import BookPreviewItem from '../../components/BookItem/BookItem';
 
 function HomePage({ profile }) {
     // const userElements = profile.map((user, index) => (
@@ -34,7 +34,37 @@ function HomePage({ profile }) {
         <div className="home-page">
             <Sidebar />
             <div className="main-container">
-                {data}
+                <div className="top-container">
+                TESTS
+                TESTS
+                TESTS
+                TESTS
+                <p>test</p>
+                <p>test</p>
+                <p>test</p>
+                
+                </div>
+                <div className="catalog-wrapper">
+                    <div className="catalog-container">
+                        <BookPreviewItem />
+                        <BookPreviewItem />
+                        <BookPreviewItem />
+                        <BookPreviewItem />
+                        <BookPreviewItem />
+                        <BookPreviewItem />
+                        <BookPreviewItem />
+                        <BookPreviewItem />
+                        <BookPreviewItem />
+                        <BookPreviewItem />
+                        <BookPreviewItem />
+                        <BookPreviewItem />
+                        <BookPreviewItem />
+                        <BookPreviewItem />
+                        <BookPreviewItem />
+                        <BookPreviewItem />
+
+                    </div>
+                </div>
             </div>
         </div>
     );
