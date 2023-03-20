@@ -4,26 +4,27 @@
     align-items: center;
     padding: 10px;
     border: 1px solid #ccc;
+    text-align: center;
     border-radius: 5px;
     width: 10vw;
-  }
-  
-  .book-preview-item img {
+}
+
+
+.book-preview-item img {
     width: 100%;
-    max-width: 200px;
+    max-width: 1;
     height: auto;
     margin-bottom: 10px;
-  }
-  
-  .book-preview-item h3 {
+}
+
+.book-preview-item h3 {
     font-size: 1.2rem;
     margin: 0;
     margin-bottom: 5px;
-  }
-  
-  .book-preview-item p {
+}
+
+.book-preview-item p {
     font-size: 1rem;
     margin: 0;
     text-align: center;
-  }
-  
+}

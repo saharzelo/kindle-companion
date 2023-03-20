@@ -1,38 +1,33 @@
-* {
-  outline: 1px solid red;
-}
 
 .home-page {
-  position: absolute;
   width: 100vw;
   height: 100vh;
   background-color: #fbfbfd;
   display: flex;
-}
+  position: relative;
 
+}
 
 .main-container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  flex-basis: 90%;
-  position: relative;
+  flex-basis: 90%;  overflow: auto;
 
 }
 
 .catalog-wrapper {
-  height: 40;
+  height: 100%;
+  position: relative;
+
 }
 
 .catalog-container {
-  display: grid;
-  height: 100vh;
-
-  overflow: scroll;
+  display: flex;
+  height: 100%;
+  flex-wrap: wrap;
   position: absolute;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  gap: 1vw;
-  grid-auto-flow: dense;
-  
+  width: 100%;
+  gap: 15px;
+  justify-content: center;
 }

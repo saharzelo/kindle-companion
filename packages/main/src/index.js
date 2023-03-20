@@ -1,6 +1,5 @@
 import './bootstrap/main.js';
 import './controller/ipc/exportKindleContent';
-import "reflect-metadata" // typeORM
 
 const { app, dialog, ipcMain } = require('electron');
 const fs = require('fs');

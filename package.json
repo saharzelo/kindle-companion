@@ -27,7 +27,6 @@
     "electron-updater": "5.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "reflect-metadata": "^0.1.13",
     "sequelize": "^6.29.3",
     "sqlite3": "^5.1.6",
     "vite-plugin-svgr": "^2.4.0"

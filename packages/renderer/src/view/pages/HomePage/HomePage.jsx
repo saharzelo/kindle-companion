@@ -19,7 +19,7 @@ function HomePage({ profile }) {
                 const result = await repo.findAll()
                 console.log(result)
                 const userElements = result.map((user, index) => (
-                    <span>{user.dataValues.title}</span>
+                    <BookPreviewItem title={user.dataValues.title} />
                 ));
                 setData(userElements);
             } catch (error) {
@@ -35,34 +35,14 @@ function HomePage({ profile }) {
             <Sidebar />
             <div className="main-container">
                 <div className="top-container">
-                TESTS
-                TESTS
-                TESTS
-                TESTS
-                <p>test</p>
-                <p>test</p>
-                <p>test</p>
-                
+                    <p>test</p>
+                    <p>test</p>
+                    <p>test</p>
+
                 </div>
                 <div className="catalog-wrapper">
                     <div className="catalog-container">
-                        <BookPreviewItem />
-                        <BookPreviewItem />
-                        <BookPreviewItem />
-                        <BookPreviewItem />
-                        <BookPreviewItem />
-                        <BookPreviewItem />
-                        <BookPreviewItem />
-                        <BookPreviewItem />
-                        <BookPreviewItem />
-                        <BookPreviewItem />
-                        <BookPreviewItem />
-                        <BookPreviewItem />
-                        <BookPreviewItem />
-                        <BookPreviewItem />
-                        <BookPreviewItem />
-                        <BookPreviewItem />
-
+                        {data}
                     </div>
                 </div>
             </div>
