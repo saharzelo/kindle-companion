@@ -1,0 +1,13 @@
+.Topbar {
+    height: 50px;
+    width: 100%;
+    background-color: #F8FAFB;
+    z-index: 2;
+    display: flex;
+    border-color: #c4c4c6;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+}
+
+.app-logo {
+}
