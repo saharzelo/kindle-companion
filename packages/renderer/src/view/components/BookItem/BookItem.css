@@ -6,24 +6,39 @@
     border: 1px solid #ccc;
     text-align: center;
     border-radius: 5px;
-    width: 10vw;
+    width: 15vw;
+    min-height: 5vh;
 }
 
 
 .book-preview-item img {
-    width: 100%;
-    max-width: 1;
-    height: auto;
+    width: 5vw;
+    height: 10vh;
     margin-bottom: 10px;
 }
 
-.book-preview-item h3 {
-    font-size: 1.2rem;
-    margin: 0;
-    margin-bottom: 5px;
+.book-thumbnail { 
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+
 }
 
-.book-preview-item p {
+.book-preview-item  .book-title h6 {
+    font-size: 1rem;
+    margin: 0;
+    width: 25ch;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 5px;
+}
+.book-preview-item .book-info {
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+}
+
+.book-preview-item span {
     font-size: 1rem;
     margin: 0;
     text-align: center;
