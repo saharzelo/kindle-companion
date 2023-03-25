@@ -1,7 +1,6 @@
 .sidebar {
-    flex: 1vw;
+    flex-basis: 5vw;
     height: 100vh;
-    background-color: #0000ff;
     border-color: #c4c4c6;
     border-width: 0px 1.6px 0px 0px;
     border-style: solid;
@@ -9,4 +8,36 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 5px;
+    z-index: 3;
 }
+
+.button-group svg {
+    position: absolute;
+    height: 100px;
+    width: 20px;
+    stroke-width: 200px;
+}
+
+.button-group {
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 100%;
+    font-size: 0.8rem;
+    
+}
+
+.button-group:hover {
+    font-size: 0.9rem;
+    cursor: pointer;
+    background-color: #cacad3;
+}
+
+.button-group:hover .svg {
+    height: 115px;
+    width: 25px;
+}
+

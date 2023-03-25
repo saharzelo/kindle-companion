@@ -2,23 +2,33 @@
 .home-page {
   width: 100vw;
   height: 100vh;
-  background-color: #fbfbfd;
+  background-color: rgb(255, 255, 255);
   display: flex;
-  position: relative;
-
+  position: absolute;
+  flex-basis: 100%;
 }
+
 
 .main-container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  flex-basis: 90%;  overflow: auto;
+  position: relative;
+  
+}
 
+
+.catalog-header {
+  padding: 5px 0 5px 15px;
+  font-weight: 200;
+  font-size: 1rem;
 }
 
 .catalog-wrapper {
   height: 100%;
   position: relative;
+  overflow: auto;
+  margin-bottom: 25px;
 
 }
 

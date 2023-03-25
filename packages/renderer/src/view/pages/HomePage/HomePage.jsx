@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Sidebar from '../../components/Sidebar/Sidebar';
+import Topbar from '../../components/Topbar/Topbar';
 import { BookInfoRepository, initVocabDb, getBooks } from '#preload';
 import './HomePage.css';
 import BookPreviewItem from '../../components/BookItem/BookItem';
@@ -19,7 +20,9 @@ function HomePage({ profile }) {
                 const result = await repo.findAll()
                 console.log(result)
                 const userElements = result.map((user, index) => (
-                    <BookPreviewItem title={user.dataValues.title} />
+                    <div key={index}>
+                        <BookPreviewItem title={user.dataValues.title} />
+                    </div>
                 ));
                 setData(userElements);
             } catch (error) {
@@ -34,13 +37,10 @@ function HomePage({ profile }) {
         <div className="home-page">
             <Sidebar />
             <div className="main-container">
-                <div className="top-container">
-                    <p>test</p>
-                    <p>test</p>
-                    <p>test</p>
-
-                </div>
+                <Topbar />
                 <div className="catalog-wrapper">
+                    <div className="catalog-header"> <h3>Your Library: </h3></div>
+
                     <div className="catalog-container">
                         {data}
                     </div>
