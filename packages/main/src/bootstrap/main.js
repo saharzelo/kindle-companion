@@ -5,7 +5,7 @@ import { restoreOrCreateWindow } from './mainWindow';
 const path = require('path')
 const os = require('os')
 const fs = require('fs')
-
+const fse = require('fs-extra');
 /**
  * Prevent electron from running multiple instances.
  */
@@ -54,13 +54,17 @@ if (import.meta.env.PROD) {
 }
 
 
+const appTmpDir = process.env.TMP_DIR
+
 app.on('ready', () => {
-	const appTmpDir = path.join(os.tmpdir(), 'kindle-companion');
-	// Check if the folder already exists
 	if (!fs.existsSync(appTmpDir)) {
-		// Create the folder
 		fs.mkdirSync(appTmpDir);
-		const subfolder = path.join(appTmpDir, 'thumbnails');
-		fs.mkdirSync(subfolder);
+
 	}
+	const subfolder = path.join(appTmpDir, 'thumbnails');
+	fs.mkdirSync(subfolder);
+});
+
+app.on('before-quit', () => {
+	fse.emptyDirSync(appTmpDir);
 });
