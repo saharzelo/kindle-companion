@@ -15,19 +15,20 @@
   flex-grow: 1;
   position: relative;
   box-sizing: border-box;
+
 }
 
 
 .catalog-header {
   padding: 5px 0 5px 15px;
+  box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
 }
 
 .catalog-header h3 {
-  width: fit-content;
+  width: 100%;
   font-weight: 300;
   font-size: 1.7rem;
   pointer-events: none;
-
 }
 
 .catalog-wrapper {
@@ -35,6 +36,8 @@
   position: relative;
   overflow: auto;
   margin-bottom: 25px;
+  box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
+
 }
 
 .catalog-container {
@@ -45,6 +48,7 @@
   width: 100%;
   gap: 15px;
   justify-content: center;
-  padding: 0 2vw 0 2vw;
+  padding: 3vh 2vw 0 2vw;
   box-sizing: border-box;
+
 }

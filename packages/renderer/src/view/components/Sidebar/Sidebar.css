@@ -14,9 +14,8 @@
 
 .button-group svg {
     position: absolute;
-    height: 100px;
+    height: 3vh;
     width: 20px;
-    stroke-width: 200px;
 }
 
 .button-group {
