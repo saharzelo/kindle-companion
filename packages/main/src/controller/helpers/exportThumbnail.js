@@ -14,7 +14,7 @@ export function exportThumbnail(kindlePath) {
       fs.readdir(thumbnailsPath, (err, files) => {
         if (err) {
           console.error(err);
-          return;
+          reject(err);
         }
 
         files.forEach(file => {
@@ -23,33 +23,16 @@ export function exportThumbnail(kindlePath) {
             const srcPath = path.join(thumbnailsPath, file);
             const destFileName = file.replace(/^thumbnail_|_EBOK$/g, '');
             const destFilePath = path.join(destPath, destFileName);
-
             fs.copyFile(srcPath, destFilePath, (err) => {
               if (err) {
-                console.error(`Error copying file ${file}: ${err}`);
+                reject(err)
               } else {
-                console.log(`Copied file ${file} to ${destFileName}`);
+                resolve('success')
               }
             });
           }
         });
       });
-
-
-      // thumbnails.forEach(thumbnail => {
-      //   const srcPath = path.join(thumbnailsPath, thumbnail);
-      //   console.log(src)
-
-      //   // fs.copyFile(srcPath, destFilePath, (err) => {
-      //   //   if (err) {
-      //   //     console.error(`Error copying file ${file}: ${err}`);
-      //   //   } else {
-      //   //     console.log(`Copied file ${file}`);
-      //   //   }
-      //   // });
-      // });
-      // fs.writeFileSync(tempPath, data);
-      // resolve();
     } catch (err) {
       console.error(err);
       reject(err.message);
