@@ -2,6 +2,10 @@ import { app } from 'electron';
 import './security-restrictions';
 import { restoreOrCreateWindow } from './mainWindow';
 
+const path = require('path')
+const os = require('os')
+const fs = require('fs')
+const fse = require('fs-extra');
 /**
  * Prevent electron from running multiple instances.
  */
@@ -31,6 +35,10 @@ app.on('window-all-closed', () => {
  */
 app.on('activate', restoreOrCreateWindow);
 
+
+
+
+
 app.whenReady()
 	.then(restoreOrCreateWindow)
 	.catch((e) => console.error('Failed create window:', e));
@@ -46,3 +54,17 @@ if (import.meta.env.PROD) {
 }
 
 
+const appTmpDir = process.env.TMP_DIR
+
+app.on('ready', () => {
+	if (!fs.existsSync(appTmpDir)) {
+		fs.mkdirSync(appTmpDir);
+
+	}
+	const subfolder = path.join(appTmpDir, 'thumbnails');
+	fs.mkdirSync(subfolder);
+});
+
+app.on('before-quit', () => {
+	fse.emptyDirSync(appTmpDir);
+});

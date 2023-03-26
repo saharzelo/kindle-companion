@@ -1,5 +1,9 @@
 // Listen for the "select-file" message from the renderer process
 import { exportVocab } from '../helpers/exportVocab';
+import { exportThumbnail } from '../helpers/exportThumbnail';
+
+
+
 const { dialog, ipcMain } = require('electron');
 
 ipcMain.handle('exportKindleContent', async () => {
@@ -8,12 +12,18 @@ ipcMain.handle('exportKindleContent', async () => {
     dialog.showOpenDialog(options).then((result) => {
       if (!result.canceled) {
         const folderPath = result.filePaths[0];
+
+        // export vocab
         exportVocab(folderPath).then(() => {
           resolve('success')
         })
-        .catch(() => {
+          .catch(() => {
             reject(new Error('File not found'));
           });
+
+        // export thumbnails
+        exportThumbnail(folderPath)
+
       } else {
         reject(new Error('User canceled file selection.'));
       }

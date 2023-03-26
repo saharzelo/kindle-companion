@@ -40,12 +40,12 @@ function App() {
   // }
   return (
     <div className="App">
-      {/* {profile ? (
+      {profile ? (
         <HomePage profile={profile} />
       ) : (
         <LoginPage setProfile={handleProfile} />
-      )} */}
-      <HomePage profile={profile} />
+      )}
+      {/* <HomePage profile={profile} /> */}
 
     </div>
   );
