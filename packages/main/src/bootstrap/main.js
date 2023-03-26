@@ -2,6 +2,10 @@ import { app } from 'electron';
 import './security-restrictions';
 import { restoreOrCreateWindow } from './mainWindow';
 
+const path = require('path')
+const os = require('os')
+const fs = require('fs')
+
 /**
  * Prevent electron from running multiple instances.
  */
@@ -31,6 +35,10 @@ app.on('window-all-closed', () => {
  */
 app.on('activate', restoreOrCreateWindow);
 
+
+
+
+
 app.whenReady()
 	.then(restoreOrCreateWindow)
 	.catch((e) => console.error('Failed create window:', e));
@@ -46,3 +54,13 @@ if (import.meta.env.PROD) {
 }
 
 
+app.on('ready', () => {
+	const appTmpDir = path.join(os.tmpdir(), 'kindle-companion');
+	// Check if the folder already exists
+	if (!fs.existsSync(appTmpDir)) {
+		// Create the folder
+		fs.mkdirSync(appTmpDir);
+		const subfolder = path.join(appTmpDir, 'thumbnails');
+		fs.mkdirSync(subfolder);
+	}
+});
