@@ -28,6 +28,7 @@
     width: 100%;
     font-size: 0.8rem;
     
+    
 }
 
 .button-group:hover {
@@ -36,8 +37,6 @@
     background-color: #cacad3;
 }
 
-.button-group:hover .svg {
-    height: 115px;
-    width: 25px;
+.button-group:hover svg {
+    width: 27px;
 }
-
