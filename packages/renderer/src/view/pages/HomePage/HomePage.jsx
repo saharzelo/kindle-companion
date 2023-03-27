@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Topbar from '../../components/Topbar/Topbar';
-import { BookInfoRepository, getBooks, getImage } from '#preload';
+import { getBooks, getImage } from '#preload';
 import './HomePage.css';
 import BookPreviewItem from '../../components/BookItem/BookItem';
  
@@ -18,10 +18,10 @@ function HomePage({ profile }) {
         async function fetchData() {
             try {
 
-                const base = await getImage()
-                console.log(base)
-                const testImg = <img src={base}></img>
-                setImage(testImg)
+                // const base = await getImage(['', '', ''])
+                // console.log(base)
+                // const testImg = <img src={base}></img>
+                // setImage(testImg)
                 let repo = await getBooks()
                 const result = await repo.findAll()
                 const userElements = result.map((user, index) => (
@@ -40,7 +40,7 @@ function HomePage({ profile }) {
 
     return (
         <div className="home-page">
-            {image}
+            {/* {image} */}
             {/* <Sidebar />
             <div className="main-container">
                 <Topbar />
