@@ -43,17 +43,19 @@
 }
 
 .book-thumbnail {
+    display: flex;
+    justify-content: center;
     border-bottom: 1px solid #ccc;
     width: 100%;
-
 }
 
 .book-preview-item .book-title {
     margin: 8px 0 0px 0;
 }
+
 /* consider exporting as var */
 .book-preview-item .book-title h6 {
-    font-size: 1.1rem; 
+    font-size: 1.1rem;
     margin: 0;
     width: 15vw;
     overflow: hidden;
@@ -76,4 +78,25 @@
     text-align: center;
     font-weight: 300;
     color: black;
+}
+
+.missing-thumbnail-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5vw;
+    height: 10vh;
+    min-width: 75px;
+    min-height: 100px;
+    margin-bottom: 10px;
+
+}
+.missing-thumbnail {
+    width: 60px;
+    height: 60px;
+    border-radius: 60%;
+    background-color: #ddd;
+    color: #fff;
+    line-height: 60px;
+    font-size: 24px;
 }

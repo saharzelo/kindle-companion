@@ -3,17 +3,23 @@ const fs = require('fs');
 const path = require("path");
 
 ipcMain.handle("getBookThumbnailData", (event, bookIdArray) => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const base64Array = await Promise.all(bookIdArray.map(async (book) => {
-          const userTmp = process.env.TMP_DIR;
-          const jpgPath = path.join(userTmp, 'thumbnails', `${book}.jpg`);
+  return new Promise(async (resolve, reject) => {
+    try {
+      const base64Object = {};
+      await Promise.all(bookIdArray.map(async (book) => {
+        const userTmp = process.env.TMP_DIR;
+        const jpgPath = path.join(userTmp, 'thumbnails', `${book}.jpg`);
+        if (fs.existsSync(jpgPath)) {
           const base64 = fs.readFileSync(jpgPath).toString('base64');
-          return { bookId: `${book}.jpg`, base64: `data:image/jpg;base64,${base64}` };
-        }));
-        resolve(base64Array);
-      } catch (error) {
-        reject(error);
-      }
-    });
+          base64Object[book] = `data:image/jpg;base64,${base64}`;
+        } else {
+          // If file not found, add null to the object
+          base64Object[book] = null;
+        }
+      }));
+      resolve(base64Object);
+    } catch (error) {
+      reject(error);
+    }
   });
+});

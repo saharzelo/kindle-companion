@@ -3,7 +3,8 @@ import { BookInfo } from "../entities/BookInfo";
 export const BookInfoRepository = (dbController) => {
   const repository = {
     findAll: async () => {
-      const books = await BookInfo(dbController).findAll();
+      let books = await BookInfo(dbController).findAll();
+      books = books.map(book => book.toJSON());
       return books;
     },
     findById: async (id) => {
@@ -22,5 +23,5 @@ export const BookInfoRepository = (dbController) => {
       await book.destroy();
     }
   }
-  return repository
+  return repository;
 };

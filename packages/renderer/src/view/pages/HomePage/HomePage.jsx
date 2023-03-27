@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Topbar from '../../components/Topbar/Topbar';
-import { getBooks, getImage } from '#preload';
+import { vocabDbRepo, getThumbnails } from '#preload';
 import './HomePage.css';
 import BookPreviewItem from '../../components/BookItem/BookItem';
- 
+
 function HomePage({ profile }) {
     // const userElements = profile.map((user, index) => (
     //     <div key={index}>
@@ -17,16 +17,15 @@ function HomePage({ profile }) {
     useEffect(() => {
         async function fetchData() {
             try {
+                let repo = await vocabDbRepo()
+                const bookInfo = await repo.findAll()
+                const bookIds = bookInfo.map((result) => (result.asin));
+                const thumbBase64 = await getThumbnails(bookIds)
 
-                // const base = await getImage(['', '', ''])
-                // console.log(base)
-                // const testImg = <img src={base}></img>
-                // setImage(testImg)
-                let repo = await getBooks()
-                const result = await repo.findAll()
-                const userElements = result.map((user, index) => (
+
+                const userElements = bookInfo.map((book, index) => (
                     <div key={index}>
-                        <BookPreviewItem title={user.dataValues.title} />
+                        <BookPreviewItem title={book.title} thumbnail={thumbBase64[book.asin]} />
                     </div>
                 ));
                 setData(userElements);
@@ -41,7 +40,7 @@ function HomePage({ profile }) {
     return (
         <div className="home-page">
             {/* {image} */}
-            {/* <Sidebar />
+            <Sidebar />
             <div className="main-container">
                 <Topbar />
                 <div className="catalog-wrapper">
@@ -51,7 +50,7 @@ function HomePage({ profile }) {
                         {data}
                     </div>
                 </div>
-            </div> */}
+            </div>
         </div>
     );
 }
