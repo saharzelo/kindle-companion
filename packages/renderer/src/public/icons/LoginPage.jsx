@@ -6,9 +6,7 @@ import { ReactComponent as FileIcon } from '../../../public/icons/fileIcon.svg'
 import Dropdown from '../../components/Dropdown/Dropdown';
 function LoginPage() {
 
-    //   loadUserData().then((userData) => {
-    //     console.log("User data loaded:", userData);
-    //   });
+
 
     const onClick = () => {
         // Load the user's data when the page loads
