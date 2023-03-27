@@ -15,7 +15,7 @@ export function getImage(bookIds) {
 }
 
 
-export { initVocabDbConnection } from './ipc/initVocabDbConnection';
+export { vocabDbRepo } from './ipc/vocabDbRepo';
 export { initVocabDb } from './database/initConnections';
 export { exportKindleContent } from './ipc/exportKindleContent';
 export { ipcRenderer } from 'electron';

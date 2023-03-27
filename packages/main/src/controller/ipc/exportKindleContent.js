@@ -15,14 +15,14 @@ ipcMain.handle('exportKindleContent', async () => {
 
         // export vocab
         exportVocab(folderPath).then(() => {
-          resolve('success')
+          resolve('success');
         })
           .catch(() => {
             reject(new Error('File not found'));
           });
 
         // export thumbnails
-        exportThumbnail(folderPath)
+        exportThumbnail(folderPath);
 
       } else {
         reject(new Error('User canceled file selection.'));

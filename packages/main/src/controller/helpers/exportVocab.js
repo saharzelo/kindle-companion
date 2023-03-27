@@ -15,4 +15,4 @@ export function exportVocab(kindlePath) {
       reject(err.message);
     }
   });
-}
+};
