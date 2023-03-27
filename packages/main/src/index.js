@@ -1,37 +1,6 @@
 import './bootstrap/main.js';
 import './controller/ipc/exportKindleContent';
-
-const { app, dialog, ipcMain } = require('electron');
-const fs = require('fs');
-const path = require("path");
-const os = require('os')
-
-ipcMain.handle("chooseFile", () => {
-  return new Promise((resolve, reject) => {
-    const userTmp = os.tmpdir()
-    const testPath = path.join(userTmp, 'thumbnail.jpg')
-    const base64 = fs.readFileSync(testPath).toString('base64');
-    resolve(base64);
-  }
-  )
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import './controller/ipc/getBookThumbnailData';
 
 
 
