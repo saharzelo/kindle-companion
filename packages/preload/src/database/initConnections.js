@@ -11,11 +11,10 @@ export const initVocabDb = () => {
         }
     };
     
-    const conn = new Sequelize('sqlite::/tmp/vocab.db', config);
+    const conn = new Sequelize('sqlite::/tmp/kindle-companion/vocab.db', config);
     BookInfo(conn)
     conn.sync().then(() => {
         // sync models
     })
     return conn;
 };
-

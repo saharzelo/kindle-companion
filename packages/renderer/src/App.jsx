@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { ipcRenderer, loadUserData, saveUserData } from '#preload';
 import LoginPage from './view/pages/LoginPage/LoginPage'
 import HomePage from './view/pages/HomePage/HomePage';
 
@@ -40,12 +39,12 @@ function App() {
   // }
   return (
     <div className="App">
-      {/* {profile ? (
+      {profile ? (
         <HomePage profile={profile} />
       ) : (
         <LoginPage setProfile={handleProfile} />
-      )} */}
-      <HomePage profile={profile} />
+      )}
+      {/* <HomePage profile={profile} /> */}
 
     </div>
   );

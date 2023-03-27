@@ -1,6 +1,6 @@
 // Listen for the "select-file" message from the renderer process
 import { exportVocab } from '../helpers/exportVocab';
-import { exportThumbnail } from '../helpers/exportThumbnail';
+import { exportThumbnails } from '../helpers/exportThumbnails';
 
 
 
@@ -22,7 +22,7 @@ ipcMain.handle('exportKindleContent', async () => {
           });
 
         // export thumbnails
-        exportThumbnail(folderPath);
+        exportThumbnails(folderPath);
 
       } else {
         reject(new Error('User canceled file selection.'));
