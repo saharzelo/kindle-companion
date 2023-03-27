@@ -5,10 +5,10 @@ const fs = require('fs');
 
 export function exportThumbnail(kindlePath) {
   return new Promise((resolve, reject) => {
-    const tmpDir = process.env.TMP_DIR
-    console.log('wtf??',typeof(tmpDir))
+    const tmpDir = process.env.TMP_DIR;
+    console.log('wtf??',typeof(tmpDir));
     const thumbnailsPath = kindlePath + '/system/thumbnails/';
-    const destPath = path.join(tmpDir, 'thumbnails')
+    const destPath = path.join(tmpDir, 'thumbnails');
 
     try {
       fs.readdir(thumbnailsPath, (err, files) => {
@@ -36,6 +36,6 @@ export function exportThumbnail(kindlePath) {
     } catch (err) {
       console.error(err);
       reject(err.message);
-    }
+    };
   });
-}
+};
