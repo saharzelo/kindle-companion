@@ -24,7 +24,8 @@ function Sidebar({ setPage, page }) {
         <BookSvg />
       </div>
       <div
-        className={`button-group ${page === 'settings' ? 'active' : ''}`}>
+        className={`button-group ${page === 'settings' ? 'active' : ''}`}
+        onClick={() => { handleSetPage('settings') }}>
         <SettingsSvg />
       </div>
     </div>
