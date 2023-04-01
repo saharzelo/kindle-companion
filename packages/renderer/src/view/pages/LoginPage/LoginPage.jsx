@@ -2,26 +2,27 @@ import { useState } from 'react';
 import './LoginPage.css'
 import { exportKindleContent } from '#preload';
 import { ReactComponent as LoginIcon } from '../../../public/icons/loginIcon.svg'
-import { ReactComponent as FileIcon } from '../../../public/icons/fileIcon.svg'
 import Dropdown from '../../components/Dropdown/Dropdown';
 
 
 function LoginPage({ setProfile }) {
 
-    const handleFilesClick = () => {
-        exportKindleContent()
-            .then((result) => {
-                setProfile(result)
-            }).catch((error) => {
-                console.error(error);
-            });
-    }
+    const handleFilesClick = async () => {
+        try {
+            const result = await exportKindleContent();
+            setProfile(result);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    
 
     // temp replace 
     const [isOpen, setIsOpen] = useState(false);
     const toggleDropdown = () => {
-        setIsOpen(!isOpen);
+        setIsOpen(isOpen => !isOpen);
     };
+    
 
     return (
         <div className="modal-bg">
