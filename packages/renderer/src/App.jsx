@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import LoginPage from './view/pages/LoginPage/LoginPage'
-import HomePage from './view/pages/HomePage/HomePage';
+import LibraryPage from './view/pages/LibraryPage/LibraryPage';
 
 function App() {
   const [profile, setProfile] = useState(null);
@@ -40,11 +40,11 @@ function App() {
   return (
     <div className="App">
       {profile ? (
-        <HomePage profile={profile} />
+        <LibraryPage profile={profile} />
       ) : (
         <LoginPage setProfile={handleProfile} />
       )}
-      {/* <HomePage profile={profile} /> */}
+      {/* <LibraryPage profile={profile} /> */}
 
     </div>
   );

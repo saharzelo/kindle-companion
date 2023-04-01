@@ -13,7 +13,6 @@ ipcMain.handle("getBookThumbnailData", (event, bookIdArray) => {
           const base64 = fs.readFileSync(jpgPath).toString('base64');
           base64Object[book] = `data:image/jpg;base64,${base64}`;
         } else {
-          // If file not found, add null to the object
           base64Object[book] = null;
         }
       }));

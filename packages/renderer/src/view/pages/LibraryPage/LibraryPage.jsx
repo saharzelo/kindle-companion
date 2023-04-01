@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Topbar from '../../components/Topbar/Topbar';
 import { vocabDbRepo, getThumbnails } from '#preload';
-import './HomePage.css';
-import BookCatalogItem from '../../components/BookCatalogItem/BookCatalogItem';
+import './LibraryPage.css';
+import BookCatalogItem from '../../components/BookItem/BookCatalogItem';
 
-function HomePage({ profile }) {
+function LibraryPage({ profile }) {
     // const userElements = profile.map((user, index) => (
     //     <div key={index}>
     //         <h2>{user.title}</h2>
@@ -38,7 +38,7 @@ function HomePage({ profile }) {
     }, []);
 
     return (
-        <div className="home-page">
+        <div className="library-page">
             {/* {image} */}
             <Sidebar />
             <div className="main-container">
@@ -55,4 +55,4 @@ function HomePage({ profile }) {
     );
 }
 
-export default HomePage;
+export default LibraryPage;

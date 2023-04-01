@@ -98,6 +98,7 @@
     color: #fff;
     line-height: 60px;
     font-size: 24px;
+    box-shadow: 1px 0px 10px 3px rgba(59, 59, 59, 0.09);
 }
 
 .book-preview-item:hover .missing-thumbnail {

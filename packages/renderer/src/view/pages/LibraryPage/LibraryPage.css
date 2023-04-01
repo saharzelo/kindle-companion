@@ -1,4 +1,4 @@
-.home-page {
+.library-page {
   width: 100vw;
   height: 100vh;
   background-color: rgb(255, 255, 255);
@@ -35,9 +35,7 @@
   height: 100%;
   position: relative;
   overflow: auto;
-  margin-bottom: 25px;
   box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
-
 }
 
 .catalog-container {
@@ -50,5 +48,5 @@
   justify-content: center;
   padding: 3vh 2vw 0 2vw;
   box-sizing: border-box;
-
+  padding-bottom: 100px;
 }
