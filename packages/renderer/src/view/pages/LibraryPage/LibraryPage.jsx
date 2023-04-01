@@ -29,20 +29,15 @@ function LibraryPage({ profile }) {
     }, []);
 
     return (
-        <div className="library-page">
-            {/* {image} */}
-            <Sidebar />
-            <div className="main-container">
-                <Topbar />
-                <div className="catalog-wrapper">
-                    <div className="catalog-header"> <h3>Your Library: </h3></div>
 
-                    <div className="catalog-container">
-                        {bookCatalog}
-                    </div>
-                </div>
+        <div className="catalog-wrapper">
+            <div className="catalog-header"> <h3>Your Library: </h3></div>
+
+            <div className="catalog-container">
+                {bookCatalog}
             </div>
         </div>
+
     );
 }
 
