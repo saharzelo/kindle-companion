@@ -5,36 +5,31 @@ import { vocabDbRepo, getThumbnails } from '#preload';
 import './LibraryPage.css';
 import BookCatalogItem from '../../components/BookItem/BookCatalogItem';
 
-function LibraryPage({ profile }) {
-    // const userElements = profile.map((user, index) => (
-    //     <div key={index}>
-    //         <h2>{user.title}</h2>
-    //     </div>
-    // ));
-    const [image, setImage] = useState(null)
+function LibraryPage({ }) {
+    const [bookCatalog, SetBookCatalog] = useState([]);
 
-    const [data, setData] = useState([]);
     useEffect(() => {
-        async function fetchData() {
+        async function prepKindleData() {
             try {
-                let repo = await vocabDbRepo()
-                const bookInfo = await repo.findAll()
-                const bookIds = bookInfo.map((result) => (result.asin));
-                const thumbBase64 = await getThumbnails(bookIds)
+                let vocabRepo = await vocabDbRepo()
+                const booksMetadata = await vocabRepo.findAll()
+                const bookId = booksMetadata.map((result) => (result.asin));
+                const bookThumbnails = await getThumbnails(bookId)
 
-
-                const userElements = bookInfo.map((book, index) => (
-                    <div key={index}>
-                        <BookCatalogItem title={book.title} thumbnail={thumbBase64[book.asin]} />
-                    </div>
+                const bookCatalog = booksMetadata.map((book, index) => (
+                    <BookCatalogItem
+                        key={index}
+                        title={book.title}
+                        thumbnail={bookThumbnails[book.asin]}
+                    />
                 ));
-                setData(userElements);
+
+                SetBookCatalog(bookCatalog);
             } catch (error) {
                 console.error(error);
             }
         }
-
-        fetchData();
+        prepKindleData();
     }, []);
 
     return (
@@ -47,7 +42,7 @@ function LibraryPage({ profile }) {
                     <div className="catalog-header"> <h3>Your Library: </h3></div>
 
                     <div className="catalog-container">
-                        {data}
+                        {bookCatalog}
                     </div>
                 </div>
             </div>
