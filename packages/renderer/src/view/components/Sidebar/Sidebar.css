@@ -1,5 +1,5 @@
 .sidebar {
-    flex-basis: 5vw;
+    width: 5vw;
     height: 100vh;
     border-right: 1.8px solid #c4c4c4;
     outline: none;
@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     z-index: 1;
+    background-color: #ededed;
 }
 
 .button-group svg {
@@ -35,3 +36,9 @@
 .button-group:hover svg {
     width: 27px;
 }
+
+
+.button-group.active {
+    background-color: #cacad3;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  }
