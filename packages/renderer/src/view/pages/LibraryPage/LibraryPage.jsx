@@ -5,23 +5,19 @@ import { vocabDbRepo, getThumbnails } from '#preload';
 import './LibraryPage.css';
 import BookCatalogItem from '../../components/BookItem/BookCatalogItem';
 
-function LibraryPage({ }) {
+function LibraryPage({ profile }) {
     const [bookCatalog, SetBookCatalog] = useState([]);
 
     useEffect(() => {
         async function prepKindleData() {
             try {
                 let vocabRepo = await vocabDbRepo()
-                const booksMetadata = await vocabRepo.findAll()
-                const bookId = booksMetadata.map((result) => (result.asin));
+                const bookMetadata = await vocabRepo.findAll();
+                const bookId = bookMetadata.map((result) => (result.asin));
                 const bookThumbnails = await getThumbnails(bookId)
 
-                const bookCatalog = booksMetadata.map((book, index) => (
-                    <BookCatalogItem
-                        key={index}
-                        title={book.title}
-                        thumbnail={bookThumbnails[book.asin]}
-                    />
+                const bookCatalog = bookMetadata.map(({ title, asin }, index) => (
+                    <BookCatalogItem key={index} title={title} thumbnail={bookThumbnails[asin]} />
                 ));
 
                 SetBookCatalog(bookCatalog);
