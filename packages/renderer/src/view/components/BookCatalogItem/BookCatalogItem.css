@@ -11,7 +11,6 @@
     box-shadow: 1px 6px 25px 1px rgba(0, 0, 0, 0.097);
     transform-style: preserve-3d;
     animation: item-flip-in 0.2s ease-in-out forwards;
-    animation-delay: calc(var(--item-index) * 0s);
     opacity: 0;
     cursor: pointer;
 }
@@ -31,7 +30,6 @@
         transform: translateZ(0) rotateY(0);
     }
 }
-
 
 .book-preview-item img {
     width: 5vw;
@@ -80,7 +78,7 @@
     color: black;
 }
 
-.missing-thumbnail-container {
+.missing-thumbnail-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,6 +89,7 @@
     margin-bottom: 10px;
 
 }
+
 .missing-thumbnail {
     width: 60px;
     height: 60px;
@@ -99,4 +98,8 @@
     color: #fff;
     line-height: 60px;
     font-size: 24px;
+}
+
+.book-preview-item:hover .missing-thumbnail {
+    transform: translateY(-5px);
 }

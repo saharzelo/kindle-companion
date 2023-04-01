@@ -3,7 +3,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import Topbar from '../../components/Topbar/Topbar';
 import { vocabDbRepo, getThumbnails } from '#preload';
 import './HomePage.css';
-import BookPreviewItem from '../../components/BookItem/BookItem';
+import BookCatalogItem from '../../components/BookCatalogItem/BookCatalogItem';
 
 function HomePage({ profile }) {
     // const userElements = profile.map((user, index) => (
@@ -25,7 +25,7 @@ function HomePage({ profile }) {
 
                 const userElements = bookInfo.map((book, index) => (
                     <div key={index}>
-                        <BookPreviewItem title={book.title} thumbnail={thumbBase64[book.asin]} />
+                        <BookCatalogItem title={book.title} thumbnail={thumbBase64[book.asin]} />
                     </div>
                 ));
                 setData(userElements);
