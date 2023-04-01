@@ -1,14 +1,12 @@
 .sidebar {
     flex-basis: 5vw;
     height: 100vh;
-    border-color: #c4c4c6;
-    border-width: 0px 1.6px 0px 0px;
-    border-style: solid;
+    border-right: 1.8px solid #c4c4c4;
+    outline: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px;
     z-index: 1;
 }
 
@@ -26,8 +24,6 @@
     height: 10vh;
     width: 100%;
     font-size: 0.8rem;
-
-
 }
 
 .button-group:hover {

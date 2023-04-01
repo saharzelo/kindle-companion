@@ -1,4 +1,4 @@
-.Topbar {
+.topbar {
     height: 50px;
     width: 100%;
     background-color: #F8FAFB;
@@ -15,9 +15,6 @@
     position: relative;
 }
 
-.Topbar .user-info {
+.topbar .user-info {
     font-size: 1rem;
-}
-
-.app-logo {
 }

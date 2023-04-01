@@ -10,7 +10,7 @@ function Topbar() {
     setIsOpen(!isOpen);
   };
   return (
-    <div className="Topbar">
+    <div className="topbar">
       <div className="user-info">
         Welcome: Shay Ventura
       </div>

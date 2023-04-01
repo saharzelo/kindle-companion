@@ -3,9 +3,8 @@
     height: 100vh;
     background-color: rgb(255, 255, 255);
     display: flex;
-      flex-basis: 100%;
-  user-select: none;
-  
+    flex-basis: 100%;
+    user-select: none;
 }
 
 .main-container {
@@ -13,5 +12,4 @@
     flex-direction: column;
     flex-grow: 1;
     box-sizing: border-box;
-  
-  }
+}

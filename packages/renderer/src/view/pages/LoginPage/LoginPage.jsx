@@ -6,8 +6,9 @@ import Dropdown from '../../components/Dropdown/Dropdown';
 
 
 function LoginPage({ setProfile }) {
+    const [isOpen, setIsOpen] = useState(false);
 
-    const handleFilesClick = async () => {
+    const handleFileExplorer = async () => {
         try {
             const result = await exportKindleContent();
             setProfile(result);
@@ -15,14 +16,12 @@ function LoginPage({ setProfile }) {
             console.error(error);
         }
     };
-    
 
     // temp replace 
-    const [isOpen, setIsOpen] = useState(false);
     const toggleDropdown = () => {
         setIsOpen(isOpen => !isOpen);
     };
-    
+
 
     return (
         <div className="modal-bg">
@@ -37,7 +36,7 @@ function LoginPage({ setProfile }) {
                         <Dropdown isOpen={isOpen} toggleDropdown={toggleDropdown} />
                     </div>
                     <div className="under-text">
-                        <span> or </span> <span onClick={() => handleFilesClick()} id="open-span">open</span> <span>Kindle</span>
+                        <span> or </span> <span onClick={() => handleFileExplorer()} id="open-span">open</span> <span>Kindle</span>
 
                     </div>
 
