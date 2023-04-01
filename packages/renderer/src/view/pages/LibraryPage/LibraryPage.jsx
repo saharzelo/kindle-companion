@@ -38,7 +38,7 @@ function LibraryPage({ profile }) {
             <div className="catalog-container">
                 {bookCatalog}
             </div>
-            
+
         </div>
     );
 }

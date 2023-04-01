@@ -7,19 +7,20 @@ import HomePage from './view/pages/HomePage/HomePage';
 import LibraryPage from './view/pages/LibraryPage/LibraryPage';
 
 function App() {
-  const [profile, setProfile] = useState(null);
+  const [kindleCon, setkindleCon] = useState(null);
+  const [page, setPage] = useState(null);
 
-  function handleProfile(profile) {
-    setProfile(profile);
+  function handleProfile(kindleCon) {
+    setkindleCon(kindleCon);
   }
 
   return (
     <div className="App">
-      <Sidebar />
+      <Sidebar setPage={setPage} page={page}/>
       <div className="main-container">
         <Topbar />
-        {profile ? (
-          <LibraryPage profile={profile} />
+        {kindleCon ? (
+          page == 'library' ? (<LibraryPage profile={kindleCon} />) : (<HomePage />)
         ) : (
           <LoginPage setProfile={handleProfile} />
         )}

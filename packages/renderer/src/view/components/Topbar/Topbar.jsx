@@ -12,7 +12,7 @@ function Topbar() {
   return (
     <div className="topbar">
       <div className="user-info">
-        Welcome: Shay Ventura
+        Welcome: <span>Guest</span>
       </div>
       <div>
         <Dropdown isOpen={isOpen} toggleDropdown={toggleDropdown} />
