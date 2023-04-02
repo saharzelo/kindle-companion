@@ -15,25 +15,63 @@
 .modal-content {
     position: fixed;
     width: 90%;
-    height: 79%;
-    border-radius: 15px;
+    height: 90%;
+    border-radius: 10px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgb(225, 222, 222);
+    background-color: #fbfbfd;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 30px;
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    padding: 2.5vw;
     z-index: 4;
 }
 
-
-
-.modal-toolbar {
-    padding: 10px;
+.modal-header {
+    position: relative;
+    height: 5%;
+    padding-right: 10px;
 }
+
+.modal-body {
+    height: 80%;
+    justify-content: start;
+}
+
+
+.modal-body .book-cover {
+    position: relative;
+    height: 20%;
+}
+
+.book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.modal-content .book-thumbnail {
+    position: relative;
+    height: 15%;
+}
+.modal-content .book-thumbnail img {
+    position: absolute;
+    top: -60%;
+    left: 5%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-footer {
+    height: 15%;
+
+    position: relative;
+}
+
+
 
 .close {
     color: #aaaaaa;
