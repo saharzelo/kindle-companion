@@ -1,9 +1,7 @@
 import React from 'react';
 import './BookCatalogItem.css';
-import BookInfo from '../BookInfo/BookInfo'
 
 function BookCatalogItem({ thumbnail, title, metadata, onClick }) {
-  let c = 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/416Xx903tRL.jpg'
   return (
     <div className="book-preview-item" onClick={onClick}>
       <div className='book-thumbnail'>

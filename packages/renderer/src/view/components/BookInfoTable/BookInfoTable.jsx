@@ -5,8 +5,8 @@ function BookInfoTable({ tableData }) {
     const [data, setData] = useState(tableData);
 
     const removeData = (id) => {
-        const del = data.filter((item) => id !== item.id);
-        setData(del);
+        const deletedItem = data.filter((item) => id !== item.id);
+        setData(deletedItem);
     };
 
     const renderHeader = () => {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 import LoginPage from './view/pages/LoginPage/LoginPage';
 import Sidebar from './view/components/Sidebar/Sidebar';
@@ -13,7 +13,8 @@ function App() {
 
   function handleProfile(kindleCon) {
     setKindleSynced(kindleCon);
-  }
+  };
+
   return (
     <div className="App">
       <Sidebar setPage={setPage} page={page} />
@@ -30,6 +31,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
