@@ -1,12 +1,11 @@
 .catalog-header {
-    padding: 5px 0 5px 15px;
-    box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
-  }
-  
-  .catalog-header h3 {
-    width: 100%;
-    font-weight: 300;
-    font-size: 1.7rem;
-    pointer-events: none;
-  }
-  
+  padding: 5px 0 5px 15px;
+  box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
+}
+
+.catalog-header h3 {
+  width: 100%;
+  font-weight: 300;
+  font-size: 1.7rem;
+  pointer-events: none;
+}

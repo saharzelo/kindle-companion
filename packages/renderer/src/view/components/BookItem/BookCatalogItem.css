@@ -40,7 +40,7 @@
     box-shadow: 1px 6px 25px 1px rgba(0, 0, 0, 0.324);
 }
 
-.book-thumbnail {
+.book-preview-item.book-thumbnail {
     display: flex;
     justify-content: center;
     border-bottom: 1px solid #ccc;

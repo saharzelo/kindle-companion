@@ -71,7 +71,7 @@
     justify-content: center;
 }
 
-.header h1 {
+.modalContent .header h1 {
     padding-top: 5px;
     font-weight: 600;
     font-size: 1.5rem;
@@ -79,7 +79,7 @@
     color: #333
 }
 
-.header h6 {
+.modalContent .header h6 {
     font-weight: normal;
     margin: 0 0 25px 0;
     padding: 0;
@@ -98,7 +98,7 @@
     text-align: center;
 }
 
-.modal-body {
+.modalContent .modal-body {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -133,7 +133,6 @@
 }
 
 
-
 #open-span {
     display: inline-block;
     /* Display as inline-block */
@@ -157,7 +156,6 @@
 }
 
 
-/* Define the hover animation for the span */
 #open-span:hover {
     transform: scale(1.1);
     transition: transform 0.3s ease-in-out;

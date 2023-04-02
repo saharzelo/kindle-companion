@@ -1,7 +1,7 @@
 .App {
     width: 100vw;
     height: 100vh;
-    background-color: rgb(255, 255, 255);
+    background-color: #fbfbfd;
     display: flex;
     flex-basis: 100%;
     user-select: none;
@@ -13,3 +13,7 @@
     flex-grow: 1;
     box-sizing: border-box;
 }
+/* 
+* {
+    border: 0.5px solid rgb(0, 0, 0);
+  } */
