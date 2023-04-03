@@ -5,7 +5,6 @@ import { restoreOrCreateWindow } from './mainWindow';
 const path = require('path')
 const os = require('os')
 const fs = require('fs')
-const fse = require('fs-extra');
 /**
  * Prevent electron from running multiple instances.
  */
@@ -64,7 +63,20 @@ app.on('ready', () => {
 	const subfolder = path.join(appTmpDir, 'thumbnails');
 	fs.mkdirSync(subfolder);
 });
-
 app.on('before-quit', () => {
-	fse.emptyDirSync(appTmpDir);
-});
+	emptyDirSync(appTmpDir);
+  });
+  
+function emptyDirSync(dir) {
+	if (fs.existsSync(dir)) {
+	  fs.readdirSync(dir).forEach((file) => {
+		const filePath = path.join(dir, file);
+		if (fs.lstatSync(filePath).isDirectory()) {
+		  emptyDirSync(filePath);
+		  fs.rmdirSync(filePath);
+		} else {
+		  fs.unlinkSync(filePath);
+		}
+	  });
+	}
+  }
