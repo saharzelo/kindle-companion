@@ -34,10 +34,6 @@ app.on('window-all-closed', () => {
  */
 app.on('activate', restoreOrCreateWindow);
 
-
-
-
-
 app.whenReady()
 	.then(restoreOrCreateWindow)
 	.catch((e) => console.error('Failed create window:', e));
@@ -52,7 +48,6 @@ if (import.meta.env.PROD) {
 		.catch((e) => console.error('Failed check updates:', e));
 }
 
-
 const appTmpDir = process.env.TMP_DIR
 
 app.on('ready', () => {
@@ -63,10 +58,12 @@ app.on('ready', () => {
 	const subfolder = path.join(appTmpDir, 'thumbnails');
 	fs.mkdirSync(subfolder);
 });
+
+
 app.on('before-quit', () => {
 	emptyDirSync(appTmpDir);
   });
-  
+
 function emptyDirSync(dir) {
 	if (fs.existsSync(dir)) {
 	  fs.readdirSync(dir).forEach((file) => {

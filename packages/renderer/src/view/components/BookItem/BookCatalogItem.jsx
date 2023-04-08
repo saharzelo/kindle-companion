@@ -1,4 +1,3 @@
-import React from 'react';
 import './BookCatalogItem.css';
 
 function BookCatalogItem({ thumbnail, title, metadata, onClick }) {

@@ -1,4 +1,3 @@
-import React from 'react';
 import './BookInfo.css';
 import BookInfoTable from '../BookInfoTable/BookInfoTable';
 import myImage from './pic.jpg';
@@ -6,38 +5,38 @@ import myImage from './pic.jpg';
 function BookInfo({ book, showModal, setShowModal }) {
     const handleCloseModal = () => setShowModal(false);
 
-
+    const tableHeaders = ['id', 'name', 'date', 'usage', 'time'];
     const tableData = [
         {
-          id: 1,
-          name: "Ferris",
-          date: "2023-03-30",
-          usage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo elit sapien, ut tempor massa viverra vel.",
-          time: "12:30 PM",
+            id: 1,
+            name: "Ferris",
+            date: "2023-03-30",
+            usage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo elit sapien, ut tempor massa viverra vel.",
+            time: "12:30 PM",
         },
         {
-          id: 2,
-          name: "Garfield",
-          date: "2023-04-01",
-          usage: "Mauris aliquet mauris quis ante consectetur, eu rhoncus velit hendrerit. Donec vitae augue nisi.",
-          time: "09:45 AM",
+            id: 2,
+            name: "Garfield",
+            date: "2023-04-01",
+            usage: "Mauris aliquet mauris quis ante consectetur, eu rhoncus velit hendrerit. Donec vitae augue nisi.",
+            time: "09:45 AM",
         },
         {
-          id: 3,
-          name: "Simba",
-          date: "2023-03-29",
-          usage: "Duis eu odio risus. Sed tristique, dolor sit amet scelerisque consequat, enim purus auctor purus, vitae semper nulla eros eu tellus.",
-          time: "02:15 PM",
+            id: 3,
+            name: "Simba",
+            date: "2023-03-29",
+            usage: "Duis eu odio risus. Sed tristique, dolor sit amet scelerisque consequat, enim purus auctor purus, vitae semper nulla eros eu tellus.",
+            time: "02:15 PM",
         },
         {
-          id: 4,
-          name: "Salem",
-          date: "2023-03-28",
-          usage: "Proin sed augue pharetra, placerat eros non, bibendum mauris. Sed tristique, dolor sit amet scelerisque consequat, enim purus auctor purus, vitae semper nulla eros eu tellus.",
-          time: "10:00 AM",
+            id: 4,
+            name: "Salem",
+            date: "2023-03-28",
+            usage: "Proin sed augue pharetra, placerat eros non, bibendum mauris. Sed tristique, dolor sit amet scelerisque consequat, enim purus auctor purus, vitae semper nulla eros eu tellus.",
+            time: "10:00 AM",
         },
-      ];
-      
+    ];
+
 
 
 
@@ -85,7 +84,7 @@ function BookInfo({ book, showModal, setShowModal }) {
                                 <div className="table-toolbar">
                                     <h3> Words </h3> <h3> Clippings </h3>
                                 </div>
-                                <BookInfoTable tableData={tableData} />
+                                <BookInfoTable tableHeaders={tableHeaders}  tableData={tableData} />
 
                             </div>
                         </div>

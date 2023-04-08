@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './BookInfoTable.css'
 
-function BookInfoTable({ tableData }) {
+function BookInfoTable({ tableData, tableHeaders }) {
     const [data, setData] = useState(tableData);
 
     const removeData = (id) => {
@@ -9,14 +9,16 @@ function BookInfoTable({ tableData }) {
         setData(deletedItem);
     };
 
-    const renderHeader = () => {
-        const headerKeys = Object.keys(data[0]);
-        return headerKeys.map((key, index) => {
-            return <th key={index}>{key.toUpperCase()}</th>;
+    const renderHeaders = () => {
+        return tableHeaders.map((header, index) => {
+            return <th key={index}>{header.toUpperCase()}</th>;
         });
     };
 
     const renderBody = () => {
+        if (data.length === 0 ) {
+            return null;
+        }
         const headerKeys = Object.keys(data[0]);
         return data.map((item, index) => {
             return (
@@ -36,9 +38,9 @@ function BookInfoTable({ tableData }) {
 
     return (
         <>
-            <table class="book-info-table">
+            <table className="book-info-table">
                 <thead>
-                    <tr>{renderHeader()}</tr>
+                    <tr>{renderHeaders()}</tr>
                 </thead>
                 <tbody>{renderBody()}</tbody>
             </table>

@@ -1,4 +1,3 @@
-import React from 'react';
 import './Topbar.css';
 import Dropdown from '../Dropdown/Dropdown';
 import { useState } from 'react';

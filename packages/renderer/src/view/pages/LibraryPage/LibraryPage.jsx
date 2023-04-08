@@ -10,7 +10,6 @@ function LibraryPage({ profile }) {
     const [showModal, setShowModal] = useState(false);
 
     const handleBookClick = () => {
-        console.log('baby?!')
         setShowModal(true);
     }
 
