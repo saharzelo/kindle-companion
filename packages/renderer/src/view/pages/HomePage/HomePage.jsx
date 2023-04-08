@@ -1,9 +1,12 @@
 import './HomePage.css'
-import Sidebar from '../../components/Sidebar/Sidebar'
-import Topbar from '../../components/Topbar/Topbar'
+import { findByAsin } from '#preload'
 
 
 function HomePage({ }) {
+    const t = async () => {
+        console.log(await findByAsin('B07BK9RL3W'))
+    }
+    t()
     return (
         <div className="home-page">
             <div className="catalog-header">

@@ -1,9 +1,9 @@
 import { node } from '../../.electron-vendors.cache.json';
 import { join } from 'path';
-
+import os from 'os';
+import path from 'path';
 const PACKAGE_ROOT = __dirname;
-const os = require('os');
-const path = require('path');
+
 /**
  * @type {import('vite').UserConfig}
  * @see https://vitejs.dev/config/

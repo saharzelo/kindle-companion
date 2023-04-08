@@ -4,6 +4,7 @@ import myImage from './pic.jpg';
 
 function BookInfo({ book, showModal, setShowModal }) {
     const handleCloseModal = () => setShowModal(false);
+    console.log(book)
 
     const tableHeaders = ['id', 'name', 'date', 'usage', 'time'];
     const tableData = [

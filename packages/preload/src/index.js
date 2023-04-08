@@ -2,7 +2,8 @@
  * @module preload
  */
 
+
+export { findByAsin } from './database/repository/lookupRepository'
+export { findAll } from './database/repository/bookInfoRepository'
 export { getThumbnails } from './ipc/getThumbnails';
-export { vocabDbRepo } from './ipc/vocabDbRepo';
-export { initVocabDb } from './database/initConnections';
 export { exportKindleContent } from './ipc/exportKindleContent';
