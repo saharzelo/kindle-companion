@@ -1,27 +1,16 @@
-import { BookInfo } from "../entities/BookInfo";
+import {getConnection} from '../createConnection'
 
-export const BookInfoRepository = (dbController) => {
-  const repository = {
-    findAll: async () => {
-      let books = await BookInfo(dbController).findAll();
-      books = books.map(book => book.toJSON());
-      return books;
-    },
-    findById: async (id) => {
-      const book = await BookInfo(dbController).findByPk(id);
-      return book;
-    },
-    create: async (book) => {
-      const createdBook = await BookInfo(dbController).create(book);
-      return createdBook;
-    },
-    update: async (book) => {
-      const updatedBook = await book.save();
-      return updatedBook;
-    },
-    delete: async (book) => {
-      await book.destroy();
-    }
-  }
-  return repository;
-};
+
+export function findAll() {
+  const con = getConnection();
+  const query = 'SELECT * FROM BOOK_INFO';
+  return new Promise((resolve, reject) => {
+    con.all(query, [], (err, rows) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(rows);
+      }
+    });
+  });
+}

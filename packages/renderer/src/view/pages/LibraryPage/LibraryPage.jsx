@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { vocabDbRepo, getThumbnails } from '#preload';
+import { getThumbnails, findAll } from '#preload';
 import './LibraryPage.css';
 import BookCatalogItem from '../../components/BookItem/BookCatalogItem';
 import BookInfo from '../../components/BookInfo/BookInfo';
@@ -9,19 +9,25 @@ function LibraryPage({ profile }) {
     const [selectedBook, setSelectedBook] = useState(null);
     const [showModal, setShowModal] = useState(false);
 
-    const handleBookClick = () => {
+    const handleBookClick = (asin) => {
+        setSelectedBook(asin)
         setShowModal(true);
     }
 
     useEffect(() => {
         async function prepKindleData() {
             try {
-                let vocabRepo = await vocabDbRepo()
-                const bookMetadata = await vocabRepo.findAll();
-                const bookId = bookMetadata.map((result) => (result.asin));
+                const books = await findAll();
+                const bookId = books.map((result) => (result.asin));
                 const bookThumbnails = await getThumbnails(bookId)
-                const bookCatalog = bookMetadata.map(({ title, asin }, index) => (
-                    <BookCatalogItem key={index} title={title} thumbnail={bookThumbnails[asin]} onClick={() => handleBookClick()} />
+                const bookCatalog = books.map(({ title, asin }, index) => (
+                    <BookCatalogItem
+                        key={index}
+                        title={title}
+                        thumbnail={bookThumbnails[asin]}
+                        metadata={asin}
+                        onClick={() => handleBookClick(asin)}
+                    />
                 ));
                 setBookCatalog(bookCatalog);
             } catch (error) {
