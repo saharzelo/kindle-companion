@@ -16,11 +16,6 @@ if (!isSingleInstance) {
 app.on('second-instance', restoreOrCreateWindow);
 
 /**
- * Disable Hardware Acceleration to save more system resources.
- */
-app.disableHardwareAcceleration();
-
-/**
  * Shout down background process if all windows was closed
  */
 app.on('window-all-closed', () => {
