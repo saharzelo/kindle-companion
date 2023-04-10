@@ -4,8 +4,52 @@ import './HomePage.css'
 function HomePage({ }) {
     return (
         <div className="home-page">
-            <div className="catalog-header">
+            <div className="homepage-header">
                 <h3> Your Overview: </h3>
+            </div>
+            <div className="homepage-container">
+                <div className="overview-dashboard">
+                    <div className="dashboard-value">
+                        <span> 38</span>
+
+                        <h2 className="dashboard-razor" />
+
+                        <span className="dashboard-value-title">
+                            Books
+                        </span>
+                    </div>
+                    <div className="dashboard-value">
+                        <span>552</span>
+
+                        <h2 className="dashboard-razor" />
+
+                        <span className="dashboard-value-title">
+                            Words
+                        </span>
+                    </div>
+                    <div className="dashboard-value">
+                        <span>38</span>
+
+                        <h2 className="dashboard-razor" />
+
+                        <span className="dashboard-value-title">
+                            clippings
+                        </span>
+                    </div>
+
+                </div>
+
+                <h2 className="homepage-razor" />
+
+
+                <div className="previous-session">
+                    <div className="previous-session-header">
+                        <h3> Previous Session: </h3>
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
     )

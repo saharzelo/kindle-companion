@@ -1,11 +1,87 @@
-.catalog-header {
+.home-page {
+  height: 100%;
+  flex-direction: column;
+  overflow: auto;
+  box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
+  position: relative;
+}
+
+
+.homepage-header {
   padding: 5px 0 5px 15px;
   box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
 }
 
-.catalog-header h3 {
+.homepage-header h3 {
   width: 100%;
   font-weight: 300;
   font-size: 1.7rem;
   pointer-events: none;
+}
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+}
+
+.overview-dashboard {
+  display: flex;
+  flex-direction: row;
+  flex-direction: row;
+  gap: 2.5%;
+  justify-content: space-around;
+  padding: 2% 5% 2% 5%;
+  position: relative;
+  width: 100%;
+}
+
+.dashboard-value-title {
+  font-weight: 300;
+  font-size: 2.5vmin;
+}
+
+
+.dashboard-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  gap: 0.5vh;
+}
+
+.dashboard-razor {
+  width: 7vw;
+  margin: 0;
+  box-shadow: 0 0.1px 0 rgb(116, 112, 112);
+  border-bottom: 0.1px solid rgb(150, 147, 147);
+}
+
+
+.homepage-razor {
+  width: 85%;
+  margin: 0;
+  box-shadow: 0 0.1px 0 rgb(116, 112, 112);
+  border-bottom: 0.1px solid rgb(150, 147, 147);
+}
+.previous-session-header {
+  justify-content: right;
+  text-align: left;
+  align-items: left;
+}
+
+.previous-session {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+
+}
+.previous-session-header h3 {
+  font-weight: 300;
+  font-size: 1.7rem;
 }
