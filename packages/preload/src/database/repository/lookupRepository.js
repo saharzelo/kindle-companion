@@ -2,7 +2,7 @@ import { getConnection } from '../createConnection'
 
 
 
-export function findAll() {
+export function findAllWords() {
     const con = getConnection();
     const query = 'SELECT * FROM BOOK_INFO';
     return new Promise((resolve, reject) => {
@@ -17,7 +17,7 @@ export function findAll() {
 }
 
 
-export function findByAsin(asin) {
+export function findLookupsByAsin(asin) {
     const con = getConnection();
     const query = `
         SELECT w.word, l.usage, strftime('%m/%d/%Y %H:%M:%S', datetime(l.timestamp / 1000, 'unixepoch')) as timestamp_formatted, w.stem

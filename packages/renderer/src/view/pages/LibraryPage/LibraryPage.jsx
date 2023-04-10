@@ -1,30 +1,32 @@
 import { useState, useEffect } from 'react';
-import { getThumbnails, findAll } from '#preload';
+import { getThumbnails, findAllBooks } from '#preload';
 import './LibraryPage.css';
-import BookCatalogItem from '../../components/BookItem/BookCatalogItem';
-import BookInfo from '../../components/BookInfo/BookInfo';
+import BookCatalogItem from '../../components/BookCatalogItem/BookCatalogItem';
+import BookInfo from '../../components/BookInfoModal/BookInfoModal';
 
 function LibraryPage({ profile }) {
     const [bookCatalog, setBookCatalog] = useState([]);
-    const [selectedBook, setSelectedBook] = useState(null);
+    const [selectedBookAsin, setSelectedBookAsin] = useState(null);
+    const [bookThumbnails, setBookThumbnails] = useState(null)
     const [showModal, setShowModal] = useState(false);
 
     const handleBookClick = (asin) => {
-        setSelectedBook(asin)
+        setSelectedBookAsin(asin)
         setShowModal(true);
     }
 
     useEffect(() => {
         async function prepKindleData() {
             try {
-                const books = await findAll();
+                const books = await findAllBooks();
                 const bookId = books.map((result) => (result.asin));
-                const bookThumbnails = await getThumbnails(bookId)
+                const base64Thumbnails = await getThumbnails(bookId)
+                setBookThumbnails(base64Thumbnails)
                 const bookCatalog = books.map(({ title, asin }, index) => (
                     <BookCatalogItem
                         key={index}
                         title={title}
-                        thumbnail={bookThumbnails[asin]}
+                        thumbnail={base64Thumbnails[asin]}
                         metadata={asin}
                         onClick={() => handleBookClick(asin)}
                     />
@@ -46,7 +48,9 @@ function LibraryPage({ profile }) {
             <div className="catalog-container">
                 {bookCatalog}
             </div>
-            <BookInfo book={selectedBook} showModal={showModal} setShowModal={setShowModal} />
+            {showModal &&
+                <BookInfo bookAsin={selectedBookAsin} showModal={showModal} setShowModal={setShowModal} thumbnail={bookThumbnails[selectedBookAsin]} />
+            }
         </div>
     );
 }
