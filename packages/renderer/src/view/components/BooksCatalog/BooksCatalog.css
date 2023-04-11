@@ -1,0 +1,17 @@
+import BookCatalogItem from "../components/BookCatalogItem/BookCatalogItem";
+
+function BookCatalog({ books, thumbnails, onBookClick }) {
+  const bookCatalog = books.map(({ title, asin }, index) => (
+    <BookCatalogItem
+      key={index}
+      title={title}
+      thumbnail={thumbnails[asin]}
+      metadata={asin}
+      onClick={() => onBookClick(asin)}
+    />
+  ));
+
+  return <div className="catalog-container">{bookCatalog}</div>;
+}
+
+export default BookCatalog;
