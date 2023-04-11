@@ -4,7 +4,7 @@ import myImage from './pic.jpg';
 import { findLookupsByAsin, findBookByAsin } from '#preload'
 import { useState, useEffect } from 'react';
 
-function BookInfoModal({ bookAsin, showModal, setShowModal, thumbnail }) {
+function BookInfoModal({ bookAsin, setShowModal, thumbnail }) {
     const handleCloseModal = () => setShowModal(false);
     const [lookups, setLookups] = useState([]);
     const tableHeaders = ['word', 'timestamp', 'usage'];

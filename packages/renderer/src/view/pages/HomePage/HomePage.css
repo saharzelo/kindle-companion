@@ -1,45 +1,55 @@
 .home-page {
   height: 100%;
-  flex-direction: column;
-  overflow: auto;
-  box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
+  width: 100%;
   position: relative;
+  box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
+}
+
+
+.home-page h3 {
+  font-weight: 300;
+  font-size: 1.7rem;
+  text-shadow: 3px 4px 5px  rgba(90, 90, 90, 0.281);
+  margin-bottom: 0;
 }
 
 
 .homepage-header {
-  padding: 5px 0 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 0 20px 15px;
   box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
+  
 }
 
-.homepage-header h3 {
-  width: 100%;
-  font-weight: 300;
-  font-size: 1.7rem;
-  pointer-events: none;
-}
 
 .homepage-container {
   display: flex;
+  position: absolute;
   flex-direction: column;
+  width: 100%;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  box-shadow: inset -20px -7px 20px 4px rgba(0, 0, 0, 0.021);
 
 }
+
+
+
+
 
 .overview-dashboard {
   display: flex;
   flex-direction: row;
-  flex-direction: row;
-  gap: 2.5%;
-  justify-content: space-around;
-  padding: 2% 5% 2% 5%;
+  gap: 15%;
+  justify-content: center;
   position: relative;
+  padding: 1% 0 1% 0;
   width: 100%;
+
 }
 
-.dashboard-value-title {
+.dashboard-value span {
   font-weight: 300;
   font-size: 2.5vmin;
 }
@@ -47,15 +57,17 @@
 
 .dashboard-value {
   display: flex;
+  font-size: 1.2rem;
   justify-content: center;
   align-items: center;
   text-align: center;
   flex-direction: column;
   gap: 0.5vh;
+  text-shadow: 3px 4px 5px  rgba(90, 90, 90, 0.281);
 }
 
 .dashboard-razor {
-  width: 7vw;
+  width: 5vw;
   margin: 0;
   box-shadow: 0 0.1px 0 rgb(116, 112, 112);
   border-bottom: 0.1px solid rgb(150, 147, 147);
@@ -63,25 +75,42 @@
 
 
 .homepage-razor {
-  width: 85%;
+  width: 55%;
   margin: 0;
   box-shadow: 0 0.1px 0 rgb(116, 112, 112);
   border-bottom: 0.1px solid rgb(150, 147, 147);
 }
-.previous-session-header {
-  justify-content: right;
-  text-align: left;
-  align-items: left;
-}
 
-.previous-session {
+.previous-session-header {
   display: flex;
   justify-content: left;
   align-items: left;
   text-align: left;
+}
+
+.previous-session {
+  width: 100%;
+  height: 100%;
 
 }
+
 .previous-session-header h3 {
-  font-weight: 300;
-  font-size: 1.7rem;
+  padding: 5px 0 5px 15px;
+  font-size: 1.5rem;
+}
+
+
+.choose-table-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  gap: 10%;
+  font-size: 0.9rem;
+}
+
+.choose-table-buttons h3 {
+  font-size: 1.3rem;
+  padding-bottom: 0.5rem; 
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
 }
