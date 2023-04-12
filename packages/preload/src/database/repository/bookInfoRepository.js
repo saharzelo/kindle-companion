@@ -46,3 +46,30 @@ export function findBookByAsin(asin) {
     });
   });
 }
+
+export function findBooksByDate(date) {
+  const con = getConnection();
+  const query = `
+  SELECT 
+    DISTINCT book_key, title
+  FROM (
+    SELECT l.book_key, b.title, date(w.timestamp / 1000, 'unixepoch') AS word_date
+    FROM WORDS w
+    LEFT JOIN LOOKUPS l ON l.word_key = w.id
+    LEFT JOIN BOOK_INFO b ON b.guid = l.book_key
+  ) t
+  WHERE t.word_date = ?;
+  
+  `;
+  return new Promise((resolve, reject) => {
+    con.get(query, [date], (err, rows) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(rows);
+      }
+    });
+  });
+}
+
+
