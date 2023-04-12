@@ -9,7 +9,7 @@ export function findLatestWordDate() {
         FROM 
             WORDS;`;
     return new Promise((resolve, reject) => {
-        con.all(query, [], (err, rows) => {
+        con.get(query, [], (err, rows) => {
             if (err) {
                 reject(err);
             } else {
