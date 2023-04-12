@@ -1,2 +1,0 @@
-/home/saharzelo/Documents/projects/kindle-companion/packages/renderer/src/view/pages/LoginPage/LoginPage.css
-/home/saharzelo/Documents/projects/kindle-companion/packages/renderer/src/view/pages/LoginPage/LoginPage.jsx
