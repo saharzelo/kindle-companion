@@ -45,7 +45,7 @@ function LibraryPage({ profile }) {
         <h3>Your Library: </h3>
         <input
           type="text"
-          placeholder="Search books..."
+          placeholder="Search Books..."
           value={searchQuery}
           onChange={handleSearchInputChange}
         />

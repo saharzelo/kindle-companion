@@ -1,5 +1,5 @@
 import BookCatalogItem from "../BookCatalogItem/BookCatalogItem";
-
+import "./BooksCatalog.css"
 function BooksCatalog({ books, thumbnails, onBookClick }) {
   const booksCatalog = books.map(({ title, asin }, index) => (
     <BookCatalogItem
