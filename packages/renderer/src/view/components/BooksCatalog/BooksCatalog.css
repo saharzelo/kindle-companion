@@ -2,11 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  width: 100%;
-  gap: 15px;
+  padding: 2vh 2vw 2vw 2vw;
+  gap: 1vw;
   justify-content: center;
-  padding: 4vh 3vw 6vh 3vw;
   box-sizing: border-box;
-    text-shadow: 3px 4px 5px  rgba(90, 90, 90, 0.281);
-
+  width: fit-content;
+  margin-right: auto !important;
 }
