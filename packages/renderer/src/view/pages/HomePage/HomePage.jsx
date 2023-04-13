@@ -8,7 +8,7 @@ import {
 } from '#preload'
 import BooksCatalog from "../../components/BooksCatalog/BooksCatalog";
 import BookInfo from "../../components/BookInfoModal/BookInfoModal";
-
+import LookupsTable from '../../components/LookupsTable/LookupsTable';
 
 
 function HomePage({ }) {
@@ -16,6 +16,11 @@ function HomePage({ }) {
     const [selectedBookAsin, setSelectedBookAsin] = useState(null);
     const [thumbnails, setThumbnails] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const [lastDate, setLastDate] = useState(null);
+    const [showTable, setShowTable] = useState(null);
+
+
+
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleBookClick = (asin) => {
@@ -23,12 +28,14 @@ function HomePage({ }) {
         setShowModal(true);
     };
 
-
     useEffect(() => {
         async function prepKindleData() {
             try {
                 const date = await findLatestWordDate();
+                setLastDate(date.latest_date)
                 const books = await findBooksByDate(date.latest_date)
+                const words = await findLookupsByDate(date.latest_date)
+                console.log(words)
                 console.log(books)
                 const bookId = books.map((result) => result.asin);
                 const thumbnails = await getThumbnails(bookId);
@@ -75,17 +82,22 @@ function HomePage({ }) {
 
                 <div className="previous-session">
                     <div className="previous-session-header">
-                        <h3> Previous Session: </h3>
+                        <h3> Last Read({lastDate}): </h3>
                     </div>
                     <div className="choose-table-buttons">
-                        <h3> Books </h3> <h3> Words </h3>  <h3> Clippings </h3>
+                        <h3 onClick={setShowTable('books')}> Books </h3> <h3 onClick={setShowTable()}> Words </h3>  <h3> Clippings </h3>
                     </div>
                     <div className="homepage-catalog">
-                        <BooksCatalog
-                            books={books}
-                            thumbnails={thumbnails}
-                            onBookClick={handleBookClick}
-                        />
+
+                        {showTable == "books" ?
+                            <BooksCatalog
+                                books={books}
+                                thumbnails={thumbnails}
+                                onBookClick={handleBookClick}
+                            /> :
+                            // <LookupsTable tableHeaders={['1']} tableData={[{}]} />
+                            <div>HEllo!</div>
+                        }
 
                         {showModal && (
                             <BookInfo
@@ -94,15 +106,8 @@ function HomePage({ }) {
                                 thumbnail={thumbnails[selectedBookAsin]}
                             />
                         )}
-
-
-
                     </div>
-
                 </div>
-
-
-
             </div>
         </div>
     )

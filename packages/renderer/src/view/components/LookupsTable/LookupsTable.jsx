@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import './BookInfoTable.css';
+import './LookupsTable.css';
 
-function BookInfoTable({ tableData, tableHeaders }) {
+function LookupsTable({ tableData, tableHeaders }) {
     const [data, setData] = useState(tableData);
 
     const handleDelete = (item) => {
@@ -42,4 +42,4 @@ function BookInfoTable({ tableData, tableHeaders }) {
     );
 }
 
-export default BookInfoTable;
+export default LookupsTable;

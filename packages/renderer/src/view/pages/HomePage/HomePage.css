@@ -15,6 +15,10 @@
 }
 
 
+.homepage-catalog {
+  height: 100%;
+}
+
 .homepage-header {
   display: flex;
   flex-direction: row;
@@ -32,9 +36,9 @@
   position: absolute;
   flex-direction: column;
   width: 100%;
+
   justify-content: center;
   align-items: center;
-  height: 100%;
   box-shadow: inset -20px -7px 20px 4px rgba(0, 0, 0, 0.021);
 }
 
@@ -87,6 +91,7 @@
   justify-content: left;
   height: 100%;
   width: 100%;
+  
 }
 
 .previous-session-header h3 {
