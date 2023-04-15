@@ -16,7 +16,7 @@ export function getAllBooks() {
 }
 
 
-export function findBookByAsin(asin) {
+export function getBookByAsin(asin) {
   const con = getConnection();
   const query = `
   SELECT

@@ -28,7 +28,6 @@ function HomePage({ }) {
     useEffect(() => {
         async function prepKindleData() {
             try {
-                console.log('sex?!')
                 const date = await GetLatestLookupDate();
                 setLatestDate(date.latest_date)
                 const books = await getBooksByDate(date.latest_date)
@@ -86,7 +85,7 @@ function HomePage({ }) {
                     </div>
                     <div className="homepage-catalog">
                         {showTable == 'words'
-                            ? <div> COcokos sucking</div>
+                            ? <div>test</div>
 
                             : <BooksCatalog
                                 books={books}
@@ -104,7 +103,14 @@ function HomePage({ }) {
                         )}
                     </div>
                 </div>
+
+
+
+
+
+             
             </div>
+            
         </div>
     )
 }

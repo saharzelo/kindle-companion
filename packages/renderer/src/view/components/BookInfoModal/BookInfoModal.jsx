@@ -1,7 +1,7 @@
 import './BookInfoModal.css';
 import LookupsTable from '../LookupsTable/LookupsTable';
 import myImage from './pic.jpg';
-import { findLookupsByAsin, findBookByAsin } from '#preload'
+import { getLookupsByAsin, getBookByAsin } from '#preload'
 import { useState, useEffect } from 'react';
 
 function BookInfoModal({ bookAsin, setShowModal, thumbnail }) {
@@ -16,14 +16,14 @@ function BookInfoModal({ bookAsin, setShowModal, thumbnail }) {
 
 
     const loadBookMetadata = async () => {
-        const bookData = await findBookByAsin(bookAsin);
+        const bookData = await getBookByAsin(bookAsin);
         setBookMetadta(bookData);
 
     };
 
 
     const loadTableData = async () => {
-        const lookupData = await findLookupsByAsin(bookAsin);
+        const lookupData = await getLookupsByAsin(bookAsin);
         setLookups(lookupData);
     };
 

@@ -17,7 +17,7 @@ import { getConnection } from '../createConnection'
 // }
 
 
-export function findLookupsByAsin(asin) {
+export function getLookupsByAsin(asin) {
     const con = getConnection();
     const query = `
         SELECT w.word, l.usage, strftime('%m/%d/%Y %H:%M:%S', datetime(l.timestamp / 1000, 'unixepoch')) as timestamp_formatted, w.stem
