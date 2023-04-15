@@ -17,7 +17,7 @@ import { getConnection } from '../createConnection'
 // }
 
 
-export function getLookupsByAsin(asin) {
+function getLookupsByAsin(asin) {
     const con = getConnection();
     const query = `
         SELECT w.word, l.usage, strftime('%m/%d/%Y %H:%M:%S', datetime(l.timestamp / 1000, 'unixepoch')) as timestamp_formatted, w.stem
@@ -41,7 +41,7 @@ export function getLookupsByAsin(asin) {
 
 
 
-export function getLookupsByDate(date) {
+function getLookupsByDate(date) {
     const con = getConnection();
     const query = `
     SELECT b.title, w.word, l.usage, strftime('%m/%d/%Y %H:%M:%S', datetime(l.timestamp / 1000, 'unixepoch')) as timestamp_formatted, w.stem
@@ -59,4 +59,32 @@ export function getLookupsByDate(date) {
             }
         });
     });
+}
+
+
+function GetLatestLookupDate() {
+    const con = getConnection();
+    const query = `
+        SELECT 
+            date(MAX(timestamp) / 1000, 'unixepoch') AS latest_date 
+        FROM 
+            WORDS;`;
+    return new Promise((resolve, reject) => {
+        con.get(query, [], (err, rows) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(rows);
+            }
+        });
+    });
+}
+
+
+
+
+export const lookupRepo = {
+    getLookupsByAsin,
+    getLookupsByDate,
+    GetLatestLookupDate
 }
