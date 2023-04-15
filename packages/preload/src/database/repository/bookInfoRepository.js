@@ -1,9 +1,9 @@
 import { getConnection } from '../createConnection'
 
 
-export function findAllBooks() {
+export function getAllBooks() {
   const con = getConnection();
-  const query = 'SELECT * FROM BOOK_INFO';
+  const query = 'SELECT title, asin FROM BOOK_INFO';
   return new Promise((resolve, reject) => {
     con.all(query, [], (err, rows) => {
       if (err) {
@@ -47,11 +47,11 @@ export function findBookByAsin(asin) {
   });
 }
 
-export function findBooksByDate(date) {
+export function getBooksByDate(date) {
   const con = getConnection();
   const query = `
   SELECT 
-    DISTINCT asin, title, max(t.word_date)
+    DISTINCT title, asin
   FROM (
     SELECT l.book_key, b.asin, b.title, date(w.timestamp / 1000, 'unixepoch') AS word_date
     FROM WORDS w

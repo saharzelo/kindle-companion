@@ -1,14 +1,13 @@
 import './HomePage.css'
 import { useState, useEffect } from 'react';
 import {
-    findLatestWordDate,
-    findBooksByDate,
-    findLookupsByDate,
+    GetLatestLookupDate,
+    getBooksByDate,
+    getLookupsByDate,
     getThumbnails
 } from '#preload'
 import BooksCatalog from "../../components/BooksCatalog/BooksCatalog";
 import BookInfo from "../../components/BookInfoModal/BookInfoModal";
-import LookupsTable from '../../components/LookupsTable/LookupsTable';
 
 
 function HomePage({ }) {
@@ -16,12 +15,10 @@ function HomePage({ }) {
     const [selectedBookAsin, setSelectedBookAsin] = useState(null);
     const [thumbnails, setThumbnails] = useState(null);
     const [showModal, setShowModal] = useState(false);
-    const [lastDate, setLastDate] = useState(null);
+    const [latestDate, setLatestDate] = useState(null);
     const [showTable, setShowTable] = useState(null);
-
-
-
     const [searchQuery, setSearchQuery] = useState("");
+
 
     const handleBookClick = (asin) => {
         setSelectedBookAsin(asin);
@@ -31,16 +28,16 @@ function HomePage({ }) {
     useEffect(() => {
         async function prepKindleData() {
             try {
-                const date = await findLatestWordDate();
-                setLastDate(date.latest_date)
-                const books = await findBooksByDate(date.latest_date)
-                const words = await findLookupsByDate(date.latest_date)
-                console.log(words)
-                console.log(books)
+                console.log('sex?!')
+                const date = await GetLatestLookupDate();
+                setLatestDate(date.latest_date)
+                const books = await getBooksByDate(date.latest_date)
+                const words = await getLookupsByDate(date.latest_date)
                 const bookId = books.map((result) => result.asin);
                 const thumbnails = await getThumbnails(bookId);
                 setThumbnails(thumbnails);
                 setBooks(books);
+
             } catch (error) {
                 console.error("error loading book catalog items, error:\n", error);
             }
@@ -82,21 +79,20 @@ function HomePage({ }) {
 
                 <div className="previous-session">
                     <div className="previous-session-header">
-                        <h3> Last Read({lastDate}): </h3>
+                        <h3> Last Read({latestDate}): </h3>
                     </div>
                     <div className="choose-table-buttons">
-                        <h3 onClick={setShowTable('books')}> Books </h3> <h3 onClick={setShowTable()}> Words </h3>  <h3> Clippings </h3>
+                        <h3 onClick={() => { setShowTable("") }}> Books </h3> <h3 onClick={() => setShowTable('words')}> Words </h3>  <h3> Clippings </h3>
                     </div>
                     <div className="homepage-catalog">
+                        {showTable == 'words'
+                            ? <div> COcokos sucking</div>
 
-                        {showTable == "books" ?
-                            <BooksCatalog
+                            : <BooksCatalog
                                 books={books}
                                 thumbnails={thumbnails}
                                 onBookClick={handleBookClick}
-                            /> :
-                            // <LookupsTable tableHeaders={['1']} tableData={[{}]} />
-                            <div>HEllo!</div>
+                            />
                         }
 
                         {showModal && (

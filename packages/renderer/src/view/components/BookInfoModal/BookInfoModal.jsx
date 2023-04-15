@@ -1,5 +1,5 @@
 import './BookInfoModal.css';
-import BookInfoTable from '../BookInfoTable/BookInfoTable';
+import LookupsTable from '../LookupsTable/LookupsTable';
 import myImage from './pic.jpg';
 import { findLookupsByAsin, findBookByAsin } from '#preload'
 import { useState, useEffect } from 'react';
@@ -67,7 +67,7 @@ function BookInfoModal({ bookAsin, setShowModal, thumbnail }) {
                             <h3> Words </h3> <h3> Clippings </h3>
                         </div>
                         {lookups.length > 0 ? (
-                            <BookInfoTable tableHeaders={tableHeaders} tableData={lookups} />
+                            <LookupsTable tableHeaders={tableHeaders} tableData={lookups} />
                         ) : (
                             <p>Fetching...</p>
                         )}

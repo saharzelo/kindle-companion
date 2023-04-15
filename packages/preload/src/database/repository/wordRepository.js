@@ -1,7 +1,7 @@
 import { getConnection } from '../createConnection'
 
 
-export function findLatestWordDate() {
+export function GetLatestLookupDate() {
     const con = getConnection();
     const query = `
         SELECT 

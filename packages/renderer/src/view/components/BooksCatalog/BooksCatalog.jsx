@@ -12,7 +12,7 @@ function BooksCatalog({ books, thumbnails, onBookClick }) {
   ));
 
   return (
-    <div className="catalog-container">
+    <div className="book-catalog-container">
       {booksCatalog}
     </div>
   );
