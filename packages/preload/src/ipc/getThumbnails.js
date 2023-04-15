@@ -1,8 +1,8 @@
 import { ipcRenderer } from 'electron';
 
-export function getThumbnails(booksId) {
+export function getThumbnails(bookAsin) {
   return new Promise((resolve, reject) => {
-    ipcRenderer.invoke('getBookThumbnailData', booksId).then((result) => {
+    ipcRenderer.invoke('getBookThumbnailData', bookAsin).then((result) => {
       resolve(result);
     });
   });

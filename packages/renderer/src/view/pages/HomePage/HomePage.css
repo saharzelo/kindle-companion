@@ -36,7 +36,6 @@
   position: absolute;
   flex-direction: column;
   width: 100%;
-
   justify-content: center;
   align-items: center;
   box-shadow: inset -20px -7px 20px 4px rgba(0, 0, 0, 0.021);

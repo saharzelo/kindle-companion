@@ -1,12 +1,9 @@
-import {
-    GetLatestLookupDate,
-    getLookupsByDate
-} from '#preload'
+import { lookupRepo } from '#preload';
 
 
 export async function getLookupsByDate() {
-    const date = await GetLatestLookupDate();
-    const books = await getLookupsByDate(date.latest_date)
+    const date = await lookupRepo.GetLatestLookupDate()
+    const books = await lookupRepo.getLookupsByDate(date.latest_date)
     return books
 }
 
