@@ -1,9 +1,9 @@
 import { getConnection } from '../createConnection'
 
 
-export function findAllBooks() {
+function getAllBooks() {
   const con = getConnection();
-  const query = 'SELECT * FROM BOOK_INFO';
+  const query = 'SELECT title, asin FROM BOOK_INFO';
   return new Promise((resolve, reject) => {
     con.all(query, [], (err, rows) => {
       if (err) {
@@ -16,7 +16,7 @@ export function findAllBooks() {
 }
 
 
-export function findBookByAsin(asin) {
+function getBookByAsin(asin) {
   const con = getConnection();
   const query = `
   SELECT
@@ -47,22 +47,22 @@ export function findBookByAsin(asin) {
   });
 }
 
-export function findBooksByDate(date) {
+function getBooksByDate(date) {
   const con = getConnection();
   const query = `
   SELECT 
-    DISTINCT book_key, title
+    DISTINCT title, asin
   FROM (
-    SELECT l.book_key, b.title, date(w.timestamp / 1000, 'unixepoch') AS word_date
+    SELECT l.book_key, b.asin, b.title, date(w.timestamp / 1000, 'unixepoch') AS word_date
     FROM WORDS w
     LEFT JOIN LOOKUPS l ON l.word_key = w.id
     LEFT JOIN BOOK_INFO b ON b.guid = l.book_key
   ) t
-  WHERE t.word_date = ?;
+  where t.word_date = ?
   
   `;
   return new Promise((resolve, reject) => {
-    con.get(query, [date], (err, rows) => {
+    con.all(query, [date], (err, rows) => {
       if (err) {
         reject(err);
       } else {
@@ -73,3 +73,8 @@ export function findBooksByDate(date) {
 }
 
 
+export const bookRepo = {
+  getAllBooks,
+  getBookByAsin,
+  getBooksByDate
+}

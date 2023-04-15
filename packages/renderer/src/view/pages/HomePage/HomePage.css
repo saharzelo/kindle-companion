@@ -15,6 +15,10 @@
 }
 
 
+.homepage-catalog {
+  height: 100%;
+}
+
 .homepage-header {
   display: flex;
   flex-direction: row;
@@ -34,8 +38,6 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-    padding: 25px 0 25px 15px;
-
   box-shadow: inset -20px -7px 20px 4px rgba(0, 0, 0, 0.021);
 }
 
@@ -74,7 +76,6 @@
   border-bottom: 0.1px solid rgb(150, 147, 147);
 }
 
-
 .previous-session-header {
   display: flex;
   justify-content: left;
@@ -84,14 +85,19 @@
 }
 
 .previous-session {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
   height: 100%;
+  width: 100%;
+  
 }
 
 .previous-session-header h3 {
   font-size: 1.5rem;
-}
+  padding: 25px 0 10px 15px;
 
+}
 
 .choose-table-buttons {
   display: flex;

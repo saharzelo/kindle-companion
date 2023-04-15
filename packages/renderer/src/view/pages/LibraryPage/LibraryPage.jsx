@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getThumbnails, findAllBooks } from "#preload";
+import { getThumbnails, getAllBooks } from "#preload";
 import "./LibraryPage.css";
 import BooksCatalog from "../../components/BooksCatalog/BooksCatalog";
 import BookInfo from "../../components/BookInfoModal/BookInfoModal";
@@ -23,7 +23,7 @@ function LibraryPage({ profile }) {
   useEffect(() => {
     async function prepKindleData() {
       try {
-        const books = await findAllBooks();
+        const books = await getAllBooks();
         const bookId = books.map((result) => result.asin);
         const thumbnails = await getThumbnails(bookId);
         setThumbnails(thumbnails);

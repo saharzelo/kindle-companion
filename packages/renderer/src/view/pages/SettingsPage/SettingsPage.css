@@ -1,0 +1,31 @@
+.settings-page {
+    background-color: #f2f2f7;
+    min-height: 100vh;
+}
+
+.toggle-button {
+    background-color: transparent;
+    border: none;
+    color: #007aff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.dark-mode {
+    filter: invert(100%);
+
+}
+
+.dark-mode *  {
+    box-shadow: none !important; 
+    text-shadow: none;
+
+}
+
+
+.dark-mode img,
+picture,
+video {
+    filter: invert(1)
+}

@@ -12,10 +12,13 @@ function createConnection(dbFilePath) {
   });
 }
 
-export function getConnection(dbFilePath=process.env.TMP_DIR) {
+export function getConnection(dbFilePath = process.env.TMP_DIR) {
   if (!connection || connection.filename !== dbFilePath) {
     createConnection(dbFilePath);
   }
+  connection.on('trace', (query) => {
+    console.log(`Executing query: ${query}`);
+  });
   return connection;
 }
 

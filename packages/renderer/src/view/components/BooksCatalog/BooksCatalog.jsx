@@ -11,7 +11,11 @@ function BooksCatalog({ books, thumbnails, onBookClick }) {
     />
   ));
 
-  return <div className="catalog-container">{booksCatalog}</div>;
+  return (
+    <div className="book-catalog-container">
+      {booksCatalog}
+    </div>
+  );
 }
 
 export default BooksCatalog;
