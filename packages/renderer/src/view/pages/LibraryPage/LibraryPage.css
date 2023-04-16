@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
+  gap: 25%;
   margin:0;
   box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
   height: 10%;
@@ -42,8 +42,8 @@ input[type="text"] {
 }
  
 input[type="text"]::placeholder {
-  color: #999;
-  font-size: 0.8rem;
+  color: #797979;
+  font-size: 0.75rem;
   font-weight: 400;
 }
  
