@@ -30,7 +30,7 @@ export async function getBookByAsin(asin) {
 
 export async function getBookCount() {
     try {
-        const bookCount = bookRepo.getBookCount()
+        const bookCount = await bookRepo.getBookCount()
         return bookCount
     } catch (error) {
         console.error(error)

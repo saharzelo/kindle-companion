@@ -5,7 +5,7 @@ function getWordCount() {
     const con = getConnection();
     const query = "SELECT COUNT(*) as wordCount FROM WORDS";
     return new Promise((resolve, reject) => {
-      con.all(query, [], (err, rows) => {
+      con.get(query, [], (err, rows) => {
         if (err) {
           reject(err);
         } else {
