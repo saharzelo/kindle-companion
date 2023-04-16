@@ -9,9 +9,9 @@ import SettingsPage from './view/pages/SettingsPage/SettingsPage';
 
 function App() {
   const [kindleSynced, setKindleSynced] = useState(null);
-  const [page, setPage] = useState(null);
+  const [page, setPage] = useState('homepage');
 
-  function handleProfile(kindleCon) {
+  function handleSync(kindleCon) {
     setKindleSynced(kindleCon);
   };
 
@@ -20,17 +20,14 @@ function App() {
       <Sidebar setPage={setPage} page={page} />
       <div className="main-container">
         <Topbar />
-        {kindleSynced
-          ? page === 'library'
-            ? <LibraryPage profile={kindleSynced} />
-            : page === 'settings'
-              ? <SettingsPage />
-              : <HomePage />
-          : <LoginPage setProfile={handleProfile} />
-        }
+        {kindleSynced && page === 'library' && <LibraryPage profile={kindleSynced} />}
+        {kindleSynced && page === 'settings' && <SettingsPage />}
+        {kindleSynced && page ==='homepage' && <HomePage />}
+        {!kindleSynced && <LoginPage setProfile={handleSync} />}
       </div>
     </div>
   );
 };
+
 
 export default App;

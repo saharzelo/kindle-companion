@@ -1,10 +1,10 @@
 import './WordCatalogItem.css';
 
-function WordCatalogItem({ title }) {
+function WordCatalogItem({ word }) {
   return (
-    <div className="word-preview-item" onClick={onClick}>
+    <div className="word-preview-item">
 
-
+      {word.charAt(0).toUpperCase() + word.slice(1)}
 
 
       {/* <div className='book-thumbnail'>

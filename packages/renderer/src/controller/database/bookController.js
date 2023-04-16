@@ -16,3 +16,23 @@ export async function getAllBooks() {
         console.error(error)
     }
 }
+
+
+export async function getBookByAsin(asin) {
+    try {
+        const books = await bookRepo.getBookByAsin(asin)
+        return books
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+
+export async function getBookCount() {
+    try {
+        const bookCount = await bookRepo.getBookCount()
+        return bookCount
+    } catch (error) {
+        console.error(error)
+    }
+}

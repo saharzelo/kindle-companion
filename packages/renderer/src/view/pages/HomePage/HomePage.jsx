@@ -1,21 +1,38 @@
 import './HomePage.css'
 import { useState, useEffect } from 'react';
-import {
-    getThumbnails
-} from '#preload'
 import BooksCatalog from "../../components/BooksCatalog/BooksCatalog";
-import BookInfo from "../../components/BookInfoModal/BookInfoModal";
-
-
-
-import { fetchKindleBooksData } from '../../../controller/services/kindleServices';
+import BookInfoModal from "../../components/BookInfoModal/BookInfoModal";
+import WordsCatalog from "../../components/WordsCatalog/WordsCatalog"
+import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
+import { prepKindleData, prepKindleMetadata } from '../../../controller/services/kindleServices';
+import { getRecentLookups } from '../../../controller/database/lookupController';
 
 function HomePage({ }) {
-    const [books, setBooks] = useState([]);
+    const [kindleData, setKindleData] = useState([]);
+    const [kindleMeta, setKindleMeta] = useState();
+    const [wordsData, setWordsData] = useState();
+
     const [selectedBookAsin, setSelectedBookAsin] = useState(null);
-    const [showModal, setShowModal] = useState(false);
-    const [showTable, setShowTable] = useState(null);
     const [searchQuery, setSearchQuery] = useState("");
+
+    const [showModal, setShowModal] = useState(false);
+    const [showTable, setShowTable] = useState('books');
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchData() {
+            const [kindleData, kindleMeta] = await Promise.all([
+                prepKindleData(true),
+                prepKindleMetadata()
+            ]);
+            setKindleData(kindleData);
+            setKindleMeta(kindleMeta);
+            setLoading(false);
+
+        }
+        fetchData();
+    }, []);
+
 
 
     const handleBookClick = (asin) => {
@@ -23,43 +40,37 @@ function HomePage({ }) {
         setShowModal(true);
     };
 
-    useEffect(() => {
-        async function prepKindleData() {
-            try {
-                const kindleData = await fetchKindleBooksData(true)
-                setBooks(kindleData)
+    const handleTableClick = async (table) => {
+        const lookups = await getRecentLookups()
+        setWordsData(lookups)
+        setShowTable(table)
+    };
 
-            } catch (error) {
-                console.error("error loading book catalog items, error:\n", error);
-            }
-        }
-
-        prepKindleData();
-    }, []);
-
-
-
+    if (loading) {
+        return <LoadingScreen />;
+    }
     return (
         <div className="home-page">
             <div className="homepage-header">
+                {console.log(kindleData)}
                 <h3> Your Overview: </h3>
                 <div className="overview-dashboard">
                     <div className="dashboard-value">
-                        <span> 38</span>
+                        <span> {kindleMeta.bookCount}</span>
                         <h2 className="dashboard-razor" />
                         <span className="dashboard-value-title">
                             Books
                         </span>
                     </div>
                     <div className="dashboard-value">
-                        <span>552</span>
+                        <span>{kindleMeta.wordCount}</span>
                         <h2 className="dashboard-razor" />
                         <span className="dashboard-value-title">
                             Words
                         </span>
                     </div>
                     <div className="dashboard-value">
-                        <span>38</span>
+                        <span>0</span>
                         <h2 className="dashboard-razor" />
                         <span className="dashboard-value-title">
                             clippings
@@ -74,34 +85,24 @@ function HomePage({ }) {
                         <h3> Last Read: </h3>
                     </div>
                     <div className="choose-table-buttons">
-                        <h3 onClick={() => { setShowTable("") }}> Books </h3> <h3 onClick={() => setShowTable('words')}> Words </h3>  <h3> Clippings </h3>
+                        <h3 onClick={() => { handleTableClick("books") }}> Books </h3> <h3 onClick={() => handleTableClick("words")}> Words </h3>  <h3> Clippings </h3>
                     </div>
                     <div className="homepage-catalog">
-                        {showTable == 'words'
-                            ? <div>test</div>
-                            : <BooksCatalog
-                                books={books}
-                                onBookClick={handleBookClick}
-                            />
-                        }
+                        {showTable == 'books' && <BooksCatalog books={kindleData} onBookClick={handleBookClick} />}
+                        {showTable == 'words' && <WordsCatalog words={wordsData} />}
+
 
                         {showModal && (
-                            <BookInfo
+                            <BookInfoModal
                                 bookAsin={selectedBookAsin}
                                 setShowModal={setShowModal}
-                                thumbnail={thumbnails[selectedBookAsin]}
+                                thumbnail={kindleData.find((dict) => dict.asin == selectedBookAsin)?.thumbnail}
                             />
                         )}
                     </div>
                 </div>
-
-
-
-
-
-             
             </div>
-            
+
         </div>
     )
 }

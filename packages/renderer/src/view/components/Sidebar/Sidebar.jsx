@@ -13,8 +13,8 @@ function Sidebar({ setPage, page }) {
     <div className="sidebar">
       <div className="app-logo"><AppIcon /></div>
       <div
-        className={`button-group ${page === null ? 'active' : ''}`}
-        onClick={() => { handleSetPage(null) }}>
+        className={`button-group ${page === 'homepage' ? 'active' : ''}`}
+        onClick={() => { handleSetPage('homepage') }}>
         <HomeSvg />
       </div>
       <div

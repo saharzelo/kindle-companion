@@ -2,21 +2,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    padding: 12px 10px 10px 10px;
     border: 1px solid #ccc;
     text-align: center;
-    border-radius: 5px;
-    width: 15vw;
+    border-radius: 7px;
+    max-width: 10vw;
+    min-width: 110px;
     min-height: 5vh;
-    box-shadow: 1px 6px 25px 1px rgba(0, 0, 0, 0.097);
+    box-shadow: inset 1px 2px 20px 2px rgba(124, 124, 124, 0), 1px 2px 20px 2px rgba(0, 0, 0, 0.097);
     transform-style: preserve-3d;
     animation: item-flip-in 0.2s ease-in-out forwards;
     opacity: 0;
     cursor: pointer;
 }
 
+.book-preview-item:hover {
+    box-shadow: inset 1px 2px 20px 2px rgba(124, 124, 124, 0.123), 1px 2px 20px 2px rgba(0, 0, 0, 0.097);
+
+}
+
 .book-preview-item:hover img {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
 }
 
 @keyframes item-flip-in {
@@ -35,9 +41,9 @@
     width: 5vw;
     height: 10vh;
     min-width: 75px;
-    min-height: 100px;
+    min-height: 94px;
     margin-bottom: 10px;
-    box-shadow: 1px 6px 25px 1px rgba(0, 0, 0, 0.324);
+    box-shadow: 1px 5px 25px 6px rgba(0, 0, 0, 0.205);
 }
 
 .book-preview-item.book-thumbnail {
@@ -45,17 +51,18 @@
     justify-content: center;
     border-bottom: 1px solid #ccc;
     width: 100%;
+    height: 70%;
 }
 
 .book-preview-item .book-title {
-    margin: 8px 0 0px 0;
+    margin: 8px 5px 0px 5px;
 }
 
 /* consider exporting as var */
 .book-preview-item .book-title h6 {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     margin: 0;
-    width: 15vw;
+    width: 10vw;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -66,12 +73,12 @@
 .book-preview-item .book-info {
     display: flex;
     flex-direction: row;
-    gap: 1vw;
+    gap: 0.8vw;
 }
 
 .book-preview-item span {
     align-items: center;
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin: 0;
     text-align: center;
     font-weight: 300;
@@ -94,13 +101,13 @@
     width: 60px;
     height: 60px;
     border-radius: 60%;
-    background-color: #ddd;
-    color: #fff;
+    background-color: #b8b8b8;
+    color: #ffffff;
     line-height: 60px;
     font-size: 24px;
     box-shadow: 1px 0px 10px 3px rgba(59, 59, 59, 0.09);
 }
 
 .book-preview-item:hover .missing-thumbnail {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
 }

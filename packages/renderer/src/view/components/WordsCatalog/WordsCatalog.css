@@ -1,0 +1,11 @@
+.words-catalog-container {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    padding: 2vh 11px 2vw 11px;
+    gap: 1vw;
+    justify-content: center;
+    box-sizing: border-box;
+    width: fit-content;
+    margin-right: auto !important;
+  }
