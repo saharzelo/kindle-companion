@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
-import { getThumbnails, getAllBooks } from "#preload";
 import "./LibraryPage.css";
 import BooksCatalog from "../../components/BooksCatalog/BooksCatalog";
-import BookInfo from "../../components/BookInfoModal/BookInfoModal";
+import BookInfoModal from "../../components/BookInfoModal/BookInfoModal";
+import { prepKindleData } from "../../../controller/services/kindleServices";
 
 function LibraryPage({ profile }) {
-  const [books, setBooks] = useState([]);
+  const [kindleData, setKindleData] = useState([]);
   const [selectedBookAsin, setSelectedBookAsin] = useState(null);
-  const [thumbnails, setThumbnails] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -20,24 +19,19 @@ function LibraryPage({ profile }) {
     setSearchQuery(event.target.value);
   };
 
-  useEffect(() => {
-    async function prepKindleData() {
-      try {
-        const books = await getAllBooks();
-        const bookId = books.map((result) => result.asin);
-        const thumbnails = await getThumbnails(bookId);
-        setThumbnails(thumbnails);
-        setBooks(books);
-      } catch (error) {
-        console.error("error loading book catalog items, error:\n", error);
-      }
-    }
-    prepKindleData();
-  }, []);
-
-  const filteredBooks = books.filter((book) =>
+  const filteredBooks = kindleData.filter((book) =>
     book.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await prepKindleData()
+      setKindleData(data)
+    }
+    fetchData();
+  }, []);
+
+
 
   return (
     <div className="catalog-wrapper">
@@ -52,15 +46,14 @@ function LibraryPage({ profile }) {
       </div>
       <BooksCatalog
         books={filteredBooks}
-        thumbnails={thumbnails}
         onBookClick={handleBookClick}
       />
 
       {showModal && (
-        <BookInfo
+        <BookInfoModal
           bookAsin={selectedBookAsin}
           setShowModal={setShowModal}
-          thumbnail={thumbnails[selectedBookAsin]}
+          thumbnail={null}
         />
       )}
     </div>
