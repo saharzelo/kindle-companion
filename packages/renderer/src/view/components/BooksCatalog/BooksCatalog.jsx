@@ -1,11 +1,11 @@
 import BookCatalogItem from "../BookCatalogItem/BookCatalogItem";
 import "./BooksCatalog.css"
-function BooksCatalog({ books, thumbnails, onBookClick }) {
-  const booksCatalog = books.map(({ title, asin }, index) => (
+function BooksCatalog({ books, onBookClick }) {
+  const booksCatalog = books.map(({ title, asin, thumbnail }, index) => (
     <BookCatalogItem
       key={index}
       title={title}
-      thumbnail={thumbnails[asin]}
+      thumbnail={thumbnail}
       metadata={asin}
       onClick={() => onBookClick(asin)}
     />
