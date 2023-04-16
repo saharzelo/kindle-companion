@@ -20,17 +20,14 @@ function App() {
       <Sidebar setPage={setPage} page={page} />
       <div className="main-container">
         <Topbar />
-        {kindleSynced
-          ? page === 'library'
-            ? <LibraryPage profile={kindleSynced} />
-            : page === 'settings'
-              ? <SettingsPage />
-              : <HomePage />
-          : <LoginPage setProfile={handleProfile} />
-        }
+        {kindleSynced && page === 'library' && <LibraryPage profile={kindleSynced} />}
+        {kindleSynced && page === 'settings' && <SettingsPage />}
+        {kindleSynced && page ==='homepage' && <HomePage />}
+        {!kindleSynced && <LoginPage setProfile={handleProfile} />}
       </div>
     </div>
   );
 };
+
 
 export default App;
