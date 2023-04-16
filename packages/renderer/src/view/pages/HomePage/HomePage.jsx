@@ -1,20 +1,16 @@
 import './HomePage.css'
 import { useState, useEffect } from 'react';
-import {
-    getThumbnails
-} from '#preload'
 import BooksCatalog from "../../components/BooksCatalog/BooksCatalog";
-import BookInfo from "../../components/BookInfoModal/BookInfoModal";
-
-
-
-import { fetchKindleBooksData } from '../../../controller/services/kindleServices';
+import BookInfoModal from "../../components/BookInfoModal/BookInfoModal";
+import WordsCatalog from "../../components/WordsCatalog/WordsCatalog"
+import { prepKindleData } from '../../../controller/services/kindleServices';
+import { getRecentLookups } from '../../../controller/database/lookupController';
 
 function HomePage({ }) {
-    const [books, setBooks] = useState([]);
+    const [kindleData, setKindleData] = useState([]);
     const [selectedBookAsin, setSelectedBookAsin] = useState(null);
     const [showModal, setShowModal] = useState(false);
-    const [showTable, setShowTable] = useState(null);
+    const [showTable, setShowTable] = useState('books');
     const [searchQuery, setSearchQuery] = useState("");
 
 
@@ -23,18 +19,19 @@ function HomePage({ }) {
         setShowModal(true);
     };
 
+
+    const handleTableClick = async (table) => {
+        const lookups = await getRecentLookups()
+        console.log('papi', lookups)
+        setShowTable(table)
+    };
+
     useEffect(() => {
-        async function prepKindleData() {
-            try {
-                const kindleData = await fetchKindleBooksData(true)
-                setBooks(kindleData)
-
-            } catch (error) {
-                console.error("error loading book catalog items, error:\n", error);
-            }
+        async function fetchData() {
+            const kindleData = await prepKindleData(true)
+            setKindleData(kindleData)
         }
-
-        prepKindleData();
+        fetchData();
     }, []);
 
 
@@ -74,22 +71,18 @@ function HomePage({ }) {
                         <h3> Last Read: </h3>
                     </div>
                     <div className="choose-table-buttons">
-                        <h3 onClick={() => { setShowTable("") }}> Books </h3> <h3 onClick={() => setShowTable('words')}> Words </h3>  <h3> Clippings </h3>
+                        <h3 onClick={() => { handleTableClick("books") }}> Books </h3> <h3 onClick={() => handleTableClick("words")}> Words </h3>  <h3> Clippings </h3>
                     </div>
                     <div className="homepage-catalog">
-                        {showTable == 'words'
-                            ? <div>test</div>
-                            : <BooksCatalog
-                                books={books}
-                                onBookClick={handleBookClick}
-                            />
-                        }
+                        {showTable == 'books' && <BooksCatalog books={kindleData} onBookClick={handleBookClick} />}
+                        {showTable == 'words' && <WordsCatalog />}
+
 
                         {showModal && (
-                            <BookInfo
+                            <BookInfoModal
                                 bookAsin={selectedBookAsin}
                                 setShowModal={setShowModal}
-                                thumbnail={thumbnails[selectedBookAsin]}
+                                thumbnail={kindleData.find((dict) => dict.asin == selectedBookAsin)?.thumbnail}
                             />
                         )}
                     </div>
@@ -99,9 +92,9 @@ function HomePage({ }) {
 
 
 
-             
+
             </div>
-            
+
         </div>
     )
 }
