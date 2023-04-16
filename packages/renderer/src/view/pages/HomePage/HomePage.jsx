@@ -3,15 +3,33 @@ import { useState, useEffect } from 'react';
 import BooksCatalog from "../../components/BooksCatalog/BooksCatalog";
 import BookInfoModal from "../../components/BookInfoModal/BookInfoModal";
 import WordsCatalog from "../../components/WordsCatalog/WordsCatalog"
-import { prepKindleData } from '../../../controller/services/kindleServices';
+import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
+import { prepKindleData, prepKindleMetadata } from '../../../controller/services/kindleServices';
 import { getRecentLookups } from '../../../controller/database/lookupController';
 
 function HomePage({ }) {
     const [kindleData, setKindleData] = useState([]);
+    const [kindleMeta, setKindleMeta] = useState();
     const [selectedBookAsin, setSelectedBookAsin] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [showTable, setShowTable] = useState('books');
+    const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState("");
+
+    useEffect(() => {
+        async function fetchData() {
+            const [kindleData, kindleMeta] = await Promise.all([
+                prepKindleData(true),
+                prepKindleMetadata()
+            ]);
+            setKindleData(kindleData);
+            setKindleMeta(kindleMeta);
+            setLoading(false);
+
+        }
+        fetchData();
+    }, []);
+
 
 
     const handleBookClick = (asin) => {
@@ -26,23 +44,16 @@ function HomePage({ }) {
         setShowTable(table)
     };
 
-    useEffect(() => {
-        async function fetchData() {
-            const kindleData = await prepKindleData(true)
-            setKindleData(kindleData)
-        }
-        fetchData();
-    }, []);
-
-
-
+    if (loading) {
+        return <LoadingScreen />;
+    }
     return (
         <div className="home-page">
             <div className="homepage-header">
                 <h3> Your Overview: </h3>
                 <div className="overview-dashboard">
                     <div className="dashboard-value">
-                        <span> 38</span>
+                        <span> {kindleMeta.bookCount}</span>
                         <h2 className="dashboard-razor" />
                         <span className="dashboard-value-title">
                             Books
