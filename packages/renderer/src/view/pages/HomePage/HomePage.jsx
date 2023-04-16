@@ -10,11 +10,14 @@ import { getRecentLookups } from '../../../controller/database/lookupController'
 function HomePage({ }) {
     const [kindleData, setKindleData] = useState([]);
     const [kindleMeta, setKindleMeta] = useState();
+    const [wordsData, setWordsData] = useState();
+
     const [selectedBookAsin, setSelectedBookAsin] = useState(null);
+    const [searchQuery, setSearchQuery] = useState("");
+
     const [showModal, setShowModal] = useState(false);
     const [showTable, setShowTable] = useState('books');
     const [loading, setLoading] = useState(true);
-    const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
         async function fetchData() {
@@ -37,10 +40,9 @@ function HomePage({ }) {
         setShowModal(true);
     };
 
-
     const handleTableClick = async (table) => {
         const lookups = await getRecentLookups()
-        console.log('papi', lookups)
+        setWordsData(lookups)
         setShowTable(table)
     };
 
@@ -50,6 +52,7 @@ function HomePage({ }) {
     return (
         <div className="home-page">
             <div className="homepage-header">
+                {console.log(kindleData)}
                 <h3> Your Overview: </h3>
                 <div className="overview-dashboard">
                     <div className="dashboard-value">
@@ -60,14 +63,14 @@ function HomePage({ }) {
                         </span>
                     </div>
                     <div className="dashboard-value">
-                        <span>552</span>
+                        <span>{kindleMeta.wordCount}</span>
                         <h2 className="dashboard-razor" />
                         <span className="dashboard-value-title">
                             Words
                         </span>
                     </div>
                     <div className="dashboard-value">
-                        <span>38</span>
+                        <span>0</span>
                         <h2 className="dashboard-razor" />
                         <span className="dashboard-value-title">
                             clippings
@@ -86,7 +89,7 @@ function HomePage({ }) {
                     </div>
                     <div className="homepage-catalog">
                         {showTable == 'books' && <BooksCatalog books={kindleData} onBookClick={handleBookClick} />}
-                        {showTable == 'words' && <WordsCatalog />}
+                        {showTable == 'words' && <WordsCatalog words={wordsData} />}
 
 
                         {showModal && (
@@ -98,12 +101,6 @@ function HomePage({ }) {
                         )}
                     </div>
                 </div>
-
-
-
-
-
-
             </div>
 
         </div>

@@ -53,7 +53,7 @@ function LibraryPage({ profile }) {
         <BookInfoModal
           bookAsin={selectedBookAsin}
           setShowModal={setShowModal}
-          thumbnail={null}
+          thumbnail={kindleData.find((dict) => dict.asin == selectedBookAsin)?.thumbnail}
         />
       )}
     </div>

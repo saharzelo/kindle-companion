@@ -1,17 +1,18 @@
 import WordCatalogItem from "../WordCatalogItem/WordCatalogItem";
 import "./WordsCatalog.css"
-function WordsCatalog({ words, onBookClick }) {
+function WordsCatalog({ words, onWordClick }) {
 
-    // const wordsCatalog = words.map(({word, asin }, index) => (
-    //     <WordCatalogItem
-    //         word={word}
-    //     />
-    // ));
+    const wordsCatalog = words.map(({word, asin }, index) => (
+        <WordCatalogItem
+            key={index}
+            word={word}
+        />
+    ));
+    console.log('dad', wordsCatalog)
 
     return (
-        <div className="books-catalog-container">
-            {/* {wordsCatalog} */}
-            testddada
+        <div className="words-catalog-container">
+            {wordsCatalog}
         </div>
     );
 }
