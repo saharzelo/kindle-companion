@@ -2,11 +2,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 15px;
+  gap: 10px;
   margin:0;
   box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
   height: 10%;
-  padding: 25px 0 25px 15px;
+  padding: 4vh 0 4vh 15px;
   text-shadow: 3px 4px 5px  rgba(90, 90, 90, 0.281);
 
 }

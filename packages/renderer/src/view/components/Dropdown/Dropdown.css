@@ -4,10 +4,10 @@
   }
   
   .dropdown-toggle {
-    background-color: #fff;
+    background-color: #F6F6F6;
     color: #333;
     border: 1px solid #ccc;
-    padding: 7px 25px;
+    padding: 6px 15px;
     font-size: 1.05rem;
     cursor: pointer;
     border-radius: 9px;

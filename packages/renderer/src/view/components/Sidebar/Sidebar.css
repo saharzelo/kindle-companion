@@ -1,14 +1,14 @@
 .sidebar {
     width: 5vw;
     height: 100vh;
-    border-right: 1.8px solid #c4c4c4;
+    border-right: 1.5px solid #bbbbbb;
     outline: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 1;
-    background-color: #ededed;
+    background-color: #D8D8D8;
 }
 
 .button-group svg {
@@ -22,19 +22,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10vh;
+    height: 13vh;
     width: 100%;
     font-size: 0.8rem;
 }
 
 .button-group:hover {
-    font-size: 0.9rem;
+    font-size: 1rem;
     cursor: pointer;
     background-color: #cacad3;
 }
 
 .button-group:hover svg {
-    width: 27px;
+    width: 28px;
 }
 
 

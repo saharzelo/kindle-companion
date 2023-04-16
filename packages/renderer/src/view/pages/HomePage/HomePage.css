@@ -3,13 +3,14 @@
   width: 100%;
   position: relative;
   box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
+  overflow: scroll;
 }
 
 
 .home-page h3 {
   font-weight: 300;
   font-size: 1.7rem;
-  text-shadow: 3px 4px 5px  rgba(90, 90, 90, 0.281);
+  text-shadow: 3px 4px 5px rgba(90, 90, 90, 0.281);
   margin: 0;
   margin-bottom: 0;
 }
@@ -17,6 +18,7 @@
 
 .homepage-catalog {
   height: 100%;
+
 }
 
 .homepage-header {
@@ -24,10 +26,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin:0;
+  margin: 0;
   box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
   height: 10%;
-  padding: 25px 0 25px 15px;
+  padding: 4vh 0 4vh 17px;
 }
 
 
@@ -66,7 +68,7 @@
   text-align: center;
   flex-direction: column;
   gap: 0.5vh;
-  text-shadow: 3px 4px 5px  rgba(90, 90, 90, 0.281);
+  text-shadow: 3px 4px 5px rgba(90, 90, 90, 0.281);
 }
 
 .dashboard-razor {
@@ -79,32 +81,31 @@
 .previous-session-header {
   display: flex;
   justify-content: left;
-  align-items: left;
   text-align: left;
-  
+  margin: 0;
 }
 
 .previous-session {
   display: flex;
   flex-direction: column;
   justify-content: left;
+  gap: 5px;
   height: 100%;
   width: 100%;
-  
+
 }
 
 .previous-session-header h3 {
   font-size: 1.5rem;
-  padding: 25px 0 10px 15px;
-
+  padding: 20px 0 0 17px;
 }
 
 .choose-table-buttons {
   display: flex;
   justify-content: space-evenly;
-  padding: 10px;
   gap: 10%;
   font-size: 0.9rem;
+  padding-bottom: 13px;
 }
 
 .choose-table-buttons h3 {
