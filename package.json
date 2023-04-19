@@ -2,14 +2,17 @@
   "name": "kindle-companion",
   "description": "",
   "private": true,
-  "author": "",
+  "author": {
+		"name": "Sahar Zelonagora",
+		"email": "saharzelonagora@gmail.com"
+	},
   "version": "1.0.0",
   "main": "packages/main/dist/index.cjs",
   "build": {
     "appId": "io.sahar10501.github.kindle-companion",
     "extends": null,
     "linux": {
-      "synopsis": "test",
+      "synopsis": "Kindle Clippings and vocabulary Manager",
       "icon": "",
       "category": "Development",
       "target": [
@@ -26,8 +29,7 @@
     "compileAll": "cross-env MODE=production npm run build && electron-builder -mw --config .electron-builder.config.js --dir --config.asar=false",
     "compile": "cross-env MODE=production npm run build && electron-builder build --publish=never",
     "watch": "node scripts/watch.mjs",
-    "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs",
-    "format": "npx prettier --write \"**/*.{js,mjs,cjs,ts,mts,cts,vue,json}\""
+    "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs"
   },
   "devDependencies": {
     "cross-env": "7.0.3",
