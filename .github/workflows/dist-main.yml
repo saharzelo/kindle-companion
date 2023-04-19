@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 16 # Need for npm >=7.8
           cache: 'npm'
-
+      - run: npm install --package-lock-only
       - run: npm ci
 
       - run: npm version --no-git-tag-version patch
@@ -59,6 +59,7 @@ jobs:
           with:
             node-version: '16'
         - run: npm version --no-git-tag-version patch
+        - run: npm install --package-lock-only
         - run: npm ci
         - run: npm run compile
         - run: |
@@ -104,6 +105,7 @@ jobs:
         with:
           node-version: '16'
       - run: npm version --no-git-tag-version patch
+      - run: npm install --package-lock-only
       - run: npm ci
       - run: npm run compile
       - run: mv ./dist/TestingApp*.exe ./dist/TestingApp.exe
@@ -133,6 +135,7 @@ jobs:
         with:
           node-version: '16'
       - run: npm version --no-git-tag-version patch
+      - run: npm install --package-lock-only
       - run: npm ci
       - run: npm run compile
 
