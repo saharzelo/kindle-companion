@@ -1,8 +1,8 @@
 import { getConnection } from '../createConnection'
 
 
-function getAllBooks() {
-  const con = getConnection();
+async function getAllBooks() {
+  const con = await getConnection();
   const query = 'SELECT title, asin FROM BOOK_INFO';
   return new Promise((resolve, reject) => {
     con.all(query, [], (err, rows) => {
@@ -16,8 +16,8 @@ function getAllBooks() {
 }
 
 
-function getBookByAsin(asin) {
-  const con = getConnection();
+async function getBookByAsin(asin) {
+  const con = await getConnection();
   const query = `
     SELECT
       b.title as title,
@@ -47,8 +47,8 @@ function getBookByAsin(asin) {
   });
 }
 
-function getBooksByDate(date) {
-  const con = getConnection();
+async function getBooksByDate(date) {
+  const con = await getConnection();
   const query = `
   SELECT 
     DISTINCT title, asin
@@ -72,8 +72,8 @@ function getBooksByDate(date) {
   });
 }
 
-function getBookCount() {
-  const con = getConnection();
+async function getBookCount() {
+  const con = await getConnection();
   const query = "SELECT COUNT(*) as bookCount FROM BOOK_INFO";
   return new Promise((resolve, reject) => {
     con.get(query, [], (err, rows) => {
