@@ -1,0 +1,174 @@
+on:
+  push:
+    branches:
+      - main
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    outputs:
+      package_version: ${{ steps.package-version.outputs.current-version }}
+      release_upload_url: ${{ steps.create_release.outputs.upload_url }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16 # Need for npm >=7.8
+          cache: 'npm'
+
+      - run: npm ci
+
+      - run: npm version --no-git-tag-version patch
+      - id: package-version
+        uses: martinbeentjes/npm-get-version-action@master
+        with:
+          path: '.'
+      - uses: dev-drprasad/delete-tag-and-release@v0.2.1
+        with:
+          delete_release: true
+          tag_name: '${{ steps.package-version.outputs.current-version }}'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/create-release@v1
+        id: create_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.package-version.outputs.current-version }}
+          release_name: ${{ steps.package-version.outputs.current-version }}
+          body: |
+            ${{ github.event.inputs.message }}
+          draft: false
+          prerelease: false
+
+
+  build_linux:
+      needs: [create_release]
+      runs-on: ubuntu-latest
+      timeout-minutes: 45
+      steps:
+        - name: install missing dependencies
+          run: sudo apt-get install -y libarchive-tools
+        - uses: actions/checkout@v3
+        - uses: actions/setup-node@v3
+          with:
+            node-version: '16'
+        - run: npm version --no-git-tag-version patch
+        - run: npm ci
+        - run: npm run compile
+        - run: |
+            mv ./dist/TestingApp*.deb ./dist/TestingApp.deb
+            mv ./dist/TestingApp*.snap ./dist/TestingApp.snap
+        - name: Upload artifact .deb
+          uses: actions/upload-artifact@v3
+          with:
+            name: TestingApp.deb
+            path: ./dist/TestingApp.deb
+        - name: Upload artifact .snap
+          uses: actions/upload-artifact@v3
+          with:
+            name: TestingApp.snap
+            path: ./dist/TestingApp.snap
+        - name: Upload release binary deb
+          uses: actions/upload-release-asset@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            upload_url: ${{ needs.create_release.outputs.release_upload_url }}
+            asset_path: ./dist/TestingApp.deb
+            asset_name: TestingApp-${{ needs.create_release.outputs.package_version }}.deb
+            asset_content_type: application/octet-stream
+        - name: Upload release binary snap
+          uses: actions/upload-release-asset@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            upload_url: ${{ needs.create_release.outputs.release_upload_url }}
+            asset_path: ./dist/TestingApp.snap
+            asset_name: TestingApp-${{ needs.create_release.outputs.package_version }}.snap
+            asset_content_type: application/octet-stream
+
+
+  build_windows:
+    needs: [create_release]
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: npm version --no-git-tag-version patch
+      - run: npm ci
+      - run: npm run compile
+      - run: mv ./dist/TestingApp*.exe ./dist/TestingApp.exe
+      - name: Upload release binary .exe
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create_release.outputs.release_upload_url }}
+          asset_path: ./dist/TestingApp.exe
+          asset_name: TestingApp-${{ needs.create_release.outputs.package_version }}.exe
+          asset_content_type: application/octet-stream
+      - name: Upload artifact .exe
+        uses: actions/upload-artifact@v3
+        with:
+          name: TestingApp.exe
+          path: ./dist/TestingApp.exe
+
+ 
+  build_macos:
+    needs: [create_release]
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: npm version --no-git-tag-version patch
+      - run: npm ci
+      - run: npm run compile
+
+      - run: mv ./dist/TestingApp*.dmg ./dist/TestingApp.dmg
+
+      - name: Upload release binary
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create_release.outputs.release_upload_url }}
+          asset_path: ./dist/TestingApp.dmg
+          asset_name: TestingApp-${{ needs.create_release.outputs.package_version }}.dmg
+          asset_content_type: application/octet-stream
+
+      - name: Upload artifact .dmg
+        uses: actions/upload-artifact@v3
+        with:
+          name: TestingApp.dmg
+          path: ./dist/TestingApp.dmg
+
+
+
+
+  publish:
+    needs: [create_release, build_windows, build_macos, build_linux]
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: npm version --no-git-tag-version patch
+      - run: |
+          echo "{ \"version\": \"${{ needs.create_release.outputs.package_version }}\" }" > release.json
+      - uses: EndBug/add-and-commit@v8
+        with:
+          message: 'CI / CD - New Release ${{needs.create_release.outputs.package_version}} [skip ci]'
