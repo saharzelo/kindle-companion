@@ -2,7 +2,6 @@ node_modules
 .DS_Store
 dist
 *.local
-package-lock.json
 .browserslistrc
 .electron-vendors.cache.json
 .idea/
