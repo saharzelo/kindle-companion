@@ -19,10 +19,10 @@ export async function getConnection(dbFilePath) {
   const config = await getConfig()
   if (!dbFilePath) {
     dbFilePath = config.tmpDir
-  }
+  };
   if (!connection || connection.filename !== dbFilePath) {
     createConnection(dbFilePath);
-  }
+  };
   connection.on('trace', (query) => {
     console.log(`Executing query: ${query}`);
   });

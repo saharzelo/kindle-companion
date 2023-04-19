@@ -17,11 +17,6 @@ const config = {
 			'/@/': join(PACKAGE_ROOT, 'src') + '/',
 		},
 	},
-	define: {
-		'process.env': {
-			TMP_DIR: path.join(os.tmpdir(), 'kindle-companion'),
-		},
-	},
 	build: {
 		ssr: true,
 		sourcemap: 'inline',
