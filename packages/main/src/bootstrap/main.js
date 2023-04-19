@@ -42,8 +42,8 @@ if (import.meta.env.PROD) {
 		.then(({ autoUpdater }) => autoUpdater.checkForUpdatesAndNotify())
 		.catch((e) => console.error('Failed check updates:', e));
 }
-
-const appTmpDir = process.env.TMP_DIR
+const tmpDir = app.getPath('temp')
+const appTmpDir = path.join(tmpDir, 'kindle-companion')
 
 app.on('ready', () => {
 	if (!fs.existsSync(appTmpDir)) {
@@ -72,3 +72,5 @@ function emptyDirSync(dir) {
 	  });
 	}
   }
+
+ 
