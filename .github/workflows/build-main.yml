@@ -17,7 +17,7 @@ jobs:
           node-version: '14'
           cache: 'npm'
       - run: npm version --no-git-tag-version patch
-      - run: npm install --network-timeout 1000000 --frozen-lockfile
+      - run: npm install
       - run: npm ci
       - run: npm run compile
       - run: mv ./dist/Kindle-Companion*.exe ./dist/Kindle-Companion.exe
@@ -37,7 +37,7 @@ jobs:
           node-version: '14'
           cache: 'npm'
       - run: npm version --no-git-tag-version patch
-      - run: npm install --network-timeout 1000000 --frozen-lockfile
+      - run: npm install
       - run: npm ci
       - run: npm run compile
       - run: mv ./dist/Kindle-Companion*.dmg ./dist/Kindle-Companion.dmg
@@ -59,7 +59,7 @@ jobs:
           node-version: '14'
           cache: 'npm'
       - run: npm version --no-git-tag-version patch
-      - run: npm install --network-timeout 1000000 --frozen-lockfile
+      - run: npm install
       - run: npm ci
       - run: npm run compile
       - run: |
