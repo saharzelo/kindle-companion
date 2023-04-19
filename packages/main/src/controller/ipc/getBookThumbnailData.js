@@ -1,13 +1,13 @@
 const { ipcMain } = require('electron');
-const fs = require('fs');
-const path = require("path");
-
+import path from 'path';
+import fs from 'fs';
+import defaultConfig from '../../config';
 ipcMain.handle("getBookThumbnailData", (event, bookAsinArray) => {
   return new Promise(async (resolve, reject) => {
     try {
       const base64Map = {};
       await Promise.all(bookAsinArray.map(async (book) => {
-        const userTmp = process.env.TMP_DIR;
+        const userTmp = defaultConfig.tmpDir;
         const jpgPath = path.join(userTmp, 'thumbnails', `${book}.jpg`);
         if (fs.existsSync(jpgPath)) {
           const base64 = fs.readFileSync(jpgPath).toString('base64');

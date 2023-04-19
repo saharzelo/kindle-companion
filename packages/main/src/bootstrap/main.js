@@ -1,9 +1,8 @@
 import { app } from 'electron';
 import './security-restrictions';
 import { restoreOrCreateWindow } from './mainWindow';
-
+import defaultConfig from '../config';
 const path = require('path')
-const os = require('os')
 const fs = require('fs')
 /**
  * Prevent electron from running multiple instances.
@@ -42,9 +41,7 @@ if (import.meta.env.PROD) {
 		.then(({ autoUpdater }) => autoUpdater.checkForUpdatesAndNotify())
 		.catch((e) => console.error('Failed check updates:', e));
 }
-const tmpDir = app.getPath('temp')
-const appTmpDir = path.join(tmpDir, 'kindle-companion')
-
+const appTmpDir = defaultConfig.tmpDir;
 app.on('ready', () => {
 	if (!fs.existsSync(appTmpDir)) {
 		fs.mkdirSync(appTmpDir);

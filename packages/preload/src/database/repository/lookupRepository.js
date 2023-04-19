@@ -17,8 +17,8 @@ import { getConnection } from '../createConnection'
 // }
 
 
-function getLookupsByAsin(asin) {
-    const con = getConnection();
+async function getLookupsByAsin(asin) {
+    const con = await getConnection();
     const query = `
         SELECT w.word, l.usage, strftime('%m/%d/%Y %H:%M:%S', datetime(l.timestamp / 1000, 'unixepoch')) as timestamp_formatted, w.stem
         FROM BOOK_INFO b
@@ -40,8 +40,8 @@ function getLookupsByAsin(asin) {
 
 
 
-function getLookupsByDate(date) {
-    const con = getConnection();
+async function getLookupsByDate(date) {
+    const con = await getConnection();
     const query = `
         SELECT b.title, w.word, l.usage, strftime('%m/%d/%Y %H:%M:%S', datetime(l.timestamp / 1000, 'unixepoch')) as timestamp_formatted, w.stem, b.asin
         FROM BOOK_INFO b
@@ -60,8 +60,8 @@ function getLookupsByDate(date) {
 }
 
 
-function GetLatestLookupDate() {
-    const con = getConnection();
+async function GetLatestLookupDate() {
+    const con = await getConnection();
     const query = `
         SELECT 
             date(MAX(timestamp) / 1000, 'unixepoch') AS latest_date 
