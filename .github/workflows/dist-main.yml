@@ -20,9 +20,7 @@ jobs:
         with:
           node-version: 16 # Need for npm >=7.8
           cache: 'npm'
-
       - run: npm ci
-
       - run: npm version --no-git-tag-version patch
       - id: package-version
         uses: martinbeentjes/npm-get-version-action@master
@@ -62,26 +60,26 @@ jobs:
         - run: npm ci
         - run: npm run compile
         - run: |
-            mv ./dist/TestingApp*.deb ./dist/TestingApp.deb
-            mv ./dist/TestingApp*.snap ./dist/TestingApp.snap
+            mv ./dist/Kindle-Companion*.deb ./dist/Kindle-Companion.deb
+            mv ./dist/Kindle-Companion*.snap ./dist/Kindle-Companion.snap
         - name: Upload artifact .deb
           uses: actions/upload-artifact@v3
           with:
-            name: TestingApp.deb
-            path: ./dist/TestingApp.deb
+            name: Kindle-Companion.deb
+            path: ./dist/Kindle-Companion.deb
         - name: Upload artifact .snap
           uses: actions/upload-artifact@v3
           with:
-            name: TestingApp.snap
-            path: ./dist/TestingApp.snap
+            name: Kindle-Companion.snap
+            path: ./dist/Kindle-Companion.snap
         - name: Upload release binary deb
           uses: actions/upload-release-asset@v1
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
             upload_url: ${{ needs.create_release.outputs.release_upload_url }}
-            asset_path: ./dist/TestingApp.deb
-            asset_name: TestingApp-${{ needs.create_release.outputs.package_version }}.deb
+            asset_path: ./dist/Kindle-Companion.deb
+            asset_name: Kindle-Companion-${{ needs.create_release.outputs.package_version }}.deb
             asset_content_type: application/octet-stream
         - name: Upload release binary snap
           uses: actions/upload-release-asset@v1
@@ -89,8 +87,8 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
             upload_url: ${{ needs.create_release.outputs.release_upload_url }}
-            asset_path: ./dist/TestingApp.snap
-            asset_name: TestingApp-${{ needs.create_release.outputs.package_version }}.snap
+            asset_path: ./dist/Kindle-Companion.snap
+            asset_name: Kindle-Companion-${{ needs.create_release.outputs.package_version }}.snap
             asset_content_type: application/octet-stream
 
 
@@ -106,21 +104,21 @@ jobs:
       - run: npm version --no-git-tag-version patch
       - run: npm ci
       - run: npm run compile
-      - run: mv ./dist/TestingApp*.exe ./dist/TestingApp.exe
+      - run: mv ./dist/Kindle-Companion*.exe ./dist/Kindle-Companion.exe
       - name: Upload release binary .exe
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.release_upload_url }}
-          asset_path: ./dist/TestingApp.exe
-          asset_name: TestingApp-${{ needs.create_release.outputs.package_version }}.exe
+          asset_path: ./dist/Kindle-Companion.exe
+          asset_name: Kindle-Companion-${{ needs.create_release.outputs.package_version }}.exe
           asset_content_type: application/octet-stream
       - name: Upload artifact .exe
         uses: actions/upload-artifact@v3
         with:
-          name: TestingApp.exe
-          path: ./dist/TestingApp.exe
+          name: Kindle-Companion.exe
+          path: ./dist/Kindle-Companion.exe
 
  
   build_macos:
@@ -136,7 +134,7 @@ jobs:
       - run: npm ci
       - run: npm run compile
 
-      - run: mv ./dist/TestingApp*.dmg ./dist/TestingApp.dmg
+      - run: mv ./dist/Kindle-Companion*.dmg ./dist/Kindle-Companion.dmg
 
       - name: Upload release binary
         uses: actions/upload-release-asset@v1
@@ -144,15 +142,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.release_upload_url }}
-          asset_path: ./dist/TestingApp.dmg
-          asset_name: TestingApp-${{ needs.create_release.outputs.package_version }}.dmg
+          asset_path: ./dist/Kindle-Companion.dmg
+          asset_name: Kindle-Companion-${{ needs.create_release.outputs.package_version }}.dmg
           asset_content_type: application/octet-stream
 
       - name: Upload artifact .dmg
         uses: actions/upload-artifact@v3
         with:
-          name: TestingApp.dmg
-          path: ./dist/TestingApp.dmg
+          name: Kindle-Companion.dmg
+          path: ./dist/Kindle-Companion.dmg
 
 
 
