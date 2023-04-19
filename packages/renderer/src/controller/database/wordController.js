@@ -1,6 +1,6 @@
 import { wordRepo } from "#preload"
 
-export async function getWordsCount() {
+export async function getWordCount() {
     try {
         const wordCount = await wordRepo.getWordCount()
         return wordCount

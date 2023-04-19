@@ -73,7 +73,7 @@ function HomePage({ }) {
                         <span>0</span>
                         <h2 className="dashboard-razor" />
                         <span className="dashboard-value-title">
-                            clippings
+                            Clippings
                         </span>
                     </div>
                 </div>
