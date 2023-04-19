@@ -47,7 +47,7 @@ function LoginPage({ setProfile }) {
                     </div>
                     <div className="body">
                         <a href=''> Device Status: OK</a>
-                        <a id='create-account' href=''> Source Code </a>
+                        <a id='create-account' href='https://github.com/sahar10501/kindle-companion'> Source Code </a>
                     </div>
                 </div>
             </div>
