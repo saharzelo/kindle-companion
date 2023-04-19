@@ -6,119 +6,72 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-
 jobs:
-  create_release:
-    runs-on: ubuntu-latest
-    timeout-minutes: 4
-    outputs:
-      package_version: ${{ steps.package-version.outputs.current-version }}
-      release_upload_url: ${{ steps.create_release.outputs.upload_url }}
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16 # Need for npm >=7.8
-          cache: 'npm'
-      - run: npm ci
-      - run: npm version --no-git-tag-version patch
-      - id: package-version
-        uses: martinbeentjes/npm-get-version-action@master
-        with:
-          path: '.'
-      - uses: dev-drprasad/delete-tag-and-release@v0.2.1
-        with:
-          delete_release: true
-          tag_name: '${{ steps.package-version.outputs.current-version }}'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/create-release@v1
-        id: create_release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.package-version.outputs.current-version }}
-          release_name: ${{ steps.package-version.outputs.current-version }}
-          body: |
-            ${{ github.event.inputs.message }}
-          draft: false
-          prerelease: false
-
-
-  build_linux:
-      needs: [create_release]
-      runs-on: ubuntu-latest
-      timeout-minutes: 45
-      steps:
-        - name: install missing dependencies
-          run: sudo apt-get install -y libarchive-tools
-        - uses: actions/checkout@v3
-        - uses: actions/setup-node@v3
-          with:
-            node-version: '16'
-        - run: npm version --no-git-tag-version patch
-        - run: npm ci
-        - run: npm run compile
-        - run: |
-            mv ./dist/Kindle-Companion*.deb ./dist/Kindle-Companion.deb
-            mv ./dist/Kindle-Companion*.snap ./dist/Kindle-Companion.snap
-        - name: Upload artifact .deb
-          uses: actions/upload-artifact@v3
-          with:
-            name: Kindle-Companion.deb
-            path: ./dist/Kindle-Companion.deb
-        - name: Upload artifact .snap
-          uses: actions/upload-artifact@v3
-          with:
-            name: Kindle-Companion.snap
-            path: ./dist/Kindle-Companion.snap
-        - name: Upload release binary deb
-          uses: actions/upload-release-asset@v1
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            upload_url: ${{ needs.create_release.outputs.release_upload_url }}
-            asset_path: ./dist/Kindle-Companion.deb
-            asset_name: Kindle-Companion-${{ needs.create_release.outputs.package_version }}.deb
-            asset_content_type: application/octet-stream
-        - name: Upload release binary snap
-          uses: actions/upload-release-asset@v1
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            upload_url: ${{ needs.create_release.outputs.release_upload_url }}
-            asset_path: ./dist/Kindle-Companion.snap
-            asset_name: Kindle-Companion-${{ needs.create_release.outputs.package_version }}.snap
-            asset_content_type: application/octet-stream
-
-
   build_windows:
-    needs: [create_release]
     runs-on: windows-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '14'
+          cache: 'npm'
       - run: npm version --no-git-tag-version patch
+      - run: npm install --network-timeout 1000000 --frozen-lockfile
       - run: npm ci
       - run: npm run compile
       - run: mv ./dist/Kindle-Companion*.exe ./dist/Kindle-Companion.exe
-      - name: Upload release binary .exe
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ needs.create_release.outputs.release_upload_url }}
-          asset_path: ./dist/Kindle-Companion.exe
-          asset_name: Kindle-Companion-${{ needs.create_release.outputs.package_version }}.exe
-          asset_content_type: application/octet-stream
       - name: Upload artifact .exe
         uses: actions/upload-artifact@v3
         with:
           name: Kindle-Companion.exe
           path: ./dist/Kindle-Companion.exe
 
- 
+  build_macos:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+          cache: 'npm'
+      - run: npm version --no-git-tag-version patch
+      - run: npm install --network-timeout 1000000 --frozen-lockfile
+      - run: npm ci
+      - run: npm run compile
+      - run: mv ./dist/Kindle-Companion*.dmg ./dist/Kindle-Companion.dmg
+      - name: Upload artifact .dmg
+        uses: actions/upload-artifact@v3
+        with:
+          name: Kindle-Companion.dmg
+          path: ./dist/Kindle-Companion.dmg
+
+  build_linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: install missing dependencies
+        run: sudo apt-get install -y libarchive-tools
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+          cache: 'npm'
+      - run: npm version --no-git-tag-version patch
+      - run: npm install --network-timeout 1000000 --frozen-lockfile
+      - run: npm ci
+      - run: npm run compile
+      - run: |
+          mv ./dist/Kindle-Companion*.deb ./dist/Kindle-Companion.deb
+          mv ./dist/Kindle-Companion*.snap ./dist/Kindle-Companion.snap
+      - name: Upload artifact .deb
+        uses: actions/upload-artifact@v3
+        with:
+          name: Kindle-Companion.deb
+          path: ./dist/Kindle-Companion.deb
+      - name: Upload artifact .snap
+        uses: actions/upload-artifact@v3
+        with:
+          name: Kindle-Companion.snap
+          path: ./dist/Kindle-Companion.snap
