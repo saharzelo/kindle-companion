@@ -3,10 +3,10 @@
   "description": "",
   "private": true,
   "author": {
-		"name": "Sahar Zelonagora",
-		"email": "saharzelonagora@gmail.com"
-	},
-  "version": "1.0.0",
+    "name": "Sahar Zelonagora",
+    "email": "saharzelonagora@gmail.com"
+  },
+  "version": "1.0.1",
   "main": "packages/main/dist/index.cjs",
   "build": {
     "appId": "io.sahar10501.github.kindle-companion",
