@@ -20,9 +20,7 @@ jobs:
         with:
           node-version: 16 # Need for npm >=7.8
           cache: 'npm'
-      - run: npm install --package-lock-only
-      - run: npm ci
-
+      - run: npm install
       - run: npm version --no-git-tag-version patch
       - id: package-version
         uses: martinbeentjes/npm-get-version-action@master
@@ -59,8 +57,7 @@ jobs:
           with:
             node-version: '16'
         - run: npm version --no-git-tag-version patch
-        - run: npm install --package-lock-only
-        - run: npm ci
+        - run: npm install
         - run: npm run compile
         - run: |
             mv ./dist/TestingApp*.deb ./dist/TestingApp.deb
@@ -105,8 +102,7 @@ jobs:
         with:
           node-version: '16'
       - run: npm version --no-git-tag-version patch
-      - run: npm install --package-lock-only
-      - run: npm ci
+      - run: npm install
       - run: npm run compile
       - run: mv ./dist/TestingApp*.exe ./dist/TestingApp.exe
       - name: Upload release binary .exe
@@ -135,8 +131,7 @@ jobs:
         with:
           node-version: '16'
       - run: npm version --no-git-tag-version patch
-      - run: npm install --package-lock-only
-      - run: npm ci
+      - run: npm install
       - run: npm run compile
 
       - run: mv ./dist/TestingApp*.dmg ./dist/TestingApp.dmg
