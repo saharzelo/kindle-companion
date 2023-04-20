@@ -4,7 +4,6 @@
 
 This electron app enables readers to easily access and manage vocabulary lookups and clippings on their Amazon Kindle device. With modern and user-friendly interface, readers can effortlessly expand their vocabulary and improve their language learning.
 
----
 
 
 <table>
@@ -18,7 +17,6 @@ This electron app enables readers to easily access and manage vocabulary lookups
   </tr>
 </table>
 
----
 <br>
 
 ## Features
