@@ -4,12 +4,29 @@
 
 This electron app enables readers to easily access and manage vocabulary lookups and clippings on their Amazon Kindle device. With modern and user-friendly interface, readers can effortlessly expand their vocabulary and improve their language learning.
 
+---
+
+
+<table>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/88053021/233426621-159d40e7-1dd6-4fae-998c-326dbbe6799a.png" width="100%"/></td>
+    <td><img src="https://user-images.githubusercontent.com/88053021/233426627-efaa1c17-56e3-4d71-a38e-48ffbfb1f149.png" width="100%"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/88053021/233426605-8bb2bdb2-d22f-4063-9911-dc0dd7ba3f7a.png" width="100%"/></td>
+    <td><img src="https://user-images.githubusercontent.com/88053021/233426616-6d848172-90b2-4dfe-9a1a-dcdfebadc2f9.png" width="100%"/></td>
+  </tr>
+</table>
+
+---
+<br>
+
 ## Features
 
 * Cross-platform compatibility
-* Access to vocabulary lookups and clippings
+* Access to vocabulary lookups and clippings(wip)
 * View saved words across all Kindle books
-* Personalized blocked word lists
+* Personalized blocked word lists(wip)
 * Saved profiles (work in progress) for easy device connection
 * Custom dictionary lookup (work in progress) with offline and online support
 * Export to popular word decks and CSV files (work in progress)
@@ -37,4 +54,4 @@ Contributions are always welcome! Feel free to fork the project, make changes, a
 
 ## Support
 
-If users encounter any issues with the app, they can submit an issue on the GitHub repository.
+If you encounter any issues with the app, please submit an issue on the GitHub repository.
