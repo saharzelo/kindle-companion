@@ -1,10 +1,10 @@
 [![.github/workflows/build-main.yml](https://github.com/sahar10501/kindle-companion/actions/workflows/build-main.yml/badge.svg)](https://github.com/sahar10501/kindle-companion/actions/workflows/build-main.yml)
 
-# Kindle Vocabulary Electron App
+# Kindle Companion
 
-This electron app enables readers to easily access and manage vocabulary lookups and clippings on their Amazon Kindle device. With modern and user-friendly interface, readers can effortlessly expand their vocabulary and improve their language learning.
+This app, built with Electron and React, allows readers to effortlessly access and manage vocabulary lookups and clippings on their Amazon Kindle device. With its modern and user-friendly interface, readers can easily expand their vocabulary and enhance their language learning experience.
 
-
+<br>
 
 <table>
   <tr>
@@ -16,8 +16,6 @@ This electron app enables readers to easily access and manage vocabulary lookups
     <td><img src="https://user-images.githubusercontent.com/88053021/233426616-6d848172-90b2-4dfe-9a1a-dcdfebadc2f9.png" width="100%"/></td>
   </tr>
 </table>
-
-<br>
 
 ## Features
 
