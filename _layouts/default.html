@@ -26,16 +26,16 @@
         <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
         {% endif %}
         <a id='download-link-mac'
-            href="https://github.com/sahar10501/kindle-companion/releases/download/APP_VERSION/Kindle-Companion-APP_VERSION.dmg"
+            href="https://github.com/saharzelo/kindle-companion/releases/download/APP_VERSION/Kindle-Companion-APP_VERSION.dmg"
             class="btn appVersion"> Mac (.dmg)</a>
         <a id='download-link-windows'
-            href="https://github.com/sahar10501/kindle-companion/releases/download/APP_VERSION/Kindle-Companion-APP_VERSION.exe"
+            href="https://github.com/saharzelo/kindle-companion/releases/download/APP_VERSION/Kindle-Companion-APP_VERSION.exe"
             class="btn appVersion">Windows (.exe)</a>
         <a id='download-link-ubuntu'
-            href="https://github.com/sahar10501/kindle-companion/releases/download/APP_VERSION/Kindle-Companion-APP_VERSION.deb"
+            href="https://github.com/saharzelo/kindle-companion/releases/download/APP_VERSION/Kindle-Companion-APP_VERSION.deb"
             class="btn appVersion"></i> Ubuntu / Debian
-            (.deb .snap)</a>
-        <a href="https://github.com/sahar10501/kindle-companion/releases/tag/APP_VERSION" class="btn appVersion">Other
+            (.snap .deb)</a>
+        <a href="https://github.com/saharzelo/kindle-companion/releases/tag/APP_VERSION" class="btn appVersion">Other
             Releases</a>
     </header>
 
@@ -51,7 +51,7 @@
         </footer>
     </main>
     <script>
-        fetch(`https://sahar10501.github.io/kindle-companion/release.json`).then(r => r.json()).then(r => r.version).then(version => {
+        fetch(`https://saharzelo.github.io/kindle-companion/release.json`).then(r => r.json()).then(r => r.version).then(version => {
             for (const item of document.querySelectorAll('.appVersion')) {
                 if (item.href) {
                     item.href = item.href.replace(/APP_VERSION/g, version)
@@ -66,7 +66,7 @@
                 if (innerText.includes('%')) {
                     if (innerText.includes('download-link-mac')) {
                         const link = document.querySelector('#download-link-mac').href;
-                        li.innerHTML = `<a href="${link}">Download Kindle-Companionfor Mac (.dmg)</a>`
+                        li.innerHTML = `<a href="${link}">Download Kindle-Companion for Mac (.dmg)</a>`
                     }
                     if (innerText.includes('download-link-windows')) {
                         const link = document.querySelector('#download-link-windows').href;
@@ -74,7 +74,7 @@
                     }
                     if (innerText.includes('download-link-ubuntu')) {
                         const link = document.querySelector('#download-link-ubuntu').href;
-                        li.innerHTML = `<a href="${link}">Download Kindle-Companion for Ubuntu / Debian (.deb .snap)</a>`
+                        li.innerHTML = `<a href="${link}">Download Kindle-Companion for Ubuntu / Debian (.snap .deb)</a>`
                     }
                 }
             }
