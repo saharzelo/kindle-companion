@@ -12,4 +12,6 @@ export function getConfig() {
     return defaultConfig;
 }
 
+export function setConfig() {}
+
 export default defaultConfig;
