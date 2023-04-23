@@ -86,7 +86,7 @@
 
 .word-modal-body .word-table {
     align-items: left;
-    padding: 0 10px 0 10px;
+    padding: 0 10px 10px 10px;
 }
 
 .word-modal-body .body h4 {

@@ -1,10 +1,10 @@
-import { wordRepo } from "#preload"
+import { wordRepo, bookRepo } from "#preload";
 
-export async function getWordCount() {
+
+
+export async function getBookTitlesByWord(word) {
     try {
-        const wordCount = await wordRepo.getWordCount()
-        return wordCount
-    } catch (error) {
-        console.error(error)
-    }
+        const wordData = await wordRepo.getWordUsageByWord(word)
+        return wordData;
+    } catch (error) {}
 }

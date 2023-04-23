@@ -1,22 +1,15 @@
-import { getConnection } from "../createConnection";
+import { runQuery } from "../createConnection";
 
-async function getWordCount() {
-    const con = await getConnection();
-    const query = "SELECT COUNT(*) as wordCount FROM WORDS";
-    return await runQuery(query, [], "get");
-}
-
-async function getBookIdsByWord(word) {
-    const con = await getConnection();
+async function getWordUsageByWord(word) {
     const query = `
-      SELECT DISTINCT lookups.book_key, lookups.usage 
-      FROM words 
-      JOIN lookups ON words.id = lookups.word_key 
-      WHERE words.word = ?
+    SELECT b.title, l.usage, strftime('%m/%d/%Y %H:%M:%S', datetime(l.timestamp / 1000, 'unixepoch'))
+    FROM WORDS w
+    JOIN LOOKUPS l ON w.id = l.word_key
+    JOIN BOOK_INFO b ON l.book_key = b.id
+    WHERE w.word = ?;    
     `;
     return await runQuery(query, [word]);
 }
 export const wordRepo = {
-    getWordCount,
-    getBookIdsByWord,
+    getWordUsageByWord,
 };

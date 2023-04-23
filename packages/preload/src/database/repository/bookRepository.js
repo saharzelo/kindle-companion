@@ -1,13 +1,11 @@
-import { getConnection, runQuery } from "../createConnection";
+import { runQuery } from "../createConnection";
 
 async function getAllBooks() {
-    const con = await getConnection();
     const query = "SELECT title, asin FROM BOOK_INFO";
     return await runQuery(query);
 }
 
 async function getBookByAsin(asin) {
-    const con = await getConnection();
     const query = `
     SELECT
       b.title as title,
@@ -49,19 +47,10 @@ async function getBookCount() {
     return await runQuery(query, [], "get");
 }
 
-async function getBookTitleById(id) {
-    const query = `
-    SELECT book_info.title, lookups.usage, lookups.timestamp 
-    FROM book_info 
-    JOIN lookups ON book_info.id = lookups.book_key 
-    WHERE book_info.id = ?
-    `;
-    return await runQuery(query, [id], "get");
-}
+
 export const bookRepo = {
     getAllBooks,
     getBookByAsin,
     getBooksByDate,
     getBookCount,
-    getBookTitleById,
 };
