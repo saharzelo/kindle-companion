@@ -24,7 +24,7 @@ function LoginPage({ setProfile }) {
 
 
     return (
-        <div className="modal-bg">
+        <div className="login-modal-bg">
             <div className="modalContent">
                 <div className="header">
                     <LoginIcon />

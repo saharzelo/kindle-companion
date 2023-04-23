@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import './LookupsTable.css';
+import './Table.css';
 
-function LookupsTable({ tableData, tableHeaders }) {
+function Table({ tableData, tableHeaders, enableActions=false }) {
     const [data, setData] = useState(tableData);
 
     const handleDelete = (item) => {
@@ -23,11 +23,14 @@ function LookupsTable({ tableData, tableHeaders }) {
                 {Object.keys(item).map((key) => (
                     <td key={key}>{item[key]}</td>
                 ))}
-                <td className="operation">
-                    <button className="button" onClick={() => handleDelete(item)}>
-                        Delete
-                    </button>
-                </td>
+                {enableActions &&
+                    (<td className="operation">
+                        <button className="button" onClick={() => handleDelete(item)}>
+                            Delete
+                        </button>
+                    </td>
+                    )}
+
             </tr>
         ));
     };
@@ -42,4 +45,4 @@ function LookupsTable({ tableData, tableHeaders }) {
     );
 }
 
-export default LookupsTable;
+export default Table;

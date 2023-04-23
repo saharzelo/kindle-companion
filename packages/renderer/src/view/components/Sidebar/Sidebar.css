@@ -8,16 +8,16 @@
     justify-content: center;
     align-items: center;
     z-index: 1;
-    background-color: #D8D8D8;
+    background-color: #d8d8d8;
 }
 
-.button-group svg {
+.sidebar .button-group svg {
     position: absolute;
     height: 3vh;
     width: 20px;
 }
 
-.button-group {
+.sidebar .button-group {
     backdrop-filter: blur(20px);
     display: flex;
     justify-content: center;
@@ -27,18 +27,17 @@
     font-size: 0.8rem;
 }
 
-.button-group:hover {
+.sidebar .button-group:hover {
     font-size: 1rem;
     cursor: pointer;
     background-color: #cacad3;
 }
 
-.button-group:hover svg {
+.sidebar .button-group:hover svg {
     width: 28px;
 }
 
-
-.button-group.active {
+.sidebar .button-group.active {
     background-color: #cacad3;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-  }
+}

@@ -1,6 +1,6 @@
 import { getThumbnailsByAsin } from "#preload";
 import { getBooksByLastDate, getAllBooks } from "../database/bookController";
-import { getWordCount } from "../database/wordController";
+import { getLookupCount } from "../database/lookupController";
 import { getBookCount } from "../database/bookController";
 
 export async function prepKindleData(byLatest = false) {
@@ -17,8 +17,8 @@ export async function prepKindleData(byLatest = false) {
 
 export async function prepKindleMetadata() {
     const bookCount = await getBookCount();
-    const wordCount = await getWordCount();
-    const metadata = { ...bookCount, ...wordCount }
+    const lookupCount = await getLookupCount();
+    const metadata = { ...bookCount, ...lookupCount }
     return metadata;
 };
 

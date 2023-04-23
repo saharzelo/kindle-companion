@@ -26,3 +26,12 @@ export async function getLookupsByAsin(asin) {
         console.error(error)
     }
 }
+
+export async function getLookupCount() {
+    try {
+        const lookupCount = await lookupRepo.getLookupCount();
+        return lookupCount;
+    } catch (error) {
+        console.error(error);
+    }
+}
