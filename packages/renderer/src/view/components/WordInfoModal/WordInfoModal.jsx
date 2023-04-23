@@ -6,7 +6,7 @@ import Table from "../Table/Table";
 import { format } from "../../../controller/helpers/format";
 import { ReactComponent as AddTo } from '../../../public/icons/WordModal/addTo.svg'
 import { ReactComponent as RemoveFrom } from '../../../public/icons/WordModal/removeFrom.svg'
-
+import { getBookTitlesByWord } from "../../../controller/database/wordController";
 import "./WordInfoModal.css";
 
 function WordInfoModal({ word, setShowModal }) {
@@ -29,8 +29,9 @@ function WordInfoModal({ word, setShowModal }) {
 
     useEffect(() => {
         async function prepWord() {
-            // call api
-            setWordMeta();
+            console.log('papi', await getBookTitlesByWord(word))
+            const wordMeta = await getBookTitlesByWord(word)
+            setWordMeta(wordMeta);
             setLoading(false);
         }
         prepWord();
@@ -56,10 +57,10 @@ function WordInfoModal({ word, setShowModal }) {
                             <p>Last Appeared at: <span className="last-appeared"> 12/05/2023</span></p>
                             <p>Appeared: <span className="Appeared">15 times</span></p>
                         </div>
-                        <h4> Also Appeared on:</h4>
+                        <h4> {format.ucFirst(word)} Appeared on:</h4>
 
                         <div className="word-table">
-                            <Table tableData={bookList} tableHeaders={['Book', 'Usage', 'Date']} />
+                            <Table tableData={wordMeta} tableHeaders={['Book', 'Usage', 'Date']} />
                         </div>
                     </div>
 
