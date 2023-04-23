@@ -60,13 +60,6 @@
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
 .modal-content .info-box {
     height: auto;
     width: 100%;
