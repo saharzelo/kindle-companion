@@ -1,4 +1,4 @@
-import { getConnection, runQuery } from "../createConnection";
+import { runQuery } from "../createConnection";
 
 async function getLookupsByAsin(asin) {
     const query = `
