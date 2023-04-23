@@ -1,88 +1,45 @@
-import { getConnection } from '../createConnection'
-
-
-
-// export function findAllWords() {
-//     const con = getConnection();
-//     const query = 'SELECT * FROM BOOK_INFO';
-//     return new Promise((resolve, reject) => {
-//         con.all(query, [], (err, rows) => {
-//             if (err) {
-//                 reject(err);
-//             } else {
-//                 resolve(rows);
-//             }
-//         });
-//     });
-// }
-
+import { runQuery } from "../createConnection";
 
 async function getLookupsByAsin(asin) {
-    const con = await getConnection();
     const query = `
         SELECT w.word, l.usage, strftime('%m/%d/%Y %H:%M:%S', datetime(l.timestamp / 1000, 'unixepoch')) as timestamp_formatted, w.stem
         FROM BOOK_INFO b
         JOIN LOOKUPS l ON b.id = l.book_key
         JOIN WORDS w ON l.word_key = w.id
         WHERE b.asin = ?`;
-
-    return new Promise((resolve, reject) => {
-        con.all(query, [asin], (err, rows) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(rows);
-            }
-        });
-    });
+    return await runQuery(query, [asin]);
 }
-
-
-
 
 async function getLookupsByDate(date) {
-    const con = await getConnection();
     const query = `
-        SELECT b.title, w.word, l.usage, strftime('%m/%d/%Y %H:%M:%S', datetime(l.timestamp / 1000, 'unixepoch')) as timestamp_formatted, w.stem, b.asin
-        FROM BOOK_INFO b
-        JOIN LOOKUPS l ON b.id = l.book_key
-        JOIN WORDS w ON l.word_key = w.id
-        WHERE date(datetime(l.timestamp / 1000, 'unixepoch')) = ?`;
-    return new Promise((resolve, reject) => {
-        con.all(query, [date], (err, rows) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(rows);
-            }
-        });
-    });
+    SELECT DISTINCT w.word, b.title, l.usage, strftime('%m/%d/%Y %H:%M:%S', datetime(l.timestamp / 1000, 'unixepoch')) as timestamp_formatted, w.stem, b.asin
+    FROM BOOK_INFO b
+    JOIN LOOKUPS l ON b.id = l.book_key
+    JOIN WORDS w ON l.word_key = w.id
+    WHERE date(datetime(l.timestamp / 1000, 'unixepoch')) = ?
+    GROUP BY w.word;
+    ORDER BY l.timestamp DESC;
+    `;
+    console.log(await runQuery(query, [date]));
+    return await runQuery(query, [date]);
 }
 
-
 async function GetLatestLookupDate() {
-    const con = await getConnection();
     const query = `
         SELECT 
             date(MAX(timestamp) / 1000, 'unixepoch') AS latest_date 
         FROM 
-            WORDS`;
-    return new Promise((resolve, reject) => {
-        con.get(query, [], (err, rows) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(rows);
-            }
-        });
-    });
+            LOOKUPS`;
+    return await runQuery(query, [], "get");
 }
 
-
-
-
+async function getLookupCount() {
+    const query = "SELECT COUNT(*) as lookupCount FROM LOOKUPS";
+    return await runQuery(query, [], "get");
+}
 export const lookupRepo = {
     getLookupsByAsin,
     getLookupsByDate,
-    GetLatestLookupDate
-}
+    GetLatestLookupDate,
+    getLookupCount,
+};

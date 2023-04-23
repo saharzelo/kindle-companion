@@ -2,23 +2,23 @@
     border-collapse: collapse;
     width: 100%;
     font-size: 1rem;
-    font-family: 'Roboto', sans-serif;
-    color: #000;
+    align-items: center;
 }
 
-.book-info-table th,
+
+.book-info-table th {
+    font-weight: 300;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #b4b4b4ab;
+
+}
+
 .book-info-table td {
     padding: 1rem;
     text-align: left;
-    border-bottom: 1px solid #eee;
-}
-
-.book-info-table th {
-    font-weight: 500;
-    background-color: #f8f8f8;
-}
-
-.book-info-table td {
+    border-bottom: 1px solid #dbdbdb;
+    font-weight: 400;
     background-color: #fff;
 }
 

@@ -1,0 +1,31 @@
+.modal-header {
+    position: relative;
+    justify-content: center;
+    display: flex;
+    padding: 0 25px 0px 10px;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    height: 5%;
+    min-height: 35px;
+    padding-right: 10px;
+    border-bottom: 1px rgba(147, 146, 146, 0.623) solid;
+}
+
+.modal-header .breadcrumb {
+    font-weight: 200;
+    font-size: 15px;
+}
+
+.close {
+    color: #aaaaaa;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}

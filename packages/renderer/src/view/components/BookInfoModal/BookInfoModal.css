@@ -1,16 +1,3 @@
-.book-info-modal-bg {
-    top: 0;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(2px);
-    position: fixed;
-    display: flex;
-    z-index: 3;
-}
-
 .modal-content {
     position: fixed;
     width: 90%;
@@ -25,31 +12,9 @@
     text-align: center;
     flex-direction: column;
     z-index: 4;
+    overflow: hidden;
+
 }
-
-
-
-.modal-header {
-    position: relative;
-    justify-content: center;
-    display: flex;
-    padding: 0 25px 0px 10px;
-    justify-content: space-between;
-    text-align: center;
-    align-items: center;
-    align-self: center;
-    height: 5%;
-    min-height: 35px;
-    padding-right: 10px;
-    border-bottom: 0.1px rgb(147, 146, 146) solid;
-}
-
-
-.modal-header .breadcrumb {
-    font-weight: 200;
-    font-size: 15px;
-}
-
 
 .modal-content .modal-body {
     position: relative;
@@ -59,7 +24,6 @@
     justify-content: start;
     overflow: scroll;
 }
-
 
 .modal-content .modal-body .book-cover {
     display: flex;
@@ -92,26 +56,16 @@
     min-height: 12vh;
 }
 
-
 .modal-body .close {
     color: #aaaaaa;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
 .modal-content .info-box {
     height: auto;
     width: 100%;
 }
-
 
 .info-box h3 {
     font-weight: 100;
@@ -120,7 +74,6 @@
     height: fit-content;
     margin: 0 0 0 5%;
 }
-
 
 .info-text {
     display: flex;
@@ -162,18 +115,10 @@
 
 .book-table {
     position: relative;
-    width:90%;
     align-items: center;
     margin: auto;
-    
+    padding: 0 15px 0 15px;
 }
-
-
-table td{
-}
-.book-table th {
-    border-bottom: 1px rgb(2, 2, 2) solid;
-} 
 
 .table-toolbar {
     display: flex;
@@ -186,10 +131,11 @@ table td{
 .table-toolbar h3 {
     font-weight: 200;
     font-size: 1.6rem;
-    text-shadow: 3px 4px 5px  rgba(90, 90, 90, 0.397);
-    padding-bottom: 0.5rem; /* set a smaller value for padding-bottom */
+    text-shadow: 3px 4px 5px rgba(90, 90, 90, 0.397);
+    padding-bottom: 0.5rem;
+    /* set a smaller value for padding-bottom */
     border-bottom: 1px solid #ccc;
-  }
+}
 
 .table-toolbar h3:hover {
     font-weight: 300;

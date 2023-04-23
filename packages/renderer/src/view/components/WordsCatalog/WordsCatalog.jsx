@@ -1,14 +1,16 @@
 import WordCatalogItem from "../WordCatalogItem/WordCatalogItem";
 import "./WordsCatalog.css"
-function WordsCatalog({ words, onWordClick }) {
 
-    const wordsCatalog = words.map(({word, asin }, index) => (
+function WordsCatalog({ words, onWordClick }) {
+    const wordsCatalog = words.map(({ word }, index) => (
+        
         <WordCatalogItem
             key={index}
             word={word}
+            onClick={() => onWordClick(word)}
         />
     ));
-    console.log('dad', wordsCatalog)
+
 
     return (
         <div className="words-catalog-container">
