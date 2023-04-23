@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import './LookupsTable.css';
+import './Table.css';
 
-function LookupsTable({ tableData, tableHeaders, enableActions=false }) {
+function Table({ tableData, tableHeaders, enableActions=false }) {
     const [data, setData] = useState(tableData);
 
     const handleDelete = (item) => {
@@ -45,4 +45,4 @@ function LookupsTable({ tableData, tableHeaders, enableActions=false }) {
     );
 }
 
-export default LookupsTable;
+export default Table;
