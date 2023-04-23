@@ -1,0 +1,29 @@
+
+
+.word-modal-content {
+    position: fixed;
+    width: 65%;
+    height: 65%;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fbfbfd;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 30px;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    z-index: 4;
+}
+
+
+
+
+.modal-content .modal-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    justify-content: start;
+    overflow: scroll;
+}

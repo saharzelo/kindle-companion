@@ -2,6 +2,7 @@ import './HomePage.css'
 import { useState, useEffect } from 'react';
 import BooksCatalog from "../../components/BooksCatalog/BooksCatalog";
 import BookInfoModal from "../../components/BookInfoModal/BookInfoModal";
+import WordInfoModal from '../../components/WordInfoModal/WordInfoModal';
 import WordsCatalog from "../../components/WordsCatalog/WordsCatalog"
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import { prepKindleData, prepKindleMetadata } from '../../../controller/services/kindleServices';
@@ -12,10 +13,12 @@ function HomePage({ }) {
     const [kindleMeta, setKindleMeta] = useState();
     const [wordsData, setWordsData] = useState();
 
+    const [selectedWord, setSelectedWord] = useState(null);
     const [selectedBookAsin, setSelectedBookAsin] = useState(null);
     const [searchQuery, setSearchQuery] = useState("");
 
-    const [showModal, setShowModal] = useState(false);
+    const [showWordModal, setShowWordModal] = useState();
+    const [showBookModal, setShowBookModal] = useState();
     const [showTable, setShowTable] = useState('books');
     const [loading, setLoading] = useState(true);
 
@@ -35,9 +38,15 @@ function HomePage({ }) {
 
 
 
+    const handleWordClick = (word) => {
+        setSelectedWord(word)
+        setShowWordModal(true);
+    };
+
+
     const handleBookClick = (asin) => {
         setSelectedBookAsin(asin);
-        setShowModal(true);
+        setShowBookModal(true);
     };
 
     const handleTableClick = async (table) => {
@@ -89,16 +98,23 @@ function HomePage({ }) {
                     </div>
                     <div className="homepage-catalog">
                         {showTable == 'books' && <BooksCatalog books={kindleData} onBookClick={handleBookClick} />}
-                        {showTable == 'words' && <WordsCatalog words={wordsData} />}
+                        {showTable == 'words' && <WordsCatalog words={wordsData} onWordClick={handleWordClick} />}
 
 
-                        {showModal && (
+                        {showBookModal &&
                             <BookInfoModal
                                 bookAsin={selectedBookAsin}
-                                setShowModal={setShowModal}
+                                setShowModal={setShowBookModal}
                                 thumbnail={kindleData.find((dict) => dict.asin == selectedBookAsin)?.thumbnail}
                             />
-                        )}
+                        }
+
+                        {showWordModal &&
+                            <WordInfoModal
+                                word={selectedWord}
+                                setShowModal={setShowWordModal}
+                            />
+                        }
                     </div>
                 </div>
             </div>

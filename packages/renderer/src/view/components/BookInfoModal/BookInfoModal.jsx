@@ -1,6 +1,7 @@
 import './BookInfoModal.css';
 import LookupsTable from '../LookupsTable/LookupsTable';
-import myImage from './pic.jpg';
+import ModalHeader from '../ModalHeader/ModalHeader';
+import ModalBackground from '../ModalBackground/ModalBackground';
 import { useState, useEffect } from 'react';
 import { prepBookData } from '../../../controller/services/bookServices'
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
@@ -25,14 +26,9 @@ function BookInfoModal({ bookAsin, setShowModal, thumbnail }) {
     }
     return (
         <>
-            <div className="book-info-modal-bg" onClick={handleCloseModal}></div>
+            <ModalBackground onClick={handleCloseModal}/>
             <div className="modal-content">
-
-                <div className="modal-header">
-                    <span className="breadcrumb"> Library  /  The-Road</span>
-                    <span className="close" onClick={handleCloseModal}>&times;</span>
-                </div>
-
+                <ModalHeader onClick={handleCloseModal} breadcrumb={"library / " + bookMetadata.book.title}/>
                 <div className="modal-body">
                     <div className="book-cover">
                         <img id="cover-img" src={thumbnail} />
@@ -66,11 +62,7 @@ function BookInfoModal({ bookAsin, setShowModal, thumbnail }) {
                         <div className="table-toolbar">
                             <h3> Words </h3> <h3> Clippings </h3>
                         </div>
-                        {bookMetadata.lookups.length > 0 ? (
-                            <LookupsTable tableHeaders={tableHeaders} tableData={bookMetadata.lookups} />
-                        ) : (
-                            <p>Fetching...</p>
-                        )}
+                        <LookupsTable tableHeaders={tableHeaders} tableData={bookMetadata.lookups} />
                     </div>
                 </div>
 
