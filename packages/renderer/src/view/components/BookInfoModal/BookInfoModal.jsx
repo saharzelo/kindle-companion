@@ -1,5 +1,5 @@
 import './BookInfoModal.css';
-import LookupsTable from '../LookupsTable/LookupsTable';
+import Table from '../Table/Table';
 import ModalHeader from '../ModalHeader/ModalHeader';
 import ModalBackground from '../ModalBackground/ModalBackground';
 import { useState, useEffect } from 'react';
@@ -51,17 +51,12 @@ function BookInfoModal({ bookAsin, setShowModal, thumbnail }) {
                             <p>Clippings: <span className="full-name">WIP</span></p>
                             <p>Highlights: <span className="last-synced">WIP</span></p>
                         </div>
-
-                        <div className="razor-wrapper">
-                            <h2 className="razor" />
-                        </div>
-
                     </div>
                     <div className="book-table">
                         <div className="table-toolbar">
                             <h3> Words </h3> <h3> Clippings </h3>
                         </div>
-                        <LookupsTable tableHeaders={['Word', 'usage', 'timestamp', 'stem', 'action']} tableData={bookData.lookups} />
+                        <Table enableActions={true} tableHeaders={['Word', 'usage', 'timestamp', 'stem', 'action']} tableData={bookData.lookups} />
                     </div>
                 </div>
 

@@ -12,6 +12,8 @@
     text-align: center;
     flex-direction: column;
     z-index: 4;
+    overflow: hidden;
+
 }
 
 .modal-content .modal-body {
@@ -113,16 +115,9 @@
 
 .book-table {
     position: relative;
-    width: 90%;
     align-items: center;
     margin: auto;
-}
-
-table td {
-}
-
-.book-table th {
-    border-bottom: 1px rgb(2, 2, 2) solid;
+    padding: 0 15px 0 15px;
 }
 
 .table-toolbar {

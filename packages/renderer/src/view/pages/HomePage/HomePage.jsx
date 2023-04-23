@@ -7,6 +7,7 @@ import WordsCatalog from "../../components/WordsCatalog/WordsCatalog"
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import { prepKindleData, prepKindleMetadata } from '../../../controller/services/kindleServices';
 import { getRecentLookups } from '../../../controller/database/lookupController';
+import format from '../../../controller/helpers/format';
 
 function HomePage({ }) {
     const [kindleData, setKindleData] = useState([]);
@@ -39,7 +40,7 @@ function HomePage({ }) {
 
 
     const handleWordClick = (word) => {
-        setSelectedWord(word)
+        setSelectedWord(format.ucFirst(word))
         setShowWordModal(true);
     };
 
