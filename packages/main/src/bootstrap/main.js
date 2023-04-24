@@ -47,15 +47,19 @@ if (import.meta.env.PROD) {
 }
 
 const appTmpDir = defaultConfig.tmpDir;
+const appDir = defaultConfig.appDir;
 const thumbnailDir = path.join(appTmpDir, "thumbnails");
-console.log(defaultConfig.appDir)
 app.on("ready", () => {
+
     if (!fs.existsSync(appTmpDir)) {
         fs.mkdirSync(appTmpDir);
     }
 
-
-    fs.mkdirSync(thumbnailDir);
+    if (!fs.existsSync(appDir)) {
+        fs.mkdirSync(appDir);
+    }
+    fs.mkdirSync(path.join(appDir, "thumbnails"));
+    fs.mkdirSync(path.join(appTmpDir, "thumbnails"));
 });
 
 app.on("before-quit", () => {

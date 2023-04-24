@@ -3,7 +3,7 @@ import path from "path";
 
 const appName = "kindle-companion";
 const tmpDir = path.join(app.getPath("temp"), `${appName}`);
-const appDir = path.join(app.getAppPath(), `${appName}`);
+const appDir = path.join(app.getPath("userData"), `${appName}`);
 
 
 const defaultConfig = {
