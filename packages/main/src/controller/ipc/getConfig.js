@@ -1,7 +1,6 @@
-import { ipcMain } from 'electron';
-import { getConfig } from '../../config';
+import { ipcMain } from "electron";
+import { getConfig } from "../../config";
 
-
-ipcMain.handle('get-config', async (event) => {
-  return getConfig();
+ipcMain.handle("get-config", async (event) => {
+    return getConfig();
 });

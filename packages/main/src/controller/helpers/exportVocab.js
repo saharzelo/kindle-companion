@@ -1,19 +1,16 @@
-import path from 'path';
-import fs from 'fs';
-import defaultConfig from '../../config';
+import path from "path";
+import fs from "fs/promises";
+import defaultConfig from "../../config";
 
-
-export function exportVocab(kindlePath) {
-  return new Promise((resolve, reject) => {
-    const db = kindlePath + '/system/vocabulary/vocab.db';
+export async function exportVocab(kindlePath) {
+    const db = path.join(kindlePath, "system", "vocabulary", "vocab.db");
     const tempPath = path.join(defaultConfig.tmpDir, path.basename(db));
     try {
-      const data = fs.readFileSync(db);
-      fs.writeFileSync(tempPath, data);
-      resolve();
+        const data = await fs.readFile(db);
+        await fs.writeFile(tempPath, data);
+        return true;
     } catch (err) {
-      console.error(err);
-      reject(err.message);
+        console.error(`Export failed: ${err.message}`);
+        return false;
     }
-  });
-};
+}

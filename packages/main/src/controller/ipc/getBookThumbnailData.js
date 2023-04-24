@@ -1,24 +1,30 @@
-const { ipcMain } = require('electron');
-import path from 'path';
-import fs from 'fs';
-import defaultConfig from '../../config';
-ipcMain.handle("getBookThumbnailData", (event, bookAsinArray) => {
-  return new Promise(async (resolve, reject) => {
+import { ipcMain } from "electron";
+import path from "path";
+import fs from "fs/promises";
+import defaultConfig from "../../config";
+
+ipcMain.handle("getBookThumbnailData", async (event, bookAsinArray) => {
     try {
-      const base64Map = {};
-      await Promise.all(bookAsinArray.map(async (book) => {
-        const userTmp = defaultConfig.tmpDir;
-        const jpgPath = path.join(userTmp, 'thumbnails', `${book}.jpg`);
-        if (fs.existsSync(jpgPath)) {
-          const base64 = fs.readFileSync(jpgPath).toString('base64');
-          base64Map[book] = `data:image/jpg;base64,${base64}`;
-        } else {
-          base64Map[book] = null;
-        }
-      }));
-      resolve(base64Map);
+        const base64Map = {};
+        const tmpDir = defaultConfig.tmpDir;
+        const thumbnailsDir = path.join(tmpDir, "thumbnails");
+
+        await Promise.all(
+            bookAsinArray.map(async (book) => {
+                const jpgPath = path.join(thumbnailsDir, `${book}.jpg`);
+                try {
+                    const buffer = await fs.readFile(jpgPath);
+                    const base64 = buffer.toString("base64");
+                    base64Map[book] = `data:image/jpg;base64,${base64}`;
+                } catch (error) {
+                    base64Map[book] = null;
+                }
+            })
+        );
+
+        return base64Map;
     } catch (error) {
-      reject(error);
+        console.error(error);
+        throw new Error(`Error getting book thumbnail data: ${error.message}`);
     }
-  });
 });

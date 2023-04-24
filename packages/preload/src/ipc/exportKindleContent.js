@@ -1,15 +1,15 @@
 import { ipcRenderer } from 'electron';
 
-export function exportKindleContent() {
-  return new Promise((resolve, reject) => {
-    ipcRenderer.invoke('kindle/export-content').then((result) => {
-      if (resolve(result) === 'success') {
-        resolve(result);
-      } else {
-        reject(new Error('IPCMain failed to call selectFiles'));
-      }
-    }).catch((error) => {
-      reject(error);
-    });
-  });
+export async function exportKindleContent() {
+  try {
+    const result = await ipcRenderer.invoke('kindle/export-content');
+    if (result === 'success') {
+      console.log(result)
+      return result;
+    } else {
+      console.error('IPCMain failed to call selectFiles');
+    }
+  } catch (error) {
+    console.error(error);
+  }
 }
