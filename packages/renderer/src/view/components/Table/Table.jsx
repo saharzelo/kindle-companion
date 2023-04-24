@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { ReactComponent as ViewSvg } from '../../../public/icons/BookModal/zoom.svg';
+import { ReactComponent as DeleteSvg } from "../../../public/icons/BookModal/delete.svg";
 import './Table.css';
 
-function Table({ tableData, tableHeaders, enableActions=false }) {
+function Table({ tableData, tableHeaders, enableActions=false, onClick}) {
     const [data, setData] = useState(tableData);
 
     const handleDelete = (item) => {
@@ -25,9 +27,8 @@ function Table({ tableData, tableHeaders, enableActions=false }) {
                 ))}
                 {enableActions &&
                     (<td className="operation">
-                        <button className="button" onClick={() => handleDelete(item)}>
-                            Delete
-                        </button>
+                        <DeleteSvg onClick={() => handleDelete(item)}/>
+                        <ViewSvg onClick={() => onClick(item)} />
                     </td>
                     )}
 

@@ -1,6 +1,7 @@
 import './BookInfoModal.css';
 import Table from '../Table/Table';
 import ModalHeader from '../ModalHeader/ModalHeader';
+import WordInfoModal from '../WordInfoModal/WordInfoModal';
 import ModalBackground from '../ModalBackground/ModalBackground';
 import { useState, useEffect } from 'react';
 import { prepBookData } from '../../../controller/services/bookServices'
@@ -10,6 +11,9 @@ function BookInfoModal({ bookAsin, setShowModal, thumbnail }) {
     const handleCloseModal = () => setShowModal(false);
     const [bookData, setBookMetadta] = useState({ meta: {}, lookups: [] })
     const [loading, setLoading] = useState(true);
+    const [selectedWord, setSeletedWord] = useState()
+    const [showWordModal, setShowWordModal] = useState();
+
 
     useEffect(() => {
         async function prepBook() {
@@ -20,14 +24,24 @@ function BookInfoModal({ bookAsin, setShowModal, thumbnail }) {
         prepBook()
     }, [bookAsin]);
 
+
+
+    const handleWordClick = (word) => {
+        setSeletedWord(word.word);
+        setShowWordModal(true)
+    };
+
+
+
+
     if (loading) {
         return <LoadingScreen />;
     }
     return (
         <>
-            <ModalBackground onClick={handleCloseModal}/>
+            <ModalBackground onClick={handleCloseModal} />
             <div className="modal-content">
-                <ModalHeader onClick={handleCloseModal} breadcrumb={"Library / " + bookData.meta.title}/>
+                <ModalHeader onClick={handleCloseModal} breadcrumb={"Library / " + bookData.meta.title} />
                 <div className="modal-body">
                     <div className="book-cover">
                         <img id="cover-img" src={thumbnail} />
@@ -56,7 +70,11 @@ function BookInfoModal({ bookAsin, setShowModal, thumbnail }) {
                         <div className="table-toolbar">
                             <h3> Words </h3> <h3> Clippings </h3>
                         </div>
-                        <Table enableActions={true} tableHeaders={['Word', 'usage', 'timestamp', 'stem', 'action']} tableData={bookData.lookups} />
+                        <Table enableActions={true} onClick={handleWordClick} tableHeaders={['Word', 'usage', 'timestamp', 'stem', 'action']} tableData={bookData.lookups} />
+
+                        {selectedWord &&
+                            <WordInfoModal word={selectedWord} setShowModal={handleWordClick}/>
+                        }
                     </div>
                 </div>
 
