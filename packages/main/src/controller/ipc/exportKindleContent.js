@@ -4,29 +4,23 @@ import { exportThumbnails } from '../helpers/exportThumbnails';
 
 
 
-const { dialog, ipcMain } = require('electron');
+import { dialog, ipcMain } from 'electron';
 
-ipcMain.handle('exportKindleContent', async () => {
-  return new Promise((resolve, reject) => {
-    const options = { title: 'Select a file', properties: ['openDirectory'] };
-    dialog.showOpenDialog(options).then((result) => {
-      if (!result.canceled) {
-        const folderPath = result.filePaths[0];
+ipcMain.handle('kindle/export-content', async () => {
+  try {
+    const options = { title: 'Select a folder', properties: ['openDirectory'] };
+    const result = await dialog.showOpenDialog(options);
+    
+    if (!result.canceled) {
+      const folderPath = result.filePaths[0];
+      await exportVocab(folderPath);
+      exportThumbnails(folderPath);
 
-        // export vocab
-        exportVocab(folderPath).then(() => {
-          resolve('success');
-        })
-          .catch(() => {
-            reject(new Error('File not found'));
-          });
-
-        // export thumbnails
-        exportThumbnails(folderPath);
-
-      } else {
-        reject(new Error('User canceled file selection.'));
-      }
-    });
-  });
+      return 'success';
+    } else {
+      throw new Error('User canceled folder selection.');
+    }
+  } catch (error) {
+    throw new Error(`Export failed: ${error.message}`);
+  }
 });

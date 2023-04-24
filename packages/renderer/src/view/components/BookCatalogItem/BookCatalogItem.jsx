@@ -1,5 +1,4 @@
 import './BookCatalogItem.css';
-import {format} from '../../../controller/helpers/format';
 
 function BookCatalogItem({ thumbnail, title, metadata, onClick }) {
   return (
@@ -10,7 +9,7 @@ function BookCatalogItem({ thumbnail, title, metadata, onClick }) {
             <img id='book-thumnail' src={thumbnail} alt={title} />
           ) : (
             <div className="missing-thumbnail-wrapper">
-              <div className="missing-thumbnail">{format.ucFirst(title)}</div>
+              <div className="missing-thumbnail">{title.charAt(0)}</div>
             </div>
           )
         }

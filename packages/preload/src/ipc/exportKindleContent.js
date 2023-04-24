@@ -2,7 +2,7 @@ import { ipcRenderer } from 'electron';
 
 export function exportKindleContent() {
   return new Promise((resolve, reject) => {
-    ipcRenderer.invoke('exportKindleContent').then((result) => {
+    ipcRenderer.invoke('kindle/export-content').then((result) => {
       if (resolve(result) === 'success') {
         resolve(result);
       } else {
