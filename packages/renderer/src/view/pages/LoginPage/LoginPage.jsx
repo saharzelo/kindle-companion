@@ -25,7 +25,7 @@ function LoginPage({ setProfile }) {
 
     return (
         <div className="login-modal-bg">
-            <div className="modalContent">
+            <div className="login-modal-content">
                 <div className="header">
                     <LoginIcon />
                     <h1>Kindle Companion</h1>
