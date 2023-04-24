@@ -12,13 +12,13 @@ async function getLookupsByAsin(asin) {
 
 async function getLookupsByDate(date) {
     const query = `
-    SELECT DISTINCT w.word, b.title, l.usage, strftime('%m/%d/%Y %H:%M:%S', datetime(l.timestamp / 1000, 'unixepoch')) as timestamp_formatted, w.stem, b.asin
-    FROM BOOK_INFO b
-    JOIN LOOKUPS l ON b.id = l.book_key
-    JOIN WORDS w ON l.word_key = w.id
-    WHERE date(datetime(l.timestamp / 1000, 'unixepoch')) = ?
-    GROUP BY w.word;
-    ORDER BY l.timestamp DESC;
+        SELECT DISTINCT w.word, b.title, l.usage, strftime('%m/%d/%Y %H:%M:%S', datetime(l.timestamp / 1000, 'unixepoch')) as timestamp_formatted, w.stem, b.asin
+        FROM BOOK_INFO b
+        JOIN LOOKUPS l ON b.id = l.book_key
+        JOIN WORDS w ON l.word_key = w.id
+        WHERE date(datetime(l.timestamp / 1000, 'unixepoch')) = ?
+        GROUP BY w.word;
+        ORDER BY l.timestamp DESC;
     `;
     console.log(await runQuery(query, [date]));
     return await runQuery(query, [date]);

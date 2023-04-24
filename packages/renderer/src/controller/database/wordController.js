@@ -1,7 +1,5 @@
 import { wordRepo, bookRepo } from "#preload";
 
-
-
 export async function getBookTitlesByWord(word) {
     try {
         const wordData = await wordRepo.getWordUsageByWord(word)
