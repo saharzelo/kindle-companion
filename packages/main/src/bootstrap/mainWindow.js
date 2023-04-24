@@ -27,7 +27,7 @@ async function createWindow() {
 	browserWindow.on('ready-to-show', () => {
 		browserWindow?.show();
 
-		if (import.meta.env.DEV) {
+		if (import.meta.env.PROD) {
 			browserWindow?.webContents.openDevTools({
 				mode: 'undocked',
 			});

@@ -1,11 +1,14 @@
 import { app } from "electron";
-import path from 'path';
+import path from "path";
 
-const tmpDir = app.getPath("temp")
+const appName = "kindle-companion";
+const tmpDir = path.join(app.getPath("temp"), `${appName}`);
+const appDir = path.join(app.getAppPath(), `${appName}`);
+
 
 const defaultConfig = {
-    appName: "Kindle-Companion",
-    tmpDir: path.join(tmpDir, 'kindle-companion'),
+    tmpDir: tmpDir,
+    appDir: appDir,
 };
 
 export function getConfig() {
