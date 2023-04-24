@@ -6,7 +6,7 @@
     "name": "Sahar Zelonagora",
     "email": "saharzelonagora@gmail.com"
   },
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "packages/main/dist/index.cjs",
   "build": {
     "appId": "io.sahar10501.github.kindle-companion",
