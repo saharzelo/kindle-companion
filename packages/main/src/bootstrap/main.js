@@ -1,12 +1,10 @@
 import { app } from "electron";
-import "./security-restrictions";
+import "./securityRestrictions";
 import { restoreOrCreateWindow } from "./mainWindow";
-import defaultConfig from "../config";
+import "./fileSystemInitializer"
 import "../controller/ipc/getConfig";
-import "../controller/ipc/exportKindleContent";
+import "../controller/ipc/extractKindleContent";
 import "../controller/ipc/getBookThumbnailData";
-import path from "path";
-import fs from "fs";
 
 /**
  * Prevent electron from running multiple instances.
@@ -46,36 +44,3 @@ if (import.meta.env.PROD) {
         .catch((e) => console.error("Failed check updates:", e));
 }
 
-const appTmpDir = defaultConfig.tmpDir;
-const appDir = defaultConfig.appDir;
-const thumbnailDir = path.join(appTmpDir, "thumbnails");
-app.on("ready", () => {
-
-    if (!fs.existsSync(appTmpDir)) {
-        fs.mkdirSync(appTmpDir);
-    }
-
-    if (!fs.existsSync(appDir)) {
-        fs.mkdirSync(appDir);
-    }
-    fs.mkdirSync(path.join(appDir, "thumbnails"));
-    fs.mkdirSync(path.join(appTmpDir, "thumbnails"));
-});
-
-app.on("before-quit", () => {
-    emptyDirSync(appTmpDir);
-});
-
-function emptyDirSync(dir) {
-    if (fs.existsSync(dir)) {
-        fs.readdirSync(dir).forEach((file) => {
-            const filePath = path.join(dir, file);
-            if (fs.lstatSync(filePath).isDirectory()) {
-                emptyDirSync(filePath);
-                fs.rmdirSync(filePath);
-            } else {
-                fs.unlinkSync(filePath);
-            }
-        });
-    }
-}
