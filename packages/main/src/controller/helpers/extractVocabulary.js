@@ -4,10 +4,10 @@ import { getConfig } from "../../config";
 
 export async function extractVocabulary(kindlePath) {
     const config = getConfig();
-    const db = path.join(kindlePath, "system", "vocabulary", "vocab.db");
-    const tempPath = path.join(config.tmpDir, path.basename(db));
+    const vocabDBFile = path.join(kindlePath, config.vocabFilePath);
+    const tempPath = path.join(config.tmpDir, path.basename(vocabDBFile));
     try {
-        const data = await fs.readFile(db);
+        const data = await fs.readFile(vocabDBFile);
         await fs.writeFile(tempPath, data);
         return true;
     } catch (err) {
