@@ -1,6 +1,6 @@
-import { exportVocab } from "../helpers/exportVocab";
-import { exportThumbnails } from "../helpers/exportThumbnails";
+import { extractVocabulary } from "../helpers/extractVocabulary";
 import { dialog, ipcMain } from "electron";
+import { extractThumbnails } from "../helpers/extractThumbnails";
 
 ipcMain.handle("kindle/export-content", async () => {
     try {
@@ -12,8 +12,8 @@ ipcMain.handle("kindle/export-content", async () => {
 
         if (!result.canceled) {
             const folderPath = result.filePaths[0];
-            await exportVocab(folderPath);
-            exportThumbnails(folderPath);
+            await extractVocabulary(folderPath);
+            await extractThumbnails(folderPath);
 
             return "success";
         } else {

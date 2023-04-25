@@ -1,11 +1,11 @@
-
 import path from "path";
 import fs from "fs/promises";
-import defaultConfig from "../../config";
+import { getConfig } from "../../config";
 
-export async function exportThumbnails(kindlePath) {
+export async function extractThumbnails(kindlePath) {
     try {
-        const tmpDir = defaultConfig.tmpDir;
+        const config = getConfig();
+        const tmpDir = config.tmpDir;
         const thumbnailsPath = path.join(kindlePath, "system/thumbnails");
         const destPath = path.join(tmpDir, "thumbnails");
 

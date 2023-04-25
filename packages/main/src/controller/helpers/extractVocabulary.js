@@ -1,10 +1,11 @@
 import path from "path";
 import fs from "fs/promises";
-import defaultConfig from "../../config";
+import { getConfig } from "../../config";
 
-export async function exportVocab(kindlePath) {
+export async function extractVocabulary(kindlePath) {
+    const config = getConfig();
     const db = path.join(kindlePath, "system", "vocabulary", "vocab.db");
-    const tempPath = path.join(defaultConfig.tmpDir, path.basename(db));
+    const tempPath = path.join(config.tmpDir, path.basename(db));
     try {
         const data = await fs.readFile(db);
         await fs.writeFile(tempPath, data);
