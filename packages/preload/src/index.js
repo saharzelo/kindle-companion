@@ -8,3 +8,4 @@ export { lookupRepo } from "./database/repository/lookupRepository";
 export { getThumbnailsByAsin } from "./ipc/getThumbnailsByAsin";
 export { exportKindleContent } from "./ipc/exportKindleContent";
 export { getProfiles } from "./ipc/getProfiles";
+export { loadProfile } from "./ipc/loadProfile"

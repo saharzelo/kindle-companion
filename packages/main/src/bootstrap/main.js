@@ -6,6 +6,7 @@ import "../controller/ipc/getConfig";
 import "../controller/ipc/extractKindleContent";
 import "../controller/ipc/getBookThumbnailData";
 import "../controller/ipc/getProfiles"
+import "../controller/ipc/loadProfile"
 
 /**
  * Prevent electron from running multiple instances.
