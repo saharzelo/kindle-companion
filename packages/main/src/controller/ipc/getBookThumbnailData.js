@@ -7,8 +7,7 @@ ipcMain.handle("getBookThumbnailData", async (event, bookAsinArray) => {
     try {
         const config = getConfig();
         const base64Map = {};
-        const tmpDir = config.tmpDir;
-        const thumbnailsDir = path.join(tmpDir, "thumbnails");
+        const thumbnailsDir = path.join(config.currDir, "thumbnails");
 
         await Promise.all(
             bookAsinArray.map(async (book) => {
