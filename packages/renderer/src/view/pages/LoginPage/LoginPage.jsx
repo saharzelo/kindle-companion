@@ -5,8 +5,11 @@ import { ReactComponent as LoginIcon } from '../../../public/icons/loginIcon.svg
 import Dropdown from '../../components/Dropdown/Dropdown';
 
 
-function LoginPage({ setProfile }) {
-    const [isOpen, setIsOpen] = useState(false);
+function LoginPage({ fetchedProfiles, setProfile }) {
+
+
+    // handle here, if to use file explorer or one of the profiles
+    
 
     const handleFileExplorer = async () => {
         try {
@@ -15,11 +18,6 @@ function LoginPage({ setProfile }) {
         } catch (error) {
             console.error(error);
         }
-    };
-
-    // temp replace 
-    const toggleDropdown = () => {
-        setIsOpen(isOpen => !isOpen);
     };
 
 
@@ -33,7 +31,7 @@ function LoginPage({ setProfile }) {
                 </div>
                 <div className='modal-body'>
                     <div className="input-group">
-                        <Dropdown isOpen={isOpen} toggleDropdown={toggleDropdown} />
+                        <Dropdown options={fetchedProfiles} title={"Profiles"} onClick={setProfile} />
                     </div>
                     <div className="under-text">
                         <span> or </span> <span onClick={() => handleFileExplorer()} id="open-span">open</span> <span>Kindle</span>
@@ -47,7 +45,7 @@ function LoginPage({ setProfile }) {
                     </div>
                     <div className="body">
                         <a href=''> Device Status: OK</a>
-                        <a id='create-account' href='https://github.com/sahar10501/kindle-companion'> Source Code </a>
+                        <a id='create-account' href='https://github.com/saharzelo/kindle-companion'> Source Code </a>
                     </div>
                 </div>
             </div>
