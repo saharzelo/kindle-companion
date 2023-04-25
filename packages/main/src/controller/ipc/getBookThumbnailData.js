@@ -1,12 +1,13 @@
 import { ipcMain } from "electron";
 import path from "path";
 import fs from "fs/promises";
-import defaultConfig from "../../config";
+import { getConfig } from "../../config";
 
 ipcMain.handle("getBookThumbnailData", async (event, bookAsinArray) => {
     try {
+        const config = getConfig();
         const base64Map = {};
-        const tmpDir = defaultConfig.tmpDir;
+        const tmpDir = config.tmpDir;
         const thumbnailsDir = path.join(tmpDir, "thumbnails");
 
         await Promise.all(
