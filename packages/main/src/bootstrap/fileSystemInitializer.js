@@ -3,17 +3,17 @@ import { getConfig } from "../config";
 import path from "path";
 import fs from "fs";
 
-const config = getConfig();
-const appTmpDir = config.tmpDir;
-const appDir = config.appDir;
 
 function initializeFileSystem() {
+    const config = getConfig();
+
     const dirPaths = [
-        appTmpDir,
-        appDir,
-        path.join(appDir, "profiles"),
-        path.join(appDir, "profiles", "demo_profile"),
-        path.join(appTmpDir, "thumbnails"),
+
+        config.tmpDir,
+        config.appDir,
+        path.join(config.profileDir),
+        path.join(config.profileDir, "demo_profile"),
+        path.join(config.tmpDir, "thumbnails"),
     ];
 
     dirPaths.forEach((dir) => {
@@ -23,7 +23,7 @@ function initializeFileSystem() {
     });
 
     app.on("before-quit", () => {
-        emptyDirSync(appTmpDir);
+        emptyDirSync(config.tmpDir);
     });
 }
 
