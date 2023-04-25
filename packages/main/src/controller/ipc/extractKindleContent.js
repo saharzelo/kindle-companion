@@ -1,6 +1,6 @@
-import { extractVocabulary } from "../helpers/extractVocabulary";
+import { extractVocabulary } from "../extractors/extractVocabulary";
 import { dialog, ipcMain } from "electron";
-import { extractThumbnails } from "../helpers/extractThumbnails";
+import { extractThumbnails } from "../extractors/extractThumbnails";
 
 ipcMain.handle("kindle/export-content", async () => {
     try {
@@ -10,7 +10,7 @@ ipcMain.handle("kindle/export-content", async () => {
         };
         const result = await dialog.showOpenDialog(options);
 
-        if (!result.canceled) {
+        if (result) {
             const folderPath = result.filePaths[0];
             await extractVocabulary(folderPath);
             await extractThumbnails(folderPath);
