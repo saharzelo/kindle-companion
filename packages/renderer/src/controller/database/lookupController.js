@@ -1,17 +1,12 @@
 import { lookupRepo } from "#preload";
 
 export async function getRecentLookups() {
-    const date = await lookupRepo.GetLatestLookupDate();
-    const lookups = await lookupRepo.getLookupsByDate(date.latest_date);
-    return lookups;
-}
-
-export async function getAllLookups() {
     try {
-        const lookups = 1;
+        const date = await lookupRepo.GetLatestLookupDate();
+        const lookups = await lookupRepo.getLookupsByDate(date.latest_date);
         return lookups;
     } catch (error) {
-        console.error(error);
+        console.log(error);
     }
 }
 

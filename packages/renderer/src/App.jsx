@@ -1,33 +1,54 @@
-import { useState } from 'react';
-import './App.css';
-import LoginPage from './view/pages/LoginPage/LoginPage';
-import Sidebar from './view/components/Sidebar/Sidebar';
-import Topbar from './view/components/Topbar/Topbar';
-import HomePage from './view/pages/HomePage/HomePage';
-import LibraryPage from './view/pages/LibraryPage/LibraryPage';
-import SettingsPage from './view/pages/SettingsPage/SettingsPage';
+import { useState, useEffect } from "react";
+import Sidebar from "./view/components/Sidebar/Sidebar";
+import Topbar from "./view/components/Topbar/Topbar";
+import LoginPage from "./view/pages/LoginPage/LoginPage";
+import HomePage from "./view/pages/HomePage/HomePage";
+import LibraryPage from "./view/pages/LibraryPage/LibraryPage";
+import SettingsPage from "./view/pages/SettingsPage/SettingsPage";
+import LoadingScreen from "./view/components/LoadingScreen/LoadingScreen";
+import { getProfiles, loadProfile } from "#preload";
+import "./App.css";
 
 function App() {
-  const [kindleSynced, setKindleSynced] = useState(null);
-  const [page, setPage] = useState('homepage');
+    const [fetchedProfiles, setFetchedProfiles] = useState();
+    const [userProfile, setUserProfile] = useState();
+    const [currPage, setCurrPage] = useState("homepage");
+    const [loading, setLoading] = useState(true);
 
-  function handleSync(kindleCon) {
-    setKindleSynced(kindleCon);
-  };
+    useEffect(() => {
+        async function fetchData() {
+            const profiles = await getProfiles();
+            setFetchedProfiles(profiles);
+            setLoading(false);
+        }
+        fetchData();
+    }, [userProfile, fetchedProfiles]);
 
-  return (
-    <div className="App">
-      <Sidebar setPage={setPage} page={page} />
-      <div className="main-container">
-        <Topbar />
-        {kindleSynced && page === 'library' && <LibraryPage profile={kindleSynced} />}
-        {kindleSynced && page === 'settings' && <SettingsPage />}
-        {kindleSynced && page ==='homepage' && <HomePage />}
-        {!kindleSynced && <LoginPage setProfile={handleSync} />}
-      </div>
-    </div>
-  );
-};
+    async function handleSync(profileName) {
+        await loadProfile(profileName)
+        setUserProfile(profileName)
+    }
 
+    if (loading) {
+        return <LoadingScreen />;
+    }
+
+    return (
+        <div className="App" key={userProfile}>
+            <Sidebar setPage={setCurrPage} page={currPage} />
+            <div className="main-container">
+                <Topbar seletedProfile={userProfile} fetchedProfiles={fetchedProfiles} setProfile={handleSync} />
+
+                {userProfile && currPage === "library" && <LibraryPage />}
+                {userProfile && currPage === "settings" && <SettingsPage profile={userProfile} fetchedProfiles={fetchedProfiles} setProfile={handleSync}/>}
+                {userProfile && currPage === "homepage" && <HomePage />}
+                
+                {!userProfile &&
+                    <LoginPage fetchedProfiles={fetchedProfiles} setProfile={handleSync} />
+                }
+            </div>
+        </div>
+    );
+}
 
 export default App;

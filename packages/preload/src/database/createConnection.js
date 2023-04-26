@@ -18,7 +18,7 @@ function createConnection(dbFilePath) {
 async function getConnection(dbFilePath) {
     const config = await getConfig();
     if (!dbFilePath) {
-        dbFilePath = config.tmpDir;
+        dbFilePath = config.currDir;
     }
     if (!connection || connection.filename !== dbFilePath) {
         createConnection(dbFilePath);

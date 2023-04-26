@@ -139,7 +139,5 @@
 
 .table-toolbar h3:hover {
     font-weight: 300;
-    font-size: 1.6rem;
-    font-style: underline;
     cursor: pointer;
 }

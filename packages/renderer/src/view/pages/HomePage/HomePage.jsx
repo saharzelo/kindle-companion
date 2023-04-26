@@ -5,14 +5,10 @@ import BookInfoModal from "../../components/BookInfoModal/BookInfoModal";
 import WordInfoModal from "../../components/WordInfoModal/WordInfoModal";
 import WordsCatalog from "../../components/WordsCatalog/WordsCatalog";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
-import {
-    prepKindleData,
-    prepKindleMetadata,
-} from "../../../controller/services/kindleServices";
+import { prepKindleData, prepKindleMetadata } from "../../../controller/services/kindleServices";
 import { getRecentLookups } from "../../../controller/database/lookupController";
-import format from "../../../controller/helpers/format";
 
-function HomePage({}) {
+function HomePage({ }) {
     const [kindleData, setKindleData] = useState([]);
     const [kindleMeta, setKindleMeta] = useState();
     const [wordsData, setWordsData] = useState();
@@ -88,7 +84,7 @@ function HomePage({}) {
                     <div className="choose-table-buttons">
                         <h3 onClick={() => handleTableClick("books")}>Books</h3>
                         <h3 onClick={() => handleTableClick("words")}>Words</h3>
-                        <h3>Clippings</h3>
+                        <h3 onClick={() => handleTableClick("clippings")}>Clippings</h3>
                     </div>
                     <div className="homepage-catalog">
                         {showTable == "books" && (
@@ -102,6 +98,9 @@ function HomePage({}) {
                                 words={wordsData}
                                 onWordClick={handleWordClick}
                             />
+                        )}
+                        {showTable == "clippings" && (
+                            "WIP"
                         )}
                         {showBookModal && (
                             <BookInfoModal

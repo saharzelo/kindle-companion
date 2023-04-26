@@ -4,8 +4,8 @@ import ModalBackground from '../ModalBackground/ModalBackground';
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import Table from "../Table/Table";
 import { format } from "../../../controller/helpers/format";
-import { ReactComponent as AddTo } from '../../../public/icons/WordModal/addTo.svg'
-import { ReactComponent as RemoveFrom } from '../../../public/icons/WordModal/removeFrom.svg'
+import { ReactComponent as AddTo } from "../../public/icons/addTo.svg"
+import { ReactComponent as RemoveFrom } from '../../public/icons/removeFrom.svg'
 import { getBookTitlesByWord } from "../../../controller/database/wordController";
 import "./WordInfoModal.css";
 
@@ -16,7 +16,6 @@ function WordInfoModal({ word, setShowModal }) {
 
     useEffect(() => {
         async function prepWord() {
-            console.log('papi', await getBookTitlesByWord(word))
             const wordMeta = await getBookTitlesByWord(word)
             setWordMeta(wordMeta);
             setLoading(false);

@@ -1,3 +1,10 @@
 import { ipcRenderer } from "electron";
 
-export const getConfig = async () => await ipcRenderer.invoke('get-config');
+export const getConfig = async () => {
+    try {
+        const config = await ipcRenderer.invoke("getConfig");
+        return config;
+    } catch (error) {
+        console.error("Error getting configuration:", error);
+    }
+};

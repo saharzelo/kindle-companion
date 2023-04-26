@@ -3,12 +3,11 @@
   flex-direction: column;
   justify-content: center;
   gap: 25%;
-  margin:0;
+  margin: 0;
   box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
   height: 10%;
   padding: 4vh 0 4vh 15px;
-  text-shadow: 3px 4px 5px  rgba(90, 90, 90, 0.281);
-
+  text-shadow: 3px 4px 5px rgba(90, 90, 90, 0.281);
 }
 
 .catalog-header h3 {
@@ -17,18 +16,16 @@
   font-weight: 300;
   font-size: 1.7rem;
   pointer-events: none;
-  
 }
 
-.catalog-wrapper {
+.library-page {
   height: 100%;
   position: relative;
   overflow: auto;
-    text-shadow: 3px 4px 5px  rgba(90, 90, 90, 0.281);
-
+  text-shadow: 3px 4px 5px rgba(90, 90, 90, 0.281);
 }
 
-/*  Export */ 
+/*  Export */
 input[type="text"] {
   background-color: #e6e6e6;
   border: none;
@@ -40,13 +37,13 @@ input[type="text"] {
   width: 15vw;
   height: 1.5vh;
 }
- 
+
 input[type="text"]::placeholder {
   color: #797979;
   font-size: 0.75rem;
   font-weight: 400;
 }
- 
+
 input[type="text"]:focus {
   outline: none;
 }
