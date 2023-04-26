@@ -23,14 +23,14 @@
 }
 
 
-.modalContent .header svg {
+.login-modal-content .header svg {
     padding: 20px;
     width: 15vw;
     height: 15vh;
 }
 
 
-.modalContent .header svg {
+.login-modal-content .header svg {
     animation: grow-shrink 2s ease-in-out infinite;
 }
 
@@ -52,7 +52,7 @@
     }
 }
 
-.modalContent {
+.login-modal-content {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -64,14 +64,14 @@
     padding: 10px;
 }
 
-.modalContent .header {
+.login-modal-content .header {
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.modalContent .header h1 {
+.login-modal-content .header h1 {
     padding-top: 5px;
     font-weight: 600;
     font-size: 1.5rem;
@@ -79,14 +79,14 @@
     color: #333
 }
 
-.modalContent .header h6 {
+.login-modal-content .header h6 {
     font-weight: normal;
-    margin: 0 0 25px 0;
+    margin: 0 0 15px 0;
     padding: 0;
     font-size: 12px;
 }
 
-.modalContent .footer {
+.login-modal-content .footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -98,7 +98,7 @@
     text-align: center;
 }
 
-.modalContent .modal-body {
+.login-modal-content .modal-body {
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -15,6 +15,10 @@
   margin-bottom: 0;
 }
 
+.home-page .choose-table-buttons h3:hover {
+  font-weight: 400;
+  cursor: pointer;
+}
 
 .homepage-catalog {
   height: 100%;

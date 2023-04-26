@@ -1,7 +1,7 @@
 .App {
     width: 100vw;
     height: 100vh;
-    background-color: #FFFFFF;
+    background-color: #f8f8fa;
     display: flex;
     flex-basis: 100%;
     user-select: none;
