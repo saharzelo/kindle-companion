@@ -1,31 +1,107 @@
 .settings-page {
     background-color: #f2f2f7;
-    min-height: 100vh;
+    height: 100%;
+    width: 100%;
 }
 
-.toggle-button {
-    background-color: transparent;
-    border: none;
-    color: #007bfffd;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
+.settings-container h3 {
+    font-weight: 300;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgb(207, 195, 195);
 }
+
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.settings-container h4 {
+    margin: 0;
+    padding-bottom: 15px;
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+.settings-container select {
+    width: 120px;
+    background-color: #c8c8c835;
+    border: none;
+    color: rgba(0, 0, 0, 0.802);
+
+}
+.settings-container option {
+  background-color: #9d9c9c35;
+  padding: 20px;
+}
+
+
+.settings-container .text-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 10px;
+}
+
+.settings-container .profile-delete {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    gap: 10px;
+}
+.settings-container button {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: #c8c8c8;
+    color: rgba(0, 0, 0, 0.802);
+    font-size: 0.7rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.settings-container button:hover {
+    background-color: #716f6f;
+}
+/* input[type="text"] {
+flex: 1;
+padding: 0.5rem;
+border: 1px solid #ccc;
+border-radius: 0.25rem;
+font-size: 1rem;
+line-height: 1.5;
+}
+
+button {
+margin-left: 1rem;
+padding: 0.5rem 1rem;
+border: none;
+border-radius: 0.25rem;
+background-color: #007bff;
+color: #fff;
+font-size: 1rem;
+line-height: 1.5;
+cursor: pointer;
+transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+background-color: #0069d9;
+} */
 
 .dark-mode {
     filter: invert(100%);
-
 }
 
-.dark-mode *  {
-    box-shadow: none !important; 
+.dark-mode * {
+    box-shadow: none !important;
     text-shadow: none;
-
 }
-
 
 .dark-mode img,
 picture,
 video {
-    filter: invert(1)
+    filter: invert(1);
 }
