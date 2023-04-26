@@ -8,7 +8,6 @@ ipcMain.handle("getBookThumbnailData", async (event, bookAsinArray) => {
         const config = getConfig();
         const base64Map = {};
         const thumbnailsDir = path.join(config.currDir, "thumbnails");
-
         await Promise.all(
             bookAsinArray.map(async (book) => {
                 const jpgPath = path.join(thumbnailsDir, `${book}.jpg`);
@@ -25,6 +24,5 @@ ipcMain.handle("getBookThumbnailData", async (event, bookAsinArray) => {
         return base64Map;
     } catch (error) {
         console.error(error);
-        throw new Error(`Error getting book thumbnail data: ${error.message}`);
     }
 });

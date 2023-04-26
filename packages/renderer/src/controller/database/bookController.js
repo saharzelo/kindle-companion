@@ -1,38 +1,38 @@
-import { bookRepo, lookupRepo } from '#preload';
-
+import { bookRepo, lookupRepo } from "#preload";
 
 export async function getBooksByLastDate() {
-    const date = await lookupRepo.GetLatestLookupDate();
-    const books = await bookRepo.getBooksByDate(date.latest_date)
-    return books
+    try {
+        const date = await lookupRepo.GetLatestLookupDate();
+        const books = await bookRepo.getBooksByDate(date.latest_date);
+        return books;
+    } catch (error) {
+        console.log(error);
+    }
 }
-
 
 export async function getAllBooks() {
     try {
-        const books = await bookRepo.getAllBooks()
-        return books
+        const books = await bookRepo.getAllBooks();
+        return books;
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 }
-
 
 export async function getBookByAsin(asin) {
     try {
-        const books = await bookRepo.getBookByAsin(asin)
-        return books
+        const books = await bookRepo.getBookByAsin(asin);
+        return books;
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 }
 
-
 export async function getBookCount() {
     try {
-        const bookCount = await bookRepo.getBookCount()
-        return bookCount
+        const bookCount = await bookRepo.getBookCount();
+        return bookCount;
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 }
