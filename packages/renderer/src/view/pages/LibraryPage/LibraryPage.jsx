@@ -5,59 +5,57 @@ import BookInfoModal from "../../components/BookInfoModal/BookInfoModal";
 import { prepKindleData } from "../../../controller/services/kindleServices";
 
 function LibraryPage({ profile }) {
-  const [kindleData, setKindleData] = useState([]);
-  const [selectedBookAsin, setSelectedBookAsin] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+    const [kindleData, setKindleData] = useState([]);
+    const [selectedBookAsin, setSelectedBookAsin] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
 
-  const handleBookClick = (asin) => {
-    setSelectedBookAsin(asin);
-    setShowModal(true);
-  };
+    useEffect(() => {
+        async function fetchData() {
+            const data = await prepKindleData()
+            setKindleData(data)
+        }
+        fetchData();
+    }, []);
 
-  const handleSearchInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
+    const handleBookClick = (asin) => {
+        setSelectedBookAsin(asin);
+        setShowModal(true);
+    };
 
-  const filteredBooks = kindleData.filter((book) =>
-    book.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+    const handleSearchInputChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await prepKindleData()
-      setKindleData(data)
-    }
-    fetchData();
-  }, []);
+    const filteredBooks = kindleData.filter((book) =>
+        book.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
+    return (
+        <div className="library-page">
+            <div className="catalog-header">
+                <h3>Your Library: </h3>
+                <input
+                    type="text"
+                    placeholder="Search Books..."
+                    value={searchQuery}
+                    onChange={handleSearchInputChange}
+                />
+            </div>
+            <BooksCatalog
+                books={filteredBooks}
+                onBookClick={handleBookClick}
+            />
 
-
-  return (
-    <div className="catalog-wrapper">
-      <div className="catalog-header">
-        <h3>Your Library: </h3>
-        <input
-          type="text"
-          placeholder="Search Books..."
-          value={searchQuery}
-          onChange={handleSearchInputChange}
-        />
-      </div>
-      <BooksCatalog
-        books={filteredBooks}
-        onBookClick={handleBookClick}
-      />
-
-      {showModal && (
-        <BookInfoModal
-          bookAsin={selectedBookAsin}
-          setShowModal={setShowModal}
-          thumbnail={kindleData.find((dict) => dict.asin == selectedBookAsin)?.thumbnail}
-        />
-      )}
-    </div>
-  );
+            {showModal && (
+                <BookInfoModal
+                    bookAsin={selectedBookAsin}
+                    setShowModal={setShowModal}
+                    thumbnail={kindleData.find((dict) => dict.asin == selectedBookAsin)?.thumbnail}
+                />
+            )}
+        </div>
+    );
 }
 
 export default LibraryPage;

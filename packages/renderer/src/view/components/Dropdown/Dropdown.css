@@ -10,7 +10,7 @@
     padding: 6px 20px;
     font-size: 1.05rem;
     cursor: pointer;
-    border-radius: 9px;
+    border-radius: 10px;
 }
 
 .dropdown-content {
@@ -24,16 +24,21 @@
     background-color: #fff;
     border: 1px solid #ccc;
     border-top: none;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.294);
+    border-radius: 8px;
 }
 
 .dropdown-content a {
     display: flex;
     justify-content: center;
-    color: #333;
+    color: #000000;
     padding: 8px 30px;
     text-decoration: none;
     justify-content: center;
+    font-weight: 300;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
 }
 
 .dropdown-content a:hover {

@@ -1,11 +1,15 @@
+import { useState } from "react";
 import "./SettingsPage.css";
 import { saveProfile } from "#preload"
 
 
-function SettingsPage({ }) {
+function SettingsPage({ setProfile, fetchedProfiles }) {
+    const [profileName, setProfileName] = useState("");
 
-    const handleProfileSave = (e) => {
-        console.log(e.value)
+    const handleProfileSave = async (event) => {
+        event.preventDefault();
+        console.log(profileName); // log the profile name to the console
+        await saveProfile(profileName);
     }
 
     return (
@@ -18,8 +22,10 @@ function SettingsPage({ }) {
                 <h3>Profiles</h3>
                 <h4>Save Profile:</h4>
                 <div className="text-box">
-                    <input type="text" placeholder="Name"></input>{" "}
-                    <button onClick={(e) => handleProfileSave(e)}>Save</button>
+                    <form>
+                    <input type="text" placeholder="Name" value={profileName} onChange={(event) => setProfileName(event.target.value)}></input>{" "}
+                        <button onClick={(event) => handleProfileSave(event)}> Save </button>
+                    </form>
                 </div>
                 <h4>Delete Profile:</h4>
                 <div className="profile-delete">
@@ -31,7 +37,6 @@ function SettingsPage({ }) {
 
                 <h3>System</h3>
                 <h4>Enable Dark mode</h4>
-
             </div>
         </div>
     );

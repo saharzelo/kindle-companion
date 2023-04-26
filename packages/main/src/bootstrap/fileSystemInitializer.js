@@ -8,7 +8,6 @@ function initializeFileSystem() {
     const config = getConfig();
 
     const dirPaths = [
-
         config.tmpDir,
         config.appDir,
         path.join(config.profileDir),
