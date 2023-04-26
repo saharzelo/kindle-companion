@@ -13,8 +13,8 @@ function LoginPage({ fetchedProfiles, setProfile }) {
 
     const handleFileExplorer = async () => {
         try {
-            const result = await exportKindleContent();
-            setProfile(result);
+            await exportKindleContent();
+            setProfile("guest");
         } catch (error) {
             console.error(error);
         }

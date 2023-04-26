@@ -5,7 +5,7 @@ import { getConfig, setConfig } from "../../config";
 ipcMain.handle("loadProfile", async (event, profileName) => {
     try {
         const config = getConfig();
-        if (profileName === "temp") {
+        if (profileName === "guest") {
             setConfig({currDir: config.tmpDir}) 
             return;
         }
