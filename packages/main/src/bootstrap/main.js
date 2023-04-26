@@ -8,6 +8,7 @@ import "../controller/ipc/getBookThumbnailData";
 import "../controller/ipc/getProfiles"
 import "../controller/ipc/loadProfile"
 import "../controller/ipc/saveProfile"
+import "../controller/ipc/deleteProfile"
 
 /**
  * Prevent electron from running multiple instances.
@@ -40,9 +41,9 @@ app.whenReady()
 /**
  * Check for new version of the application - production mode only.
  */
-if (import.meta.env.PROD) {
-    app.whenReady()
-        .then(() => import("electron-updater"))
-        .then(({ autoUpdater }) => autoUpdater.checkForUpdatesAndNotify())
-        .catch((e) => console.error("Failed check updates:", e));
-}
+// if (import.meta.env.PROD) {
+//     app.whenReady()
+//         .then(() => import("electron-updater"))
+//         .then(({ autoUpdater }) => autoUpdater.checkForUpdatesAndNotify())
+//         .catch((e) => console.error("Failed check updates:", e));
+// }

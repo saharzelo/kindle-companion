@@ -22,23 +22,26 @@
     font-weight: 300;
     font-size: 1rem;
 }
+
 .settings-container .text-box input[type="text"] {
     font-size: 0.8rem;
     font-weight: 200;
     color: rgb(42, 42, 42);
-  }
+}
 
 .settings-container select {
-    width: 120px;
+    width: 140px;
     background-color: #c8c8c835;
-    border-radius: 0.3rem;
+    border-radius: 8px;
     border-color: wheat;
     color: rgba(0, 0, 0, 0.802);
+    padding-left: 8px;
 
 }
+
 .settings-container option {
-  background-color: #9d9c9c35;
-  padding: 20px;
+    background-color: #9d9c9c35;
+    padding: 20px;
 }
 
 
@@ -55,6 +58,7 @@
     width: fit-content;
     gap: 10px;
 }
+
 .settings-container button {
     padding: 0.5rem 0.7rem 0.5rem 0.7rem;
     border: none;

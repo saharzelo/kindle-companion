@@ -10,3 +10,4 @@ export { exportKindleContent } from "./ipc/exportKindleContent";
 export { getProfiles } from "./ipc/getProfiles";
 export { loadProfile } from "./ipc/loadProfile";
 export { saveProfile } from "./ipc/saveProfile";
+export { deleteProfile } from "./ipc/deleteProfile";

@@ -1,15 +1,26 @@
 import { useState } from "react";
 import "./SettingsPage.css";
-import { saveProfile } from "#preload"
+import { saveProfile, deleteProfile } from "#preload"
 
 
-function SettingsPage({ setProfile, fetchedProfiles }) {
-    const [profileName, setProfileName] = useState("");
+function SettingsPage({ setProfile, fetchedProfiles, profile }) {
+    const [saveProfileName, setSaveProfileName] = useState("");
+    const [deleteProfileName, setDeleteProfileName] = useState()
 
     const handleProfileSave = async (event) => {
         event.preventDefault();
-        console.log(profileName); // log the profile name to the console
-        await saveProfile(profileName);
+        if (saveProfileName) {
+            await saveProfile(saveProfileName);
+            await setProfile(saveProfileName)
+        }
+    }
+
+    const handleProfileDelete = async (event) => {
+        event.preventDefault();
+        await deleteProfile(deleteProfileName)
+        if (deleteProfileName === profile) {
+            setProfile(null)
+        }
     }
 
     return (
@@ -23,16 +34,17 @@ function SettingsPage({ setProfile, fetchedProfiles }) {
                 <h4>Save Profile:</h4>
                 <div className="text-box">
                     <form>
-                    <input type="text" placeholder="Name" value={profileName} onChange={(event) => setProfileName(event.target.value)}></input>{" "}
+                        <input type="text" placeholder="Name" value={saveProfileName} onChange={(event) => setSaveProfileName(event.target.value)} ></input>
                         <button onClick={(event) => handleProfileSave(event)}> Save </button>
                     </form>
                 </div>
                 <h4>Delete Profile:</h4>
                 <div className="profile-delete">
-                    <select>
-                        <option>Temp2</option>
+                    <select onChange={(event) => setDeleteProfileName(event.target.value)}>
+                        <option>Select a Profile</option>
+                        {fetchedProfiles.map((profile, index) => (<option key={index}>{profile}</option>))}
                     </select>
-                    <button>Delete</button>
+                    <button onClick={handleProfileDelete}>Delete</button>
                 </div>
 
                 <h3>System</h3>
