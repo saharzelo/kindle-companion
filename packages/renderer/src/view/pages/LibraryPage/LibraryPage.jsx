@@ -4,7 +4,7 @@ import BooksCatalog from "../../components/BooksCatalog/BooksCatalog";
 import BookInfoModal from "../../components/BookInfoModal/BookInfoModal";
 import { prepKindleData } from "../../../controller/services/kindleServices";
 
-function LibraryPage({ profile }) {
+function LibraryPage({ }) {
     const [kindleData, setKindleData] = useState([]);
     const [selectedBookAsin, setSelectedBookAsin] = useState(null);
     const [showModal, setShowModal] = useState(false);

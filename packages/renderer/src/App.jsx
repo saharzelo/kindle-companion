@@ -22,7 +22,7 @@ function App() {
             setLoading(false);
         }
         fetchData();
-    }, [userProfile]);
+    }, [userProfile, fetchedProfiles]);
 
     async function handleSync(profileName) {
         await loadProfile(profileName)
@@ -38,17 +38,14 @@ function App() {
             <Sidebar setPage={setCurrPage} page={currPage} />
             <div className="main-container">
                 <Topbar seletedProfile={userProfile} fetchedProfiles={fetchedProfiles} setProfile={handleSync} />
-                {userProfile && currPage === "library" && (
-                    <LibraryPage profile={userProfile} />
-                )}
-                {userProfile && currPage === "settings" && <SettingsPage />}
+
+                {userProfile && currPage === "library" && <LibraryPage />}
+                {userProfile && currPage === "settings" && <SettingsPage profile={userProfile} fetchedProfiles={fetchedProfiles} setProfile={handleSync}/>}
                 {userProfile && currPage === "homepage" && <HomePage />}
-                {!userProfile && (
-                    <LoginPage
-                        fetchedProfiles={fetchedProfiles}
-                        setProfile={handleSync}
-                    />
-                )}
+                
+                {!userProfile &&
+                    <LoginPage fetchedProfiles={fetchedProfiles} setProfile={handleSync} />
+                }
             </div>
         </div>
     );

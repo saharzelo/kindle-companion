@@ -15,6 +15,7 @@ const Dropdown = ({ title, options, onClick }) => {
             </button>
             {isOpen &&
                 <div className="dropdown-content">
+                    {options.length < 1 && <a> Empty</a>}
                     {options.map((option, index) => (
                         <a key={index} onClick={() => onClick(option)}>
                             {option}
