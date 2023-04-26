@@ -1,8 +1,9 @@
 import { ipcMain } from "electron";
 import { getConfig } from "../../config";
-import { copyFiles } from "../utils/copyFiles";
 import path from "path";
 import fs from "fs";
+import fsExtra from 'fs-extra';
+
 
 ipcMain.handle("saveProfile", async (event, profileName) => {
     try {
@@ -18,7 +19,7 @@ ipcMain.handle("saveProfile", async (event, profileName) => {
 
 
         // copy files to new folder
-        await copyFiles(config.currDir, profilePath)
+        await fsExtra.copy(config.currDir, profilePath)
 
         // set new config dir
 
