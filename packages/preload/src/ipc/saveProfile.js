@@ -1,5 +1,13 @@
+// Save profile function using Electron's ipcRenderer module
+
 import { ipcRenderer } from "electron";
 
-export function saveProfile(profileName, isTemp) {
-  return ipcRenderer.invoke("saveProfile", profileName, isTemp);
+export async function saveProfile(profileName) {
+  try {
+    const result = await ipcRenderer.invoke("saveProfile", profileName);
+    console.log(result)
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
 }

@@ -1,5 +1,13 @@
 import "./SettingsPage.css";
-function SettingsPage({}) {
+import { saveProfile } from "#preload"
+
+
+function SettingsPage({ }) {
+
+    const handleProfileSave = (e) => {
+        console.log(e.value)
+    }
+
     return (
         <div className="settings-page">
             <div className="catalog-header">
@@ -11,7 +19,7 @@ function SettingsPage({}) {
                 <h4>Save Profile:</h4>
                 <div className="text-box">
                     <input type="text" placeholder="Name"></input>{" "}
-                    <button>Save</button>
+                    <button onClick={(e) => handleProfileSave(e)}>Save</button>
                 </div>
                 <h4>Delete Profile:</h4>
                 <div className="profile-delete">
@@ -23,7 +31,7 @@ function SettingsPage({}) {
 
                 <h3>System</h3>
                 <h4>Enable Dark mode</h4>
-                    
+
             </div>
         </div>
     );
