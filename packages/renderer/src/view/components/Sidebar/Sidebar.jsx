@@ -1,9 +1,9 @@
 import './Sidebar.css';
-import { ReactComponent as AppIcon } from '../../../public/icons/loginIcon.svg'
+import { ReactComponent as AppIcon } from '../../public/icons/loginIcon.svg'
 
-import { ReactComponent as BookSvg } from '../../../public/icons/Sidebar/book.svg'
-import { ReactComponent as HomeSvg } from '../../../public/icons/Sidebar/home.svg'
-import { ReactComponent as SettingsSvg } from '../../../public/icons/Sidebar/settings.svg'
+import { ReactComponent as BookSvg } from '../../public/icons/book.svg'
+import { ReactComponent as HomeSvg } from '../../public/icons//home.svg'
+import { ReactComponent as SettingsSvg } from '../../public/icons/settings.svg'
 function Sidebar({ setPage, page }) {
 
   const handleSetPage = (curPage) => {

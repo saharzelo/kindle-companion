@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './LoginPage.css'
 import { exportKindleContent } from '#preload';
-import { ReactComponent as LoginIcon } from '../../../public/icons/loginIcon.svg'
+import { ReactComponent as LoginIcon } from '../../public/icons/loginIcon.svg'
 import Dropdown from '../../components/Dropdown/Dropdown';
 
 
@@ -13,8 +13,10 @@ function LoginPage({ fetchedProfiles, setProfile }) {
 
     const handleFileExplorer = async () => {
         try {
-            await exportKindleContent();
-            setProfile("guest");
+            const result = await exportKindleContent();
+            if (result==="success") {
+                setProfile("guest");
+            }
         } catch (error) {
             console.error(error);
         }

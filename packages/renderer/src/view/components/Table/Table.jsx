@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { ReactComponent as ViewSvg } from '../../../public/icons/BookModal/zoom.svg';
-import { ReactComponent as DeleteSvg } from "../../../public/icons/BookModal/delete.svg";
+import { ReactComponent as ViewSvg } from '../../public/icons/zoom.svg';
+import { ReactComponent as DeleteSvg } from "../../public/icons/delete.svg";
 import './Table.css';
 
 function Table({ tableData, tableHeaders, enableActions = false, onClick }) {
