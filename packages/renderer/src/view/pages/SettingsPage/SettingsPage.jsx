@@ -33,10 +33,8 @@ function SettingsPage({ setProfile, fetchedProfiles, profile }) {
                 <h3>Profiles</h3>
                 <h4>Save Profile:</h4>
                 <div className="text-box">
-                    <form>
-                        <input type="text" placeholder="Name" value={saveProfileName} onChange={(event) => setSaveProfileName(event.target.value)} ></input>
-                        <button onClick={(event) => handleProfileSave(event)}> Save </button>
-                    </form>
+                    <input type="text" placeholder="Name" value={saveProfileName} onChange={(event) => setSaveProfileName(event.target.value)} ></input>
+                    <button onClick={(event) => handleProfileSave(event)}> Save </button>
                 </div>
                 <h4>Delete Profile:</h4>
                 <div className="profile-delete">
