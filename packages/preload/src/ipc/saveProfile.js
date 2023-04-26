@@ -5,6 +5,6 @@ export async function saveProfile(profileName) {
         const result = await ipcRenderer.invoke("saveProfile", profileName);
         return result;
     } catch (error) {
-        console.error(error);
+        console.error("Error Saving Profile: \n", error);
     }
 }
