@@ -9,7 +9,7 @@
   "version": "1.0.5",
   "main": "packages/main/dist/index.cjs",
   "build": {
-    "appId": "io.sahar10501.github.kindle-companion",
+    "appId": "io.saharzelo.github.kindle-companion",
     "extends": null,
     "linux": {
       "synopsis": "Kindle Clippings and vocabulary Manager",
