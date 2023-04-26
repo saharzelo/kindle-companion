@@ -73,7 +73,7 @@ function BookInfoModal({ bookAsin, setShowModal, thumbnail }) {
                         <Table enableActions={true} onClick={handleWordClick} tableHeaders={['Word', 'usage', 'timestamp', 'stem', 'action']} tableData={bookData.lookups} />
 
                         {selectedWord &&
-                            <WordInfoModal word={selectedWord} setShowModal={handleWordClick}/>
+                            <WordInfoModal word={selectedWord} setShowModal={handleWordClick} />
                         }
                     </div>
                 </div>

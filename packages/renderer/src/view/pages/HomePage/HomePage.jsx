@@ -84,7 +84,7 @@ function HomePage({ }) {
                     <div className="choose-table-buttons">
                         <h3 onClick={() => handleTableClick("books")}>Books</h3>
                         <h3 onClick={() => handleTableClick("words")}>Words</h3>
-                        <h3>Clippings</h3>
+                        <h3 onClick={() => handleTableClick("clippings")}>Clippings</h3>
                     </div>
                     <div className="homepage-catalog">
                         {showTable == "books" && (
@@ -98,6 +98,9 @@ function HomePage({ }) {
                                 words={wordsData}
                                 onWordClick={handleWordClick}
                             />
+                        )}
+                        {showTable == "clippings" && (
+                            "WIP"
                         )}
                         {showBookModal && (
                             <BookInfoModal
