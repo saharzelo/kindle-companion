@@ -26,6 +26,9 @@
     border-top: none;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.294);
     border-radius: 8px;
+    overflow-y: auto;
+    height: fit-content;
+    max-height: 150px;
 }
 
 .dropdown-content a {

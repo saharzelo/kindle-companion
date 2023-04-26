@@ -40,5 +40,4 @@
 .operation svg:hover {
     transform: scale(1.2);
     cursor: pointer;
-    margin: 15px;
 }
