@@ -22,12 +22,11 @@ function App() {
             setLoading(false);
         }
         fetchData();
-    }, []);
+    }, [userProfile]);
 
     async function handleSync(profileName) {
-        console.log('test')
         await loadProfile(profileName)
-        setUserProfile(true)
+        setUserProfile(profileName)
     }
 
     if (loading) {
@@ -35,10 +34,10 @@ function App() {
     }
 
     return (
-        <div className="App">
+        <div className="App" key={userProfile}>
             <Sidebar setPage={setCurrPage} page={currPage} />
             <div className="main-container">
-                <Topbar />
+                <Topbar seletedProfile={userProfile} fetchedProfiles={fetchedProfiles} setProfile={handleSync} />
                 {userProfile && currPage === "library" && (
                     <LibraryPage profile={userProfile} />
                 )}
