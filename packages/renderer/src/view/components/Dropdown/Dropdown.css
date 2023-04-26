@@ -7,7 +7,7 @@
     background-color: #f6f6f6;
     color: #333;
     border: 1px solid #ccc;
-    padding: 6px 15px;
+    padding: 6px 20px;
     font-size: 1.05rem;
     cursor: pointer;
     border-radius: 9px;
@@ -16,7 +16,7 @@
 .dropdown-content {
     display: block;
     position: absolute;
-    z-index: 1;
+    z-index: 5;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
