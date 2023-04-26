@@ -1,5 +1,5 @@
 import { ipcRenderer } from "electron";
 
-export function getThumbnailsByAsin(bookAsin) {
-  return ipcRenderer.invoke("getBookThumbnailData", bookAsin);
+export async function getThumbnailsByAsin(bookAsin) {
+  return await ipcRenderer.invoke("getBookThumbnailData", bookAsin);
 }

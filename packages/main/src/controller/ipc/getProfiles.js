@@ -1,6 +1,5 @@
 import { ipcMain } from "electron";
 import fs from "fs/promises";
-import path from "path";
 import { getConfig } from "../../config";
 
 ipcMain.handle("getProfiles", async (event) => {
