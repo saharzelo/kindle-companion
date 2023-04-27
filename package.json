@@ -28,6 +28,7 @@
   "dependencies": {
     "@vitejs/plugin-react": "^2.1.0",
     "electron-updater": "5.2.1",
+    "fs-extra": "^11.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sqlite3": "^5.1.6",
