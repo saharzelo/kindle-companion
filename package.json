@@ -8,26 +8,13 @@
   },
   "version": "1.0.5",
   "main": "packages/main/dist/index.cjs",
-  "build": {
-    "appId": "io.saharzelo.github.kindle-companion",
-    "extends": null,
-    "linux": {
-      "synopsis": "Kindle Clippings and vocabulary Manager",
-      "icon": "",
-      "category": "Development",
-      "target": [
-        "deb",
-        "snap"
-      ]
-    }
-  },
   "scripts": {
     "build": "npm run build:main && npm run build:preload && npm run build:renderer",
     "build:main": "cd ./packages/main && vite build",
     "build:preload": "cd ./packages/preload && vite build",
     "build:renderer": "cd ./packages/renderer && vite build",
     "compileAll": "cross-env MODE=production npm run build && electron-builder -mw --config .electron-builder.config.js --dir --config.asar=false",
-    "compile": "cross-env MODE=production npm run build && electron-builder build --publish=never",
+    "compile": "cross-env MODE=production npm run build && electron-builder build --config .electron-builder.config.js --publish=never",
     "watch": "node scripts/watch.mjs",
     "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs"
   },

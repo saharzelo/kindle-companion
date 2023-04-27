@@ -7,6 +7,7 @@ async function createWindow() {
         minWidth: 940, // set minimum width
         minHeight: 600, // set minimum height
         show: false, // Use the 'ready-to-show' event to show the instantiated BrowserWindow.
+        icon: __dirname + "buildResources/icon.png",
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,
