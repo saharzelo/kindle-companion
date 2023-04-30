@@ -32,10 +32,10 @@
             href="https://github.com/saharzelo/kindle-companion/releases/download/APP_VERSION/Kindle-Companion-APP_VERSION.exe"
             class="btn appVersion">Windows (.exe)</a>
         <a id='download-link-ubuntu'
-            href="https://github.com/saharzelo/kindle-companion/releases/download/APP_VERSION/Kindle-Companion-APP_VERSION.deb"
-            class="btn appVersion"></i> Ubuntu / Debian
-            (.snap .deb)</a>
-        <a href="https://github.com/saharzelo/kindle-companion/releases/tag/APP_VERSION" class="btn appVersion">Other
+            href="https://github.com/saharzelo/kindle-companion/releases/download/APP_VERSION/Kindle-Companion-APP_VERSION.snap"
+            class="btn appVersion"></i> Ubuntu(.snap)
+            (.snap)</a>
+        <a href="https://github.com/saharzelo/kindle-companion/releases/tag/APP_VERSION" class="btn appVersion">More
             Releases</a>
     </header>
 
@@ -74,7 +74,7 @@
                     }
                     if (innerText.includes('download-link-ubuntu')) {
                         const link = document.querySelector('#download-link-ubuntu').href;
-                        li.innerHTML = `<a href="${link}">Download Kindle-Companion for Ubuntu / Debian (.snap .deb)</a>`
+                        li.innerHTML = `<a href="${link}">Download Kindle-Companion for Ubuntu (.snap)</a>`
                     }
                 }
             }
