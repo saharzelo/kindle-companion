@@ -3,7 +3,6 @@ import { getConfig } from "../config";
 import path from "path";
 import fs from "fs";
 
-
 function initializeFileSystem() {
     const config = getConfig();
 
@@ -18,6 +17,12 @@ function initializeFileSystem() {
     dirPaths.forEach((dir) => {
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir);
+        }
+    });
+
+    app.on("ready", () => {
+        if (import.meta.env.PROD) {
+            createDemoProfile();
         }
     });
 
@@ -38,6 +43,33 @@ function emptyDirSync(dir) {
             }
         });
     }
+}
+
+function createDemoProfile() {
+    const sourcePath = path.join(
+        __dirname,
+        "buildResources",
+        "demo_profile",
+        "vocab.db"
+    );
+    const destinationPath = path.join(
+        getConfig().profileDir,
+        "demo_profile",
+        "vocab.db"
+    );
+
+    if (fs.existsSync(destinationPath)) {
+        return;
+    }
+
+    // Copy the source file to the destination file
+    fs.copyFile(sourcePath, destinationPath, (err) => {
+        if (err) {
+            console.error("Error copying database file:", err);
+        } else {
+            console.log("Database file successfully copied.");
+        }
+    });
 }
 
 initializeFileSystem();
