@@ -8,12 +8,12 @@ This app, built with Electron and React, allows readers to effortlessly access a
 
 <table>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/88053021/233426621-159d40e7-1dd6-4fae-998c-326dbbe6799a.png" width="100%"/></td>
-    <td><img src="https://user-images.githubusercontent.com/88053021/233426627-efaa1c17-56e3-4d71-a38e-48ffbfb1f149.png" width="100%"/></td>
+    <td><img src="https://user-images.githubusercontent.com/88053021/235351944-b895d752-0b2b-432a-be7d-e21d5d15d7d0.png" width="100%"/></td>
+    <td><img src="https://user-images.githubusercontent.com/88053021/235351945-5d7dd54b-2f45-40b4-9258-6d630b86613b.png" width="100%"/></td>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/88053021/233426605-8bb2bdb2-d22f-4063-9911-dc0dd7ba3f7a.png" width="100%"/></td>
-    <td><img src="https://user-images.githubusercontent.com/88053021/233426616-6d848172-90b2-4dfe-9a1a-dcdfebadc2f9.png" width="100%"/></td>
+    <td><img src="https://user-images.githubusercontent.com/88053021/235351941-59e48000-8418-48d5-a972-2a450bd67661.png" width="100%"/></td>
+    <td><img src="https://user-images.githubusercontent.com/88053021/235351940-3f722cb5-ac31-4711-a1b1-97913fd45084.png" width="100%"/></td>
   </tr>
 </table>
 
@@ -21,11 +21,11 @@ This app, built with Electron and React, allows readers to effortlessly access a
 
 * Cross-platform compatibility
 * Access to vocabulary lookups and clippings(wip)
+* Save profiles for offline access to lookups and preferences
 * View saved words across all Kindle books
 * Personalized blocked word lists(wip)
-* Saved profiles (work in progress) for easy device connection
 * Custom dictionary lookup (work in progress) with offline and online support
-* Export to popular word decks and CSV files (work in progress)
+* Export to popular word decks and CSV's(work in progress)
 
 ## Installation
 Users can download the app for their operating systems from the Kindle-Companion homepage. The app is available for macOS (dmg), Windows (exe), Debian/Ubuntu (.deb/.snap). Developers can also download and run the app by cloning the repository with the following commands:
