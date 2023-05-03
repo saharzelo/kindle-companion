@@ -7,9 +7,8 @@ ipcMain.handle("deleteProfile", async (event, profileName) => {
     try {
         const config = getConfig();
         const profilePath = path.join(config.profileDir, profileName);
-        fsExtra.emptyDirSync(profilePath); // Deletes all contents of the folder
-        fsExtra.removeSync(profilePath); // Deletes the folder itself
-        console.log('wtf?')
+        fsExtra.emptyDirSync(profilePath);
+        fsExtra.removeSync(profilePath);
     } catch (err) {
         console.error(err);
     }
