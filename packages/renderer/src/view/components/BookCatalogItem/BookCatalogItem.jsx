@@ -18,7 +18,7 @@ function BookCatalogItem({ thumbnail, title, metadata, onClick }) {
                 <h6>{title}</h6>
             </div>
             <div className="book-info">
-                <span>Vocabulary: 54</span> <span>Clippings: 22</span>
+                <span>Vocabulary: {metadata}</span> <span>Clippings: 0</span>
             </div>
         </div>
     );

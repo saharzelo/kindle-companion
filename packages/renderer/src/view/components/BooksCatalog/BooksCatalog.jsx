@@ -1,12 +1,12 @@
 import BookCatalogItem from "../BookCatalogItem/BookCatalogItem";
 import "./BooksCatalog.css";
 function BooksCatalog({ books, onBookClick }) {
-    const booksCatalog = books.map(({ title, asin, thumbnail }, index) => (
+    const booksCatalog = books.map(({ title, asin, thumbnail, meta }, index) => (
         <BookCatalogItem
             key={index}
             title={title}
             thumbnail={thumbnail}
-            metadata={asin}
+            metadata={meta.wordCount}
             onClick={() => onBookClick(asin)}
         />
     ));
