@@ -6,7 +6,7 @@ export async function getRecentLookups() {
         const lookups = await lookupRepo.getLookupsByDate(date.latest_date);
         return lookups;
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 

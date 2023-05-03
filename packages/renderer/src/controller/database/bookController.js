@@ -6,7 +6,7 @@ export async function getBooksByLastDate() {
         const books = await bookRepo.getBooksByDate(date.latest_date);
         return books;
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 
