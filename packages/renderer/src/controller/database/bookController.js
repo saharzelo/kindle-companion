@@ -36,3 +36,16 @@ export async function getBookCount() {
         console.error(error);
     }
 }
+
+export async function getWordCountByAsin() {
+    try {
+        const wordCount = await bookRepo.getWordCountByAsin();
+        let wordCountAsinMap = {};
+        wordCount.map((book) => {
+            wordCountAsinMap[book.asin] = book.wordCount;
+        });
+        return wordCountAsinMap;
+    } catch (error) {
+        console.error(error);
+    }
+}
