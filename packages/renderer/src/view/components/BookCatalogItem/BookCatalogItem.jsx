@@ -5,7 +5,7 @@ function BookCatalogItem({ thumbnail, title, metadata, onClick }) {
         <div className="book-preview-item" onClick={onClick}>
             <div className="book-thumbnail">
                 {thumbnail ? (
-                    <img id="book-thumnail" src={thumbnail} alt={title} />
+                    <img id="book-thumnail" src={thumbnail}/>
                 ) : (
                     <div className="missing-thumbnail-wrapper">
                         <div className="missing-thumbnail">

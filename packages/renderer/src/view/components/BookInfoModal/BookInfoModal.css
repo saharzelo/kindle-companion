@@ -31,13 +31,15 @@
     position: relative;
     height: 20%;
     width: 100%;
-    box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.16);
+    margin-bottom: 13vh;
 }
 
 .modal-content .book-cover #cover-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.16);
+
 }
 
 .modal-content #thumb-img {
@@ -46,16 +48,42 @@
     top: 60%;
     min-width: 100px;
     min-height: 100px;
-    width: 10vw;
+    width: 15vh;
     height: 15vh;
     border-radius: 50%;
     box-shadow: 0 3px 15px 3px rgba(0, 0, 0, 0.5);
 }
 
-.modal-body .book-thumbnail {
-    min-height: 12vh;
+.modal-content #missing-cover-img {
+    width: 100%;
+    height: 100%;
+    font-size: 1.2rem;
+    font-weight: 200;
+    padding: 45px;
+    object-fit: cover;
+    background-color: rgba(128, 128, 128, 0.112);
+    box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.066);
+
 }
 
+
+.modal-content #missing-thumb-img {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 5%;
+    top: 50%;
+    min-width: 100px;
+    min-height: 100px;
+    width: 14vh;
+    height: 14vh;
+    border-radius: 50%;
+    background-color: #b8b8b8;
+    color: #ffffff;
+    font-size: 4vh;
+    box-shadow: 1px 0px 10px 3px rgba(59, 59, 59, 0.09);
+}
 .modal-body .close {
     color: #aaaaaa;
     font-size: 28px;
@@ -117,7 +145,7 @@
     position: relative;
     align-items: center;
     margin: auto;
-    padding: 0 15px 0 15px;
+    padding: 0 35px 0 35px;
 }
 
 .table-toolbar {
