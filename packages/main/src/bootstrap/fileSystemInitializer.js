@@ -19,11 +19,8 @@ function initializeFileSystem() {
             fs.mkdirSync(dir);
         }
     });
-
     app.on("ready", () => {
-        if (import.meta.env.PROD) {
-            createDemoProfile();
-        }
+        createDemoProfile();
     });
 
     app.on("before-quit", () => {
@@ -46,8 +43,11 @@ function emptyDirSync(dir) {
 }
 
 function createDemoProfile() {
+    const ressourcesPath = import.meta.env.PROD
+        ? process.resourcesPath
+        : app.getAppPath();
     const sourcePath = path.join(
-        __dirname,
+        ressourcesPath,
         "buildResources",
         "demo_profile",
         "vocab.db"
@@ -58,16 +58,9 @@ function createDemoProfile() {
         "vocab.db"
     );
 
-    if (fs.existsSync(destinationPath)) {
-        return;
-    }
-
-    // Copy the source file to the destination file
     fs.copyFile(sourcePath, destinationPath, (err) => {
         if (err) {
             console.error("Error copying database file:", err);
-        } else {
-            console.log("Database file successfully copied.");
         }
     });
 }
