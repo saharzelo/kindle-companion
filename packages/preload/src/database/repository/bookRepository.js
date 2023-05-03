@@ -1,4 +1,4 @@
-import { runQuery } from "../createConnection";
+import { runQuery } from "../dbConnection";
 
 async function getAllBooks() {
     const query = "SELECT title, asin FROM BOOK_INFO";
@@ -47,10 +47,22 @@ async function getBookCount() {
     return await runQuery(query, [], "get");
 }
 
+async function getWordCountByAsin() {
+    const query = `
+    SELECT 
+        b.asin, 
+        COUNT(DISTINCT lookups.word_key) AS wordCount
+    FROM 
+        BOOK_INFO b
+    JOIN LOOKUPS lookups ON b.id = lookups.book_key
+    GROUP BY b.asin;`;
+    return await runQuery(query, []);
+}
 
 export const bookRepo = {
     getAllBooks,
     getBookByAsin,
     getBooksByDate,
     getBookCount,
+    getWordCountByAsin,
 };

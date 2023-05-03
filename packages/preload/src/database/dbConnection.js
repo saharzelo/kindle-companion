@@ -5,8 +5,6 @@ let connection;
 
 function createConnection(dbFilePath) {
     dbFilePath = dbFilePath + "/vocab.db";
-    console.log(dbFilePath);
-
     connection = new sqlite3.Database(dbFilePath, (err) => {
         if (err) {
             console.error(err.message);
@@ -15,11 +13,10 @@ function createConnection(dbFilePath) {
     });
 }
 
-async function getConnection(dbFilePath) {
+async function getConnection() {
     const config = await getConfig();
-    if (!dbFilePath) {
-        dbFilePath = config.currDir;
-    }
+    const dbFilePath = config.currDir;
+
     if (!connection || connection.filename !== dbFilePath) {
         createConnection(dbFilePath);
     }

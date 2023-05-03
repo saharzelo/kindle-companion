@@ -1,4 +1,4 @@
-import { runQuery } from "../createConnection";
+import { runQuery } from "../dbConnection";
 
 async function getWordUsageByWord(word) {
     const query = `

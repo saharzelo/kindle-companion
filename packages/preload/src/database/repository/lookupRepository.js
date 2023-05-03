@@ -1,4 +1,4 @@
-import { runQuery } from "../createConnection";
+import { runQuery } from "../dbConnection";
 
 async function getLookupsByAsin(asin) {
     const query = `
@@ -20,7 +20,6 @@ async function getLookupsByDate(date) {
         GROUP BY w.word;
         ORDER BY l.timestamp DESC;
     `;
-    console.log(await runQuery(query, [date]));
     return await runQuery(query, [date]);
 }
 
