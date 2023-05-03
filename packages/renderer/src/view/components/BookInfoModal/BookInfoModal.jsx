@@ -61,40 +61,39 @@ function BookInfoModal({ bookAsin, setShowModal, thumbnail }) {
 
                         <div className="info-text">
                             <p>
-                                Author:{" "}
+                                Author:
                                 <span className="author-name">
-                                    {" "}
-                                    {bookData.meta.author}{" "}
+                                    {bookData.meta.author}
                                 </span>
                             </p>
                             <p>
-                                Full Name:{" "}
+                                Full Name:
                                 <span className="full-name">
                                     {bookData.meta.title}
                                 </span>
                             </p>
                             <p>
-                                Last synced:{" "}
+                                Last synced:
                                 <span className="last-synced">WIP</span>
                             </p>
                             <p>
-                                Last Book Activity:{" "}
+                                Last Book Activity:
                                 <span className="last-highlighted">
                                     {bookData.meta.maxTime}
                                 </span>
                             </p>
                             <p>
-                                Words Defined:{" "}
+                                Words Defined:
                                 <span className="author-name">
                                     {bookData.meta.wordCount}
                                 </span>
                             </p>
                             <p>
-                                Clippings:{" "}
+                                Clippings:
                                 <span className="full-name">WIP</span>
                             </p>
                             <p>
-                                Highlights:{" "}
+                                Highlights:
                                 <span className="last-synced">WIP</span>
                             </p>
                         </div>
