@@ -55,13 +55,17 @@
 .login-modal-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    width: 33vw;
-    min-height: 55vh;
+    justify-content: center;
+    text-align: center;
+    height: 42vh;
+    width: 22vw;
+    min-width: 340px;
+    min-height: 370px;
     border-radius: 25px;
     background-color: #fff;
     box-shadow: 0 11px 34px 0 rgb(0 0 0 / 20%);
-    padding: 10px;
+    padding: 0.5%;
+    gap: 1vh;
 }
 
 .login-modal-content .header {
@@ -98,14 +102,13 @@
     text-align: center;
 }
 
-.login-modal-content .modal-body {
+.login-modal-content .body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     font-size: 0.9rem;
-    gap: 7px;
-
+    gap: 5px;
 }
 
 .footer .body {
@@ -122,14 +125,11 @@
     text-decoration: none;
 }
 
-.footer #create-account {
-    margin-top: 1.2vh;
-}
-
 .razor {
     width: 16vw;
     box-shadow: 0 0.1px 0 rgb(116, 112, 112);
     border-bottom: 0.1px solid rgb(150, 147, 147);
+    margin: 10px;
 }
 
 

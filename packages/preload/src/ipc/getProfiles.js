@@ -5,6 +5,6 @@ export async function getProfiles() {
         const profiles = await ipcRenderer.invoke("getProfiles");
         return profiles
     } catch (err) {
-        console.error("error getting profile: \n", err);
+        console.error("error loading profiles: \n", err);
     }
 }

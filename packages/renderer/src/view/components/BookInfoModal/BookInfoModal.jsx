@@ -110,7 +110,7 @@ function BookInfoModal({ bookAsin, setShowModal, thumbnail }) {
                                 "usage",
                                 "timestamp",
                                 "stem",
-                                "action",
+                                "actions",
                             ]}
                             tableData={bookData.lookups}
                         />
