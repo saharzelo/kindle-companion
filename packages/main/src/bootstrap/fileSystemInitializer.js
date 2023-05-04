@@ -45,26 +45,21 @@ function emptyDirSync(dir) {
 
 function createDemoProfile() {
     const appPath = import.meta.env.PROD
-        ? process.resourcesPath
+        ? path.join(process.resourcesPath, "..")
         : app.getAppPath();
-    const sourcePath = path.join(
-        appPath,
-        "buildResources",
-        "demo_profile"
-    );
+    const sourcePath = path.join(appPath, "buildResources", "demo_profile");
     const destinationPath = path.join(getConfig().profileDir, "demo_profile");
 
-    if (fs.readdirSync(destinationPath).length === 0) {
-        fsExtra.copySync(
-            sourcePath,
-            destinationPath,
-            { overwrite: false },
-            (err) => {
-                if (err) {
-                    console.error("Error copying database file:", err);
-                }
+    fsExtra.copySync(
+        sourcePath,
+        destinationPath,
+        { overwrite: false },
+        (err) => {
+            if (err) {
+                console.error("Error copying files:", err);
             }
-        );    }
+        }
+    );
 }
 
 initializeFileSystem();

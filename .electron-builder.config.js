@@ -10,7 +10,7 @@ const config = {
         output: "dist",
         buildResources: "buildResources",
     },
-    extraFiles: ["buildResources/demo_profile/vocab.db"],
+    extraFiles: ["buildResources/demo_profile/"],
     files: ["packages/**/dist/**"],
     extraMetadata: {
         version: process.env.VITE_APP_VERSION,
