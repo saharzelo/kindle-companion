@@ -2,6 +2,7 @@ import { app } from "electron";
 import { getConfig } from "../config";
 import path from "path";
 import fs from "fs";
+import fsExtra from "fs-extra";
 
 function initializeFileSystem() {
     const config = getConfig();
@@ -49,20 +50,21 @@ function createDemoProfile() {
     const sourcePath = path.join(
         ressourcesPath,
         "buildResources",
-        "demo_profile",
-        "vocab.db"
+        "demo_profile"
     );
-    const destinationPath = path.join(
-        getConfig().profileDir,
-        "demo_profile",
-        "vocab.db"
-    );
+    const destinationPath = path.join(getConfig().profileDir, "demo_profile");
 
-    fs.copyFile(sourcePath, destinationPath, (err) => {
-        if (err) {
-            console.error("Error copying database file:", err);
-        }
-    });
+    if (fs.readdirSync(destinationPath).length === 0) {
+        fsExtra.copySync(
+            sourcePath,
+            destinationPath,
+            { overwrite: false },
+            (err) => {
+                if (err) {
+                    console.error("Error copying database file:", err);
+                }
+            }
+        );    }
 }
 
 initializeFileSystem();
