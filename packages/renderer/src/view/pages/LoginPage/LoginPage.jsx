@@ -1,19 +1,15 @@
 import { useState } from 'react';
 import './LoginPage.css'
-import { exportKindleContent } from '#preload';
+import { extractKindleContent } from '#preload';
 import { ReactComponent as LoginIcon } from '../../public/icons/loginIcon.svg'
 import Dropdown from '../../components/Dropdown/Dropdown';
 
 
 function LoginPage({ fetchedProfiles, setProfile }) {
 
-
-    // handle here, if to use file explorer or one of the profiles
-    
-
     const handleFileExplorer = async () => {
         try {
-            const result = await exportKindleContent();
+            const result = await extractKindleContent();
             if (result==="success") {
                 setProfile("guest");
             }
@@ -22,16 +18,15 @@ function LoginPage({ fetchedProfiles, setProfile }) {
         }
     };
 
-
     return (
         <div className="login-modal-bg">
             <div className="login-modal-content">
                 <div className="header">
                     <LoginIcon />
                     <h1>Kindle Companion</h1>
-                    <h6>Choose your kindle and find your companion!</h6>
+                    <h6>Choose your Kindle Device and Find Your Companion!</h6>
                 </div>
-                <div className='modal-body'>
+                <div className='body'>
                     <div className="input-group">
                         <Dropdown options={fetchedProfiles} title={"Profiles"} onClick={setProfile} />
                     </div>
@@ -46,7 +41,7 @@ function LoginPage({ fetchedProfiles, setProfile }) {
                         <h2 className="razor" />
                     </div>
                     <div className="body">
-                        <a href=''> Device Status: OK</a>
+                        <span>Device Status: WIP</span>
                         <a id='create-account' href='https://github.com/saharzelo/kindle-companion'> Source Code </a>
                     </div>
                 </div>

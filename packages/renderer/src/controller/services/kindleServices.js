@@ -1,25 +1,9 @@
-import { getThumbnailsByAsin } from "#preload";
-import { getBooksByLastDate, getAllBooks } from "../database/bookController";
 import { getLookupCount } from "../database/lookupController";
 import { getBookCount } from "../database/bookController";
 
-export async function prepKindleData(byLatest = false) {
-    const books = byLatest ? await getBooksByLastDate() : await getAllBooks();
-    const thumbnailMap = await getThumbnailsByAsin(books.map(book => book.asin));
-    const data = books.map(book => {
-        const thumbnail = thumbnailMap[book.asin]
-        return { ...book, thumbnail};
-    });
-    return data;
-};
-
-
-
-export async function prepKindleMetadata() {
+export async function prepKindleMeta() {
     const bookCount = await getBookCount();
     const lookupCount = await getLookupCount();
-    const metadata = { ...bookCount, ...lookupCount }
+    const metadata = { ...bookCount, ...lookupCount };
     return metadata;
-};
-
-
+}

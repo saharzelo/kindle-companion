@@ -2,7 +2,7 @@ import { app } from "electron";
 import { getConfig } from "../config";
 import path from "path";
 import fs from "fs";
-
+import fsExtra from "fs-extra";
 
 function initializeFileSystem() {
     const config = getConfig();
@@ -19,6 +19,9 @@ function initializeFileSystem() {
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir);
         }
+    });
+    app.on("ready", () => {
+        createDemoProfile();
     });
 
     app.on("before-quit", () => {
@@ -38,6 +41,25 @@ function emptyDirSync(dir) {
             }
         });
     }
+}
+
+function createDemoProfile() {
+    const appPath = import.meta.env.PROD
+        ? path.join(process.resourcesPath, "..")
+        : app.getAppPath();
+    const sourcePath = path.join(appPath, "buildResources", "demo_profile");
+    const destinationPath = path.join(getConfig().profileDir, "demo_profile");
+
+    fsExtra.copySync(
+        sourcePath,
+        destinationPath,
+        { overwrite: false },
+        (err) => {
+            if (err) {
+                console.error("Error copying files:", err);
+            }
+        }
+    );
 }
 
 initializeFileSystem();

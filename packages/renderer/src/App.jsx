@@ -5,47 +5,38 @@ import LoginPage from "./view/pages/LoginPage/LoginPage";
 import HomePage from "./view/pages/HomePage/HomePage";
 import LibraryPage from "./view/pages/LibraryPage/LibraryPage";
 import SettingsPage from "./view/pages/SettingsPage/SettingsPage";
-import LoadingScreen from "./view/components/LoadingScreen/LoadingScreen";
 import { getProfiles, loadProfile } from "#preload";
 import "./App.css";
 
 function App() {
     const [fetchedProfiles, setFetchedProfiles] = useState();
-    const [userProfile, setUserProfile] = useState();
+    const [currProfile, setCurrProfile] = useState();
     const [currPage, setCurrPage] = useState("homepage");
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
             const profiles = await getProfiles();
             setFetchedProfiles(profiles);
-            setLoading(false);
         }
         fetchData();
-    }, [userProfile, fetchedProfiles]);
+    }, [currProfile, fetchedProfiles]);
 
-    async function handleSync(profileName) {
-        await loadProfile(profileName)
-        setUserProfile(profileName)
-    }
-
-    if (loading) {
-        return <LoadingScreen />;
+    function handleSync(profileName) {
+        loadProfile(profileName)
+        setCurrProfile(profileName)
     }
 
     return (
-        <div className="App" key={userProfile}>
-            <Sidebar setPage={setCurrPage} page={currPage} />
+        <div className="App" key={currProfile}>
+            <Sidebar setPage={setCurrPage} currPage={currPage} />
             <div className="main-container">
-                <Topbar seletedProfile={userProfile} fetchedProfiles={fetchedProfiles} setProfile={handleSync} />
+                <Topbar currProfile={currProfile} fetchedProfiles={fetchedProfiles} setProfile={handleSync} />
 
-                {userProfile && currPage === "library" && <LibraryPage />}
-                {userProfile && currPage === "settings" && <SettingsPage profile={userProfile} fetchedProfiles={fetchedProfiles} setProfile={handleSync}/>}
-                {userProfile && currPage === "homepage" && <HomePage />}
+                {currProfile && currPage === "library" && <LibraryPage />}
+                {currProfile && currPage === "settings" && <SettingsPage currProfile={currProfile} fetchedProfiles={fetchedProfiles} setProfile={handleSync}/>}
+                {currProfile && currPage === "homepage" && <HomePage />}
                 
-                {!userProfile &&
-                    <LoginPage fetchedProfiles={fetchedProfiles} setProfile={handleSync} />
-                }
+                {!currProfile && <LoginPage fetchedProfiles={fetchedProfiles} setProfile={handleSync} /> }
             </div>
         </div>
     );

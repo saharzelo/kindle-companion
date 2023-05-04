@@ -5,17 +5,17 @@ import BookInfoModal from "../../components/BookInfoModal/BookInfoModal";
 import WordInfoModal from "../../components/WordInfoModal/WordInfoModal";
 import WordsCatalog from "../../components/WordsCatalog/WordsCatalog";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
-import { prepKindleData, prepKindleMetadata } from "../../../controller/services/kindleServices";
+import { prepKindleMeta } from "../../../controller/services/kindleServices";
+import { prepBooksData } from "../../../controller/services/bookServices"
 import { getRecentLookups } from "../../../controller/database/lookupController";
 
 function HomePage({ }) {
-    const [kindleData, setKindleData] = useState([]);
+    const [booksData, setBooksData] = useState();
     const [kindleMeta, setKindleMeta] = useState();
     const [wordsData, setWordsData] = useState();
 
-    const [selectedWord, setSelectedWord] = useState(null);
-    const [selectedBookAsin, setSelectedBookAsin] = useState(null);
-    const [searchQuery, setSearchQuery] = useState("");
+    const [selectedWord, setSelectedWord] = useState();
+    const [selectedBookAsin, setSelectedBookAsin] = useState();
 
     const [showWordModal, setShowWordModal] = useState();
     const [showBookModal, setShowBookModal] = useState();
@@ -24,12 +24,14 @@ function HomePage({ }) {
 
     useEffect(() => {
         async function fetchData() {
-            const [kindleData, kindleMeta] = await Promise.all([
-                prepKindleData(true),
-                prepKindleMetadata(),
+            const [booksData, kindleMeta, lookups ] = await Promise.all([
+                prepBooksData(true),
+                prepKindleMeta(),
+                getRecentLookups()
             ]);
-            setKindleData(kindleData);
+            setBooksData(booksData);
             setKindleMeta(kindleMeta);
+            setWordsData(lookups)
             setLoading(false);
         }
         fetchData();
@@ -46,14 +48,13 @@ function HomePage({ }) {
     };
 
     const handleTableClick = async (table) => {
-        const lookups = await getRecentLookups();
-        setWordsData(lookups);
         setShowTable(table);
     };
 
     if (loading) {
         return <LoadingScreen />;
     }
+    
     return (
         <div className="home-page">
             <div className="homepage-header">
@@ -89,7 +90,7 @@ function HomePage({ }) {
                     <div className="homepage-catalog">
                         {showTable == "books" && (
                             <BooksCatalog
-                                books={kindleData}
+                                books={booksData}
                                 onBookClick={handleBookClick}
                             />
                         )}
@@ -107,7 +108,7 @@ function HomePage({ }) {
                                 bookAsin={selectedBookAsin}
                                 setShowModal={setShowBookModal}
                                 thumbnail={
-                                    kindleData.find((dict) => dict.asin == selectedBookAsin)?.thumbnail
+                                    booksData.find((dict) => dict.asin == selectedBookAsin)?.thumbnail
                                 }
                             />
                         )}

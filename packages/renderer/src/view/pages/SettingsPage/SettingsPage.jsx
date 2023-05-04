@@ -3,22 +3,20 @@ import "./SettingsPage.css";
 import { saveProfile, deleteProfile } from "#preload"
 
 
-function SettingsPage({ setProfile, fetchedProfiles, profile }) {
+function SettingsPage({ setProfile, fetchedProfiles, currProfile }) {
     const [saveProfileName, setSaveProfileName] = useState("");
     const [deleteProfileName, setDeleteProfileName] = useState()
 
-    const handleProfileSave = async (event) => {
-        event.preventDefault();
+    const handleProfileSave = async () => {
         if (saveProfileName) {
             await saveProfile(saveProfileName);
             await setProfile(saveProfileName)
         }
     }
 
-    const handleProfileDelete = async (event) => {
-        event.preventDefault();
+    const handleProfileDelete = async () => {
         await deleteProfile(deleteProfileName)
-        if (deleteProfileName === profile) {
+        if (deleteProfileName === currProfile) {
             setProfile(null)
         }
     }
@@ -34,7 +32,7 @@ function SettingsPage({ setProfile, fetchedProfiles, profile }) {
                 <h4>Save Profile:</h4>
                 <div className="text-box">
                     <input type="text" placeholder="Name" value={saveProfileName} onChange={(event) => setSaveProfileName(event.target.value)} ></input>
-                    <button onClick={(event) => handleProfileSave(event)}> Save </button>
+                    <button onClick={handleProfileSave}> Save </button>
                 </div>
                 <h4>Delete Profile:</h4>
                 <div className="profile-delete">
@@ -44,9 +42,6 @@ function SettingsPage({ setProfile, fetchedProfiles, profile }) {
                     </select>
                     <button onClick={handleProfileDelete}>Delete</button>
                 </div>
-
-                <h3>System</h3>
-                <h4>Enable Dark mode</h4>
             </div>
         </div>
     );

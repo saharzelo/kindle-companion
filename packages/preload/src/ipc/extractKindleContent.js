@@ -1,6 +1,6 @@
 import { ipcRenderer } from "electron";
 
-export async function exportKindleContent() {
+export async function extractKindleContent() {
     try {
         const result = await ipcRenderer.invoke("kindle/export-content");
         if (result === "success") {

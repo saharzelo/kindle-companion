@@ -6,7 +6,7 @@ export async function getBooksByLastDate() {
         const books = await bookRepo.getBooksByDate(date.latest_date);
         return books;
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 
@@ -32,6 +32,19 @@ export async function getBookCount() {
     try {
         const bookCount = await bookRepo.getBookCount();
         return bookCount;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function getWordCountByAsin() {
+    try {
+        const wordCount = await bookRepo.getWordCountByAsin();
+        let wordCountAsinMap = {};
+        wordCount.map((book) => {
+            wordCountAsinMap[book.asin] = book.wordCount;
+        });
+        return wordCountAsinMap;
     } catch (error) {
         console.error(error);
     }

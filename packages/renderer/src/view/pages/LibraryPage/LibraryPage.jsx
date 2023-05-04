@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./LibraryPage.css";
 import BooksCatalog from "../../components/BooksCatalog/BooksCatalog";
 import BookInfoModal from "../../components/BookInfoModal/BookInfoModal";
-import { prepKindleData } from "../../../controller/services/kindleServices";
+import { prepBooksData } from "../../../controller/services/bookServices";
 
 function LibraryPage({ }) {
     const [kindleData, setKindleData] = useState([]);
@@ -12,7 +12,7 @@ function LibraryPage({ }) {
 
     useEffect(() => {
         async function fetchData() {
-            const data = await prepKindleData()
+            const data = await prepBooksData()
             setKindleData(data)
         }
         fetchData();
@@ -37,7 +37,7 @@ function LibraryPage({ }) {
                 <h3>Your Library: </h3>
                 <input
                     type="text"
-                    placeholder="Search Books..."
+                    placeholder="Search..."
                     value={searchQuery}
                     onChange={handleSearchInputChange}
                 />

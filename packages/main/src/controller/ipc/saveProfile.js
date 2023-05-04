@@ -10,7 +10,6 @@ ipcMain.handle("saveProfile", async (event, profileName) => {
         const config = getConfig();
         const parsedName = profileName.trim();
         const profilePath = path.join(config.profileDir, parsedName);
-        console.log(profilePath);
         if (fs.existsSync(profilePath)) {
             return false;
         }

@@ -9,16 +9,12 @@ ipcMain.handle("kindle/export-content", async () => {
             properties: ["openDirectory"],
         };
         const result = await dialog.showOpenDialog(options);
+        
+        const kindlePath = result.filePaths[0];
+        await extractVocabulary(kindlePath);
+        await extractThumbnails(kindlePath);
 
-        if (result) {
-            const folderPath = result.filePaths[0];
-            await extractVocabulary(folderPath);
-            await extractThumbnails(folderPath);
-
-            return "success";
-        } else {
-            console.error("User canceled folder selection.");
-        }
+        return "success";
     } catch (error) {
         console.error(`Export failed: ${error.message}`);
     }
