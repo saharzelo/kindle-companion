@@ -7,6 +7,10 @@
     "email": "saharzelonagora@gmail.com"
   },
   "version": "1.0.5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sahar10501/kindle-companion.git"
+  },
   "main": "packages/main/dist/index.cjs",
   "scripts": {
     "build": "npm run build:main && npm run build:preload && npm run build:renderer",
