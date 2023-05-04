@@ -44,11 +44,11 @@ function emptyDirSync(dir) {
 }
 
 function createDemoProfile() {
-    const ressourcesPath = import.meta.env.PROD
+    const appPath = import.meta.env.PROD
         ? process.resourcesPath
         : app.getAppPath();
     const sourcePath = path.join(
-        ressourcesPath,
+        appPath,
         "buildResources",
         "demo_profile"
     );
