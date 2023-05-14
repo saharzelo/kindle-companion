@@ -3,6 +3,7 @@ import Sidebar from "./view/components/Sidebar/Sidebar";
 import Topbar from "./view/components/Topbar/Topbar";
 import LoginPage from "./view/pages/LoginPage/LoginPage";
 import HomePage from "./view/pages/HomePage/HomePage";
+import WordsPage from "./view/pages/WordsPage/WordsPage";
 import LibraryPage from "./view/pages/LibraryPage/LibraryPage";
 import SettingsPage from "./view/pages/SettingsPage/SettingsPage";
 import { getProfiles, loadProfile } from "#preload";
@@ -35,6 +36,8 @@ function App() {
                 {currProfile && currPage === "library" && <LibraryPage />}
                 {currProfile && currPage === "settings" && <SettingsPage currProfile={currProfile} fetchedProfiles={fetchedProfiles} setProfile={handleSync}/>}
                 {currProfile && currPage === "homepage" && <HomePage />}
+                {currProfile && currPage === "words" && <WordsPage />}
+
                 
                 {!currProfile && <LoginPage fetchedProfiles={fetchedProfiles} setProfile={handleSync} /> }
             </div>

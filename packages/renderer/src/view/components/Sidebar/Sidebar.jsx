@@ -1,6 +1,6 @@
 import './Sidebar.css';
 import { ReactComponent as AppIcon } from '../../public/icons/loginIcon.svg'
-
+import { ReactComponent as WordsSvg } from '../../public/icons/words.svg'
 import { ReactComponent as BookSvg } from '../../public/icons/book.svg'
 import { ReactComponent as HomeSvg } from '../../public/icons//home.svg'
 import { ReactComponent as SettingsSvg } from '../../public/icons/settings.svg'
@@ -23,10 +23,16 @@ function Sidebar({ setPage, currPage }) {
                 <BookSvg />
             </div>
             <div
+                className={`button-group ${currPage === 'words' ? 'active' : ''}`}
+                onClick={() => { handleSetPage('words') }}>
+                <WordsSvg />
+            </div>
+            <div
                 className={`button-group ${currPage === 'settings' ? 'active' : ''}`}
                 onClick={() => { handleSetPage('settings') }}>
                 <SettingsSvg />
             </div>
+            
         </div>
     );
 }
