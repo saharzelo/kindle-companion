@@ -10,8 +10,8 @@ async function getBookByAsin(asin) {
     SELECT
       b.title as title,
       b.authors as author,
-      strftime('%m/%d/%Y', datetime(MIN(w.timestamp) /1000, 'unixepoch')) minTime,
-      strftime('%m/%d/%Y', datetime(MAX(w.timestamp) /1000, 'unixepoch')) maxTime,
+      strftime('%d/%m/%Y', datetime(MIN(w.timestamp) /1000, 'unixepoch')) minTime,
+      strftime('%d/%m/%Y', datetime(MAX(w.timestamp) /1000, 'unixepoch')) maxTime,
       IFNULL(count(*), 0) as wordCount
     FROM
       WORDS w

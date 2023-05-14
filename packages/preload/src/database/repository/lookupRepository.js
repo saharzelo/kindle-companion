@@ -10,9 +10,18 @@ async function getLookupsByAsin(asin) {
     return await runQuery(query, [asin]);
 }
 
+
+async function getAllLookups() {
+    const query = `
+        SELECT w.word, l.usage, strftime('%d/%m/%Y %H:%M:%S', datetime(l.timestamp / 1000, 'unixepoch')) as timestamp_formatted, w.stem
+        FROM LOOKUPS`
+    return await runQuery(query, [asin]);
+}
+
+
 async function getLookupsByDate(date) {
     const query = `
-        SELECT DISTINCT w.word, b.title, l.usage, strftime('%m/%d/%Y %H:%M:%S', datetime(l.timestamp / 1000, 'unixepoch')) as timestamp_formatted, w.stem, b.asin
+        SELECT DISTINCT w.word, b.title, l.usage, strftime('%d/%m/%Y %H:%M:%S', datetime(l.timestamp / 1000, 'unixepoch')) as timestamp_formatted, w.stem, b.asin
         FROM BOOK_INFO b
         JOIN LOOKUPS l ON b.id = l.book_key
         JOIN WORDS w ON l.word_key = w.id
