@@ -1,4 +1,6 @@
 .words-page {
     height: 100%;
-    width: 100%;
+    position: relative;
+    overflow: auto;
+    text-shadow: 3px 4px 5px rgba(90, 90, 90, 0.281);
 }
