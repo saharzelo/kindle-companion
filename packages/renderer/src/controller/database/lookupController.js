@@ -10,6 +10,15 @@ export async function getRecentLookups() {
     }
 }
 
+export async function getAllLookups() {
+    try {
+        const lookups = await lookupRepo.getAllLookups();
+        return lookups;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export async function getLookupsByAsin(asin) {
     try {
         const lookups = lookupRepo.getLookupsByAsin(asin);
