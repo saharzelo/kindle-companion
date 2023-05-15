@@ -1,119 +1,111 @@
 .home-page {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
-  overflow: scroll;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
+    overflow: scroll;
 }
 
-
 .home-page h3 {
-  font-weight: 300;
-  font-size: 1.7rem;
-  text-shadow: 3px 4px 5px rgba(90, 90, 90, 0.281);
-  margin: 0;
-  margin-bottom: 0;
+    font-weight: 300;
+    font-size: 1.7rem;
+    text-shadow: 3px 4px 5px rgba(90, 90, 90, 0.281);
+    margin: 0;
+    margin-bottom: 0;
 }
 
 .home-page .choose-table-buttons h3:hover {
-  font-weight: 400;
-  cursor: pointer;
+    font-weight: 400;
+    cursor: pointer;
 }
 
 .homepage-catalog {
-  height: 100%;
-
+    height: 100%;
 }
 
 .homepage-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
-  height: 10%;
-  padding: 4vh 0 4vh 17px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    box-shadow: inset -20px -7px 20px 4px rgb(0 0 0 / 6%);
+    height: 10%;
+    padding: 4vh 0 4vh 17px;
 }
-
 
 .homepage-container {
-  display: flex;
-  position: absolute;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  box-shadow: inset -20px -7px 20px 4px rgba(0, 0, 0, 0.021);
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset -20px -7px 20px 4px rgba(0, 0, 0, 0.021);
 }
 
-
-
 .overview-dashboard {
-  display: flex;
-  flex-direction: row;
-  gap: 15%;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-
+    display: flex;
+    flex-direction: row;
+    gap: 15%;
+    justify-content: center;
+    position: relative;
+    width: 100%;
 }
 
 .dashboard-value span {
-  font-weight: 300;
-  font-size: 1.1rem;
+    font-weight: 300;
+    font-size: 1.1rem;
 }
 
-
 .dashboard-value {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  flex-direction: column;
-  gap: 0.5vh;
-  text-shadow: 3px 4px 5px rgba(90, 90, 90, 0.281);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 0.5vh;
+    text-shadow: 3px 4px 5px rgba(90, 90, 90, 0.281);
 }
 
 .dashboard-razor {
-  width: 3vw;
-  margin: 0;
-  box-shadow: 0 0.1px 0 rgb(116, 112, 112);
-  border-bottom: 0.1px solid rgb(150, 147, 147);
+    width: 3vw;
+    margin: 0;
+    box-shadow: 0 0.1px 0 rgb(116, 112, 112);
+    border-bottom: 0.1px solid rgb(150, 147, 147);
 }
 
 .previous-session-header {
-  display: flex;
-  justify-content: left;
-  text-align: left;
-  margin: 0;
+    display: flex;
+    justify-content: left;
+    text-align: left;
+    margin: 0;
 }
 
 .previous-session {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  gap: 5px;
-  height: 100%;
-  width: 100%;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 5px;
+    height: 100%;
+    width: 100%;
 }
 
 .previous-session-header h3 {
-  font-size: 1.5rem;
-  padding: 20px 0 0 17px;
+    font-size: 1.5rem;
+    padding: 20px 0 0 17px;
 }
 
 .choose-table-buttons {
-  display: flex;
-  justify-content: space-evenly;
-  gap: 10%;
-  font-size: 0.9rem;
-  padding-bottom: 13px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10%;
+    font-size: 0.9rem;
+    padding-bottom: 13px;
 }
 
 .choose-table-buttons h3 {
-  font-size: 1.3rem;
-  border-bottom: 1px solid #ccc;
-  cursor: pointer;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
 }

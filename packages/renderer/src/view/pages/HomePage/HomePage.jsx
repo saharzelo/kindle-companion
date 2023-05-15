@@ -7,7 +7,7 @@ import WordsCatalog from "../../components/WordsCatalog/WordsCatalog";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import { prepKindleMeta } from "../../../controller/services/kindleServices";
 import { prepBooksData } from "../../../controller/services/bookServices"
-import { getRecentLookups } from "../../../controller/database/lookupController";
+import { prepLookupData } from "../../../controller/services/lookupService"
 
 function HomePage({ }) {
     const [booksData, setBooksData] = useState();
@@ -27,7 +27,7 @@ function HomePage({ }) {
             const [booksData, kindleMeta, lookups ] = await Promise.all([
                 prepBooksData(true),
                 prepKindleMeta(),
-                getRecentLookups()
+                prepLookupData(true)
             ]);
             setBooksData(booksData);
             setKindleMeta(kindleMeta);

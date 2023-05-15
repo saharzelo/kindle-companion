@@ -5,7 +5,7 @@ import BookInfoModal from "../../components/BookInfoModal/BookInfoModal";
 import { prepBooksData } from "../../../controller/services/bookServices";
 
 function LibraryPage({ }) {
-    const [kindleData, setKindleData] = useState([]);
+    const [bookData, setBookData] = useState([]);
     const [selectedBookAsin, setSelectedBookAsin] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
@@ -13,7 +13,7 @@ function LibraryPage({ }) {
     useEffect(() => {
         async function fetchData() {
             const data = await prepBooksData()
-            setKindleData(data)
+            setBookData(data)
         }
         fetchData();
     }, []);
@@ -27,7 +27,7 @@ function LibraryPage({ }) {
         setSearchQuery(event.target.value);
     };
 
-    const filteredBooks = kindleData.filter((book) =>
+    const filteredBooks = bookData.filter((book) =>
         book.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
@@ -51,7 +51,7 @@ function LibraryPage({ }) {
                 <BookInfoModal
                     bookAsin={selectedBookAsin}
                     setShowModal={setShowModal}
-                    thumbnail={kindleData.find((dict) => dict.asin == selectedBookAsin)?.thumbnail}
+                    thumbnail={bookData.find((dict) => dict.asin == selectedBookAsin)?.thumbnail}
                 />
             )}
         </div>

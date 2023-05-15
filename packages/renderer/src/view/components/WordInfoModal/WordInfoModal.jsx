@@ -13,7 +13,7 @@ function WordInfoModal({ word, setShowModal }) {
     const handleCloseModal = () => setShowModal(false);
     const [wordMeta, setWordMeta] = useState();
     const [loading, setLoading] = useState(true);
-
+    
     useEffect(() => {
         async function prepWord() {
             const wordMeta = await getBookTitlesByWord(word)
