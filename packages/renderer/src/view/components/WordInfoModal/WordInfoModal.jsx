@@ -3,7 +3,7 @@ import ModalHeader from '../ModalHeader/ModalHeader';
 import ModalBackground from '../ModalBackground/ModalBackground';
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import Table from "../Table/Table";
-import { format } from "../../../controller/helpers/format";
+import { stringUtils} from "../../../controller/helpers/stringUtils";
 import { ReactComponent as AddTo } from "../../public/icons/addTo.svg"
 import { ReactComponent as RemoveFrom } from '../../public/icons/removeFrom.svg'
 import { getBookTitlesByWord } from "../../../controller/database/wordController";
@@ -16,7 +16,7 @@ function WordInfoModal({ word, setShowModal }) {
     
     useEffect(() => {
         async function prepWord() {
-            const wordMeta = await getBookTitlesByWord(word)
+            const wordMeta = await getBookTitlesByWord(word);
             setWordMeta(wordMeta);
             setLoading(false);
         }
@@ -30,20 +30,19 @@ function WordInfoModal({ word, setShowModal }) {
         <>
             <ModalBackground onClick={handleCloseModal} />
             <div className="word-modal-content">
-                <ModalHeader onClick={handleCloseModal} breadcrumb={"Lookups / " + format.ucFirst(word)} />
+                <ModalHeader onClick={handleCloseModal} breadcrumb={"Lookups / " + stringUtils.ucFirst(word)} />
                 <div className="word-modal-body">
                     <div className="header">
-                        <h3>{format.ucFirst(word)}</h3>
+                        <h3>{stringUtils.ucFirst(word)}</h3>
                         <div className="button-group"> <AddTo /> <RemoveFrom /></div>
                     </div>
                     <div className="body">
-
                         <div className="word-info">
-                            <p>Last Appeard On: <span className="last-appeared"> Anna Karenina</span></p>
-                            <p>Last Appeared at: <span className="last-appeared"> 12/05/2023</span></p>
-                            <p>Appeared: <span className="Appeared">15 times</span></p>
+                            <p>Last Appeard On: <span className="last-appeared"> Anna Karenina </span></p>
+                            <p>Last Appeared at: <span className="last-appeared"> 12/05/2023 </span></p>
+                            <p> Appeared: <span className="Appeared"> 15 times</span></p>
                         </div>
-                        <h4> {format.ucFirst(word)} Appeared on:</h4>
+                        <h4> {stringUtils.ucFirst(word)} Appeared on:</h4>
 
                         <div className="word-table">
                             <Table tableData={wordMeta} tableHeaders={['Book', 'Usage', 'Date']} />

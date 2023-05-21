@@ -1,10 +1,10 @@
-import { format } from "../../../controller/helpers/format";
+import { stringUtils } from "../../../controller/helpers/stringUtils";
 import "./WordCatalogItem.css";
 
 function WordCatalogItem({ word, onClick }) {
     return (
         <div className="word-preview-item" onClick={onClick}>
-            <span>{format.ucFirst(word)}</span>
+            <span>{stringUtils.ucFirst(word)}</span>
         </div>
     );
 }

@@ -1,5 +1,5 @@
 import Dropdown from "../Dropdown/Dropdown";
-import format from "../../../controller/helpers/format";
+import stringUtils from "../../../controller/helpers/stringUtils";
 import "./Topbar.css";
 
 function Topbar({ fetchedProfiles, setProfile, currProfile }) {
@@ -7,7 +7,7 @@ function Topbar({ fetchedProfiles, setProfile, currProfile }) {
         <div className="topbar">
             <div className="user-info">
                 Welcome:{" "}
-                <span>{currProfile && format.ucFirst(currProfile)}</span>
+                <span>{currProfile && stringUtils.ucFirst(currProfile)}</span>
             </div>
             <div>
                 <Dropdown
