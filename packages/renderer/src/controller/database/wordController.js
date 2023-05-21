@@ -1,4 +1,4 @@
-import { wordRepo, bookRepo } from "#preload";
+import { wordRepo } from "#preload";
 
 export async function getBookTitlesByWord(word) {
     try {
