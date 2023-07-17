@@ -9,7 +9,7 @@
   "version": "1.0.6",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahar10501/kindle-companion.git"
+    "url": "https://github.com/saharzelo/kindle-companion.git"
   },
   "main": "packages/main/dist/index.cjs",
   "scripts": {
